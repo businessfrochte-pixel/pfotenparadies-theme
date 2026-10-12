@@ -1,0 +1,19 @@
+{%- comment -%}
+  PfotenParadies – zentrale Shop-Angaben (JARVIS, Shop-Bau-Standard v1).
+  Werte hier ändern, dann gelten sie überall: Startseite, Produktseite, Warenkorb, FAQ, Infoseiten.
+  Die Ankündigungsleiste wird separat im Theme-Editor gepflegt.
+  WICHTIG: Versandkosten und Gratisversand-Schwelle sind identisch unter
+  Einstellungen > Versand und Zustellung hinterlegt (Stand 11.10.2026: 5,99 € unter 150 €, ab 150 € kostenlos, nur Deutschland).
+  Abweichende Lieferzeit pro Produkt: Produkt-Tag lieferzeit-MIN-MAX (z. B. lieferzeit-3-5).
+{%- endcomment -%}
+{%- case key -%}
+  {%- when 'free_shipping_cents' -%}15000
+  {%- when 'free_shipping' -%}150 €
+  {%- when 'shipping_fee' -%}5,99 €
+  {%- when 'delivery_min' -%}2
+  {%- when 'delivery_max' -%}4
+  {%- when 'delivery' -%}2–4 Werktagen
+  {%- when 'ship_to' -%}Deutschland
+  {%- when 'reply_time' -%}werktags innerhalb von 24 Stunden
+  {%- when 'email' -%}{{ shop.email }}
+{%- endcase -%}

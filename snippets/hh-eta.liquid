@@ -1,0 +1,18 @@
+{%- liquid
+  capture dmin
+    render 'hh-config', key: 'delivery_min'
+  endcapture
+  capture dmax
+    render 'hh-config', key: 'delivery_max'
+  endcapture
+  for tag in product.tags
+    if tag contains 'lieferzeit-'
+      assign parts = tag | remove: 'lieferzeit-' | split: '-'
+      assign dmin = parts[0]
+      assign dmax = parts[1]
+    endif
+  endfor
+  assign dmin = dmin | strip
+  assign dmax = dmax | strip
+-%}
+<p class="hh-eta" data-hh-eta data-min="{{ dmin }}" data-max="{{ dmax }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><span>Lieferung voraussichtlich <strong data-hh-eta-text>in {{ dmin }}–{{ dmax }} Werktagen</strong><br><small>nach {% render 'hh-config', key: 'ship_to' %}, mit Sendungsverfolgung</small></span></p>

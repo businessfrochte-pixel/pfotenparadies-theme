@@ -1,0 +1,10 @@
+<div class="hh-ptrust">
+  {% render 'hh-eta', product: product %}
+  <ul class="hh-ptrust__list">
+    <li><span><strong>Versand {% render 'hh-config', key: 'shipping_fee' %}</strong> – ab {% render 'hh-config', key: 'free_shipping' %} kostenlos</span></li>
+    <li><span><strong>14 Tage Rückgabe</strong> – <a href="/pages/rueckgabe-widerruf">so funktioniert es</a></span></li>
+    <li><span><strong>Als Gast bestellen</strong> – ohne Kundenkonto</span></li>
+  </ul>
+  {% render 'hh-payment-icons' %}
+  <p class="hh-ptrust__help">Unsicher bei der Größe? <a href="/pages/messhilfe">Zur Messhilfe</a> oder <a href="/pages/contact">schreib uns</a> – Antwort {% render 'hh-config', key: 'reply_time' %}.</p>
+</div>

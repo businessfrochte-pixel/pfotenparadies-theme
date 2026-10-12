@@ -1,0 +1,32 @@
+{%- liquid
+  capture dmin
+    render 'hh-config', key: 'delivery_min'
+  endcapture
+  capture dmax
+    render 'hh-config', key: 'delivery_max'
+  endcapture
+  for tag in product.tags
+    if tag contains 'lieferzeit-'
+      assign parts = tag | remove: 'lieferzeit-' | split: '-'
+      assign dmin = parts[0]
+      assign dmax = parts[1]
+    endif
+  endfor
+  assign dmin = dmin | strip
+  assign dmax = dmax | strip
+-%}
+<div class="hh-pfaq">
+  <p class="hh-pfaq__title">Fragen zu diesem Artikel</p>
+  <details>
+    <summary>Wann kommt er an?<span aria-hidden="true">+</span></summary>
+    <div class="hh-pfaq__a">In {{ dmin }}–{{ dmax }} Werktagen nach Zahlungseingang. Sobald das Paket unterwegs ist, bekommst du eine E-Mail mit Sendungsverfolgung. <a href="/pages/versand-lieferung">Versand &amp; Lieferung</a></div>
+  </details>
+  <details>
+    <summary>Welche Größe passt?<span aria-hidden="true">+</span></summary>
+    <div class="hh-pfaq__a">Vergleiche die Maße deines Hundes mit der Tabelle in der Beschreibung. Wie du richtig misst, zeigt die <a href="/pages/messhilfe">Messhilfe</a>. Zwischen zwei Größen? <a href="/pages/contact">Schreib uns</a>.</div>
+  </details>
+  <details>
+    <summary>Kann ich ihn zurückgeben?<span aria-hidden="true">+</span></summary>
+    <div class="hh-pfaq__a">Ja, innerhalb von 14 Tagen ab Erhalt. Dein Geld bekommst du spätestens 14 Tage nach deinem Widerruf zurück. <a href="/pages/rueckgabe-widerruf">Rückgabe &amp; Widerruf</a></div>
+  </details>
+</div>
