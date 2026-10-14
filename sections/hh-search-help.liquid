@@ -1,0 +1,25 @@
+{%- comment -%} PfotenParadies – Hilfe bei leerer Suche (JARVIS). Erscheint nur, wenn eine Suche keine Treffer hatte. {%- endcomment -%}
+{%- if search.performed and search.results_count == 0 -%}
+<div class="section-background"></div>
+<div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: section.settings %}">
+  <section class="hh hh-empty" aria-labelledby="hh-sh-title">
+    <h2 id="hh-sh-title" class="hh-h3">{{ section.settings.heading | escape }}</h2>
+    <div class="hh-lead">{{ section.settings.text }}</div>
+    <ul class="hh-empty__links" aria-label="Bereiche">
+      {%- for link in linklists['footer-sortiment'].links -%}<li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>{%- endfor -%}
+    </ul>
+  </section>
+</div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "PP Hilfe bei leerer Suche",
+  "class": "hh-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Nichts Passendes gefunden?" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Versuch einen allgemeineren Begriff wie „Bett“ oder „Geschirr“, stöbere in einem Bereich – oder <a href=\"/pages/contact\">schreib uns</a>, wir helfen dir weiter.</p>" },
+    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 8 },
+    { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48 }
+  ]
+}
+{% endschema %}

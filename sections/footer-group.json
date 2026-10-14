@@ -1,1 +1,215 @@
-{"type":"footer","name":"t:names.footer","sections":{"footer_m9NzUG":{"type":"footer","blocks":{"group_H6VpwJ":{"type":"group","settings":{"content_direction":"column","vertical_on_mobile":true,"horizontal_alignment":"flex-start","vertical_alignment":"center","align_baseline":false,"horizontal_alignment_flex_direction_column":"flex-start","vertical_alignment_flex_direction_column":"center","gap":12,"width":"fill","custom_width":100,"width_mobile":"fill","custom_width_mobile":100,"height":"fit","custom_height":100,"background_media":"none","video_position":"cover","background_image_position":"cover","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"toggle_overlay":false,"overlay_color":"#00000026","overlay_style":"solid","gradient_direction":"to top","open_in_new_tab":false,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"text_LWt8Pz":{"type":"text","settings":{"text":"<h2>PfotenParadies</h2>","width":"100%","max_width":"normal","alignment":"left","type_preset":"h3","font":"var(--font-heading--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"text_f9CFLH":{"type":"text","settings":{"text":"<p>Zubehör für den Alltag mit Hund – mit genauen Maßen, dem Lieferdatum vor dem Kauf und Beratung, wenn du unsicher bist.</p><p>Fragen? <a href=\"/pages/contact\">Schreib uns</a> – wir antworten werktags innerhalb von 24 Stunden.</p>","width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["text_LWt8Pz","text_f9CFLH"]},"menu_hh_service":{"type":"menu","settings":{"menu_spacing":10,"show_as_accordion":true,"accordion_icon":"caret","accordion_dividers":true,"background_color":"","text_color":"","heading_preset":"h5","link_preset":"paragraph","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0,"menu":"footer","heading":"Hilfe & Service"},"blocks":{}},"menu_hh_shop":{"type":"menu","settings":{"menu_spacing":10,"show_as_accordion":true,"accordion_icon":"caret","accordion_dividers":true,"background_color":"","text_color":"","heading_preset":"h5","link_preset":"paragraph","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0,"menu":"footer-sortiment","heading":"Sortiment"},"blocks":{}}},"block_order":["group_H6VpwJ","menu_hh_shop","menu_hh_service"],"name":"t:names.footer","settings":{"section_width":"page-width","gap":40,"background_color":"#E7EEE6","padding-block-start":56,"padding-block-end":40}},"footer_utilities_jLGE8U":{"type":"footer-utilities","blocks":{"footer_copyright_jweRK8":{"type":"footer-copyright","settings":{"show_powered_by":false,"font_size":"0.875rem","case":"none"},"blocks":{}},"footer_policy_list_VCdnpa":{"type":"footer-policy-list","settings":{"font_size":"0.875rem","case":"none"},"blocks":{}},"social_links_Ew63Kq":{"type":"social-links","settings":{"facebook_url":"","instagram_url":"","youtube_url":"","tiktok_url":"","twitter_url":""},"blocks":{}}},"block_order":["footer_copyright_jweRK8","footer_policy_list_VCdnpa","social_links_Ew63Kq"],"name":"t:names.utilities","settings":{"section_width":"page-width","gap":24,"divider_thickness":1,"divider_color":"{{ settings.color_palette.color2 }}","background_color":"#E7EEE6","padding-block-start":20,"padding-block-end":48}},"hh_newsletter":{"type":"custom-liquid","name":"Newsletter","settings":{"custom_liquid":"<section class=\"hh hh-nl\" aria-labelledby=\"hh-nl-title\"><div class=\"hh-nl__inner\"><div class=\"hh-nl__copy\"><span class=\"hh-nl__icon\"><svg viewBox=\"0 0 48 48\" width=\"30\" height=\"30\" aria-hidden=\"true\" focusable=\"false\" fill=\"currentColor\"><ellipse cx=\"24\" cy=\"31\" rx=\"9\" ry=\"8\"/><ellipse cx=\"11.5\" cy=\"20\" rx=\"4.2\" ry=\"5.4\"/><ellipse cx=\"19.5\" cy=\"12.5\" rx=\"4\" ry=\"5.2\"/><ellipse cx=\"28.5\" cy=\"12.5\" rx=\"4\" ry=\"5.2\"/><ellipse cx=\"36.5\" cy=\"20\" rx=\"4.2\" ry=\"5.4\"/></svg></span><div><p class=\"hh-nl__eyebrow\">Newsletter</p><h2 id=\"hh-nl-title\" class=\"hh-nl__title\">Hundeglück direkt in dein Postfach</h2><p class=\"hh-nl__text\">Pflege-Tipps, Messhilfen und Neuheiten für deinen Hund. Kein Spam – Abmeldung jederzeit mit einem Klick.</p></div></div><div class=\"hh-nl__box\">{%- form 'customer', id: 'hh-newsletter', class: 'hh-nl__form' -%}<input type=\"hidden\" name=\"contact[tags]\" value=\"newsletter\">{%- if form.posted_successfully? -%}<p class=\"hh-nl__ok\" role=\"status\"><strong>Danke für deine Anmeldung!</strong> Falls wir dich um eine Bestätigung bitten, findest du die E-Mail in deinem Postfach.</p>{%- else -%}<label class=\"hh-nl__label\" for=\"hh-nl-email\">Deine E-Mail-Adresse</label><div class=\"hh-nl__row\"><input id=\"hh-nl-email\" class=\"hh-nl__input\" type=\"email\" name=\"contact[email]\" autocomplete=\"email\" autocapitalize=\"off\" spellcheck=\"false\" required placeholder=\"name@beispiel.de\"{% if form.errors %} aria-invalid=\"true\" aria-describedby=\"hh-nl-error\"{% endif %}><button class=\"hh-nl__btn\" type=\"submit\">Anmelden</button></div>{%- if form.errors -%}<p id=\"hh-nl-error\" class=\"hh-nl__err\" role=\"alert\">Bitte prüfe deine E-Mail-Adresse.</p>{%- endif -%}{%- endif -%}{%- endform -%}<p class=\"hh-nl__legal\">Mit der Anmeldung bekommst du unseren Newsletter. Details in der <a href=\"/policies/privacy-policy\">Datenschutzerklärung</a>.</p></div></div></section>","section_width":"full-width","padding-block-start":0,"padding-block-end":0}}},"order":["hh_newsletter","footer_m9NzUG","footer_utilities_jLGE8U"]}
+{
+  "type": "footer",
+  "name": "t:names.footer",
+  "sections": {
+    "footer_m9NzUG": {
+      "type": "footer",
+      "blocks": {
+        "group_H6VpwJ": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "open_in_new_tab": false,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_LWt8Pz": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>PfotenParadies</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-heading--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_f9CFLH": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Zubehör für den Alltag mit Hund – mit genauen Maßen, dem Lieferdatum vor dem Kauf und Beratung, wenn du unsicher bist.</p><p>Fragen? <a href=\"/pages/contact\">Schreib uns</a> – wir antworten werktags innerhalb von 24 Stunden.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_LWt8Pz",
+            "text_f9CFLH"
+          ]
+        },
+        "menu_hh_service": {
+          "type": "menu",
+          "settings": {
+            "menu_spacing": 10,
+            "show_as_accordion": true,
+            "accordion_icon": "caret",
+            "accordion_dividers": true,
+            "background_color": "",
+            "text_color": "",
+            "heading_preset": "h5",
+            "link_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "menu": "footer",
+            "heading": "Hilfe & Service"
+          },
+          "blocks": {}
+        },
+        "menu_hh_shop": {
+          "type": "menu",
+          "settings": {
+            "menu_spacing": 10,
+            "show_as_accordion": true,
+            "accordion_icon": "caret",
+            "accordion_dividers": true,
+            "background_color": "",
+            "text_color": "",
+            "heading_preset": "h5",
+            "link_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "menu": "footer-sortiment",
+            "heading": "Sortiment"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "group_H6VpwJ",
+        "menu_hh_shop",
+        "menu_hh_service"
+      ],
+      "name": "t:names.footer",
+      "settings": {
+        "section_width": "page-width",
+        "gap": 40,
+        "background_color": "#E7EEE6",
+        "padding-block-start": 56,
+        "padding-block-end": 40
+      }
+    },
+    "footer_utilities_jLGE8U": {
+      "type": "footer-utilities",
+      "blocks": {
+        "footer_copyright_jweRK8": {
+          "type": "footer-copyright",
+          "settings": {
+            "show_powered_by": false,
+            "font_size": "0.875rem",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "footer_policy_list_VCdnpa": {
+          "type": "footer-policy-list",
+          "settings": {
+            "font_size": "0.875rem",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "social_links_Ew63Kq": {
+          "type": "social-links",
+          "settings": {
+            "facebook_url": "",
+            "instagram_url": "",
+            "youtube_url": "",
+            "tiktok_url": "",
+            "twitter_url": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "footer_copyright_jweRK8",
+        "footer_policy_list_VCdnpa",
+        "social_links_Ew63Kq"
+      ],
+      "name": "t:names.utilities",
+      "settings": {
+        "section_width": "page-width",
+        "gap": 24,
+        "divider_thickness": 1,
+        "divider_color": "{{ settings.color_palette.color2 }}",
+        "background_color": "#E7EEE6",
+        "padding-block-start": 20,
+        "padding-block-end": 48
+      }
+    },
+    "hh_newsletter": {
+      "type": "hh-newsletter",
+      "settings": {
+        "eyebrow": "Newsletter",
+        "heading": "Tipps für den Alltag mit Hund",
+        "text": "<p>Pflege-Tipps, Messhilfen und Neuheiten für deinen Hund. Kein Spam, Abmeldung jederzeit mit einem Klick.</p>",
+        "button_label": "Anmelden"
+      }
+    }
+  },
+  "order": [
+    "hh_newsletter",
+    "footer_m9NzUG",
+    "footer_utilities_jLGE8U"
+  ]
+}

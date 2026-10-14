@@ -1,0 +1,58 @@
+{%- comment -%}
+  PfotenParadies – Ratgeber (JARVIS). Zweck: Der häufigste Zweifel (welche Größe?) wird vor dem Kauf beantwortet.
+{%- endcomment -%}
+<div class="section-background"></div>
+<div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: section.settings %}">
+  <section class="hh hh-guide hh-reveal" aria-labelledby="hh-guide-{{ section.id }}">
+    <div class="hh-guide__main">
+      {%- if section.settings.eyebrow != blank -%}<p class="hh-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h2 id="hh-guide-{{ section.id }}" class="hh-h2">{{ section.settings.heading | escape }}</h2>
+      {%- if section.settings.text != blank -%}<div class="hh-lead">{{ section.settings.text }}</div>{%- endif -%}
+      {%- assign checks = section.blocks | where: 'type', 'check' -%}
+      {%- if checks.size > 0 -%}
+        <ul class="hh-checks">
+          {%- for block in checks -%}<li {{ block.shopify_attributes }}><strong>{{ block.settings.label | escape }}</strong> {{ block.settings.text | escape }}</li>{%- endfor -%}
+        </ul>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a class="hh-btn" href="{{ section.settings.button_link | default: '/collections/all' }}">{{ section.settings.button_label | escape }}{% render 'hh-icon', name: 'arrow' %}</a>
+      {%- endif -%}
+    </div>
+    <div class="hh-guide__aside">
+      <h3 class="hh-h3">{{ section.settings.steps_heading | escape }}</h3>
+      {%- assign steps = section.blocks | where: 'type', 'step' -%}
+      <ol class="hh-steps">
+        {%- for block in steps -%}<li {{ block.shopify_attributes }}><span>{{ block.settings.text }}</span></li>{%- endfor -%}
+      </ol>
+      {%- if section.settings.more_label != blank -%}<a class="hh-link hh-link--arrow" href="{{ section.settings.more_link | default: '/pages/messhilfe' }}">{{ section.settings.more_label | escape }}</a>{%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "PP Ratgeber",
+  "class": "hh-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Kleine Zeile", "default": "Größenberatung" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Welches Bett passt zu deinem Hund?" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Entscheidend ist nicht das Außenmaß, sondern die Fläche, auf der dein Hund wirklich liegt. Deshalb steht bei jedem Bett die Liegefläche in Zentimetern.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button-Text", "default": "Betten vergleichen" },
+    { "type": "url", "id": "button_link", "label": "Button-Link" },
+    { "type": "text", "id": "steps_heading", "label": "Überschrift Schritte", "default": "In 3 Schritten zur richtigen Größe" },
+    { "type": "text", "id": "more_label", "label": "Link-Text", "default": "Zur ausführlichen Messhilfe" },
+    { "type": "url", "id": "more_link", "label": "Link-Ziel" },
+    { "type": "header", "content": "Abstände" },
+    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 32 },
+    { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 32 }
+  ],
+  "blocks": [
+    { "type": "check", "name": "Hinweis", "settings": [
+      { "type": "text", "id": "label", "label": "Fett", "default": "Streckt sich gern aus:" },
+      { "type": "text", "id": "text", "label": "Text", "default": "eher ein flaches Kissen oder eine Matte mit großer Liegefläche." } ] },
+    { "type": "step", "name": "Schritt", "settings": [
+      { "type": "inline_richtext", "id": "text", "label": "Text", "default": "Miss deinen Hund im ausgestreckten Liegen – von der Nase bis zum Rutenansatz." } ] }
+  ],
+  "presets": [{ "name": "PP Ratgeber" }]
+}
+{% endschema %}

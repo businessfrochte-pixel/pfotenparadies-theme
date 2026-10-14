@@ -1,0 +1,15 @@
+{%- comment -%} Zweck: Lieferdatum, Kosten, Rückgabe und Hilfe direkt unter dem Kaufbutton. {%- endcomment -%}
+{%- assign product = closest.product -%}
+<div class="hh hh-ptrust" {{ block.shopify_attributes }}>
+  {% render 'hh-eta', product: product %}
+  <ul class="hh-ptrust__list">
+    <li><span><strong>Versand {% render 'hh-config', key: 'shipping_fee' %}</strong> – ab {% render 'hh-config', key: 'free_shipping' %} kostenlos</span></li>
+    <li><span><strong>14 Tage Rückgabe</strong> – <a href="/pages/rueckgabe-widerruf">so funktioniert es</a></span></li>
+    <li><span><strong>Als Gast bestellen</strong> – ohne Kundenkonto</span></li>
+  </ul>
+  {% render 'hh-payment-icons' %}
+  <p class="hh-ptrust__help">Fragen zum Artikel? <a href="/pages/contact">Schreib uns</a> – Antwort {% render 'hh-config', key: 'reply_time' %}.</p>
+</div>
+{% schema %}
+{ "name": "PP Lieferung & Service", "tag": null, "settings": [] }
+{% endschema %}

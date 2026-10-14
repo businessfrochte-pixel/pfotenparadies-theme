@@ -383,9 +383,7 @@
   <div
     class="header__underlay header__underlay-open"
   ></div>
-  {%- if request.page_type == 'index' -%}
-    <h1 class="visually-hidden">{{ shop.name }}</h1>
-  {%- endif -%}
+  {%- comment -%} JARVIS: Die sichtbare Überschrift des Einstiegs ist die H1 der Startseite (nur eine H1 pro Seite). {%- endcomment -%}
   {% for row in rows %}
     {% liquid
       assign background = 'background_color_' | append: row

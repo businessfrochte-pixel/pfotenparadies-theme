@@ -4,7 +4,8 @@
   Die Ankündigungsleiste wird separat im Theme-Editor gepflegt.
   WICHTIG: Versandkosten und Gratisversand-Schwelle sind identisch unter
   Einstellungen > Versand und Zustellung hinterlegt (Stand 11.10.2026: 5,99 € unter 150 €, ab 150 € kostenlos, nur Deutschland).
-  Abweichende Lieferzeit pro Produkt: Produkt-Tag lieferzeit-MIN-MAX (z. B. lieferzeit-3-5).
+  Abweichende Lieferzeit pro Produkt: Produktfelder custom.lieferzeit_min / custom.lieferzeit_max (oder Tag lieferzeit-MIN-MAX).
+  withdraw_url: Link zur elektronischen Widerrufsfunktion (§ 356a BGB), sobald die App eingerichtet ist – bis dahin leer lassen.
 {%- endcomment -%}
 {%- case key -%}
   {%- when 'free_shipping_cents' -%}15000
@@ -16,4 +17,5 @@
   {%- when 'ship_to' -%}Deutschland
   {%- when 'reply_time' -%}werktags innerhalb von 24 Stunden
   {%- when 'email' -%}{{ shop.email }}
+  {%- when 'withdraw_url' -%}
 {%- endcase -%}

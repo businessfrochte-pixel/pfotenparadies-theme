@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "search": {
       "type": "search-header",
@@ -148,11 +149,16 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "hh_card_meta": {
+              "type": "hh-card-meta",
+              "settings": {}
             }
           },
           "block_order": [
             "product_card_gallery_cFExAi",
             "product_title_j7qXTx",
+            "hh_card_meta",
             "price_fYkUgG"
           ]
         }
@@ -171,10 +177,15 @@
         "padding-block-start": 40,
         "padding-block-end": 40
       }
+    },
+    "hh_search_help": {
+      "type": "hh-search-help",
+      "settings": {}
     }
   },
   "order": [
     "search",
-    "main"
+    "main",
+    "hh_search_help"
   ]
 }

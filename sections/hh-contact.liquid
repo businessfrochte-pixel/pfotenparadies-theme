@@ -1,0 +1,76 @@
+{%- comment -%}
+  PfotenParadies – Kontakt (JARVIS). Zweck: Ein erreichbarer Ansprechpartner, ehrliche Antwortzeit und ein kurzes Formular
+  mit den Angaben, die wir für schnelle Hilfe brauchen. Text oben kommt aus dem Seiteninhalt (Shopify > Seiten > Kontakt).
+{%- endcomment -%}
+<div class="section-background"></div>
+<div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: section.settings %}">
+  <section class="hh hh-contact" aria-labelledby="hh-contact-title">
+    <div class="hh-contact__info">
+      <p class="hh-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h1 id="hh-contact-title" class="hh-h2">{{ closest.page.title | default: page.title | escape }}</h1>
+      <div class="hh-lead rte">{{ closest.page.content | default: page.content }}</div>
+      <ul class="hh-contact__facts">
+        <li>{% render 'hh-icon', name: 'chat' %}<span><strong>Antwort {% render 'hh-config', key: 'reply_time' %}</strong>per E-Mail an deine Adresse</span></li>
+        <li>{% render 'hh-icon', name: 'ruler' %}<span><strong>Frage zur Größe?</strong>Schick uns die Maße deines Hundes mit – dann empfehlen wir dir die passende Größe.</span></li>
+        <li>{% render 'hh-icon', name: 'truck' %}<span><strong>Frage zur Bestellung?</strong>Mit Bestellnummer können wir dir am schnellsten helfen.</span></li>
+      </ul>
+      {%- if section.settings.person != blank -%}<p class="hh-contact__person">{{ section.settings.person }}</p>{%- endif -%}
+    </div>
+    <div class="hh-contact__form">
+      {%- form 'contact', id: 'hh-contact-form', class: 'hh-form' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="hh-form__ok" role="status" tabindex="-1">
+            <strong>Danke, deine Nachricht ist bei uns angekommen.</strong>
+            <p>Wir antworten dir {% render 'hh-config', key: 'reply_time' %} an die angegebene E-Mail-Adresse.</p>
+          </div>
+        {%- else -%}
+          {%- if form.errors -%}
+            <div class="hh-form__err" role="alert" id="hh-contact-errors">
+              <strong>Bitte prüfe deine Angaben.</strong>
+              <ul>
+                {%- for field in form.errors -%}
+                  <li>{% if field == 'email' %}Die E-Mail-Adresse ist nicht vollständig.{% elsif field == 'form' %}{{ form.errors.messages['form'] }}{% else %}{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}{% endif %}</li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+          <div class="hh-form__row">
+            <div class="hh-field">
+              <label for="hh-c-name">Name</label>
+              <input id="hh-c-name" type="text" name="contact[name]" autocomplete="name" value="{{ form.name }}">
+            </div>
+            <div class="hh-field">
+              <label for="hh-c-email">E-Mail-Adresse <span aria-hidden="true">*</span></label>
+              <input id="hh-c-email" type="email" name="contact[email]" autocomplete="email" autocapitalize="off" spellcheck="false" required value="{{ form.email }}"{% if form.errors contains 'email' %} aria-invalid="true" aria-describedby="hh-contact-errors"{% endif %}>
+            </div>
+          </div>
+          <div class="hh-field">
+            <label for="hh-c-order">Bestellnummer <span class="hh-field__opt">(falls vorhanden)</span></label>
+            <input id="hh-c-order" type="text" name="contact[Bestellnummer]" inputmode="text" placeholder="z. B. #1001">
+          </div>
+          <div class="hh-field">
+            <label for="hh-c-msg">Deine Nachricht <span aria-hidden="true">*</span></label>
+            <textarea id="hh-c-msg" name="contact[body]" rows="6" required placeholder="Worum geht es? Bei Größenfragen gern mit den Maßen deines Hundes.">{{ form.body }}</textarea>
+          </div>
+          <p class="hh-form__note">Pflichtfelder sind mit * markiert. Wir nutzen deine Angaben nur, um deine Anfrage zu beantworten – mehr in der <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Datenschutzerklärung</a>.</p>
+          <button class="hh-btn" type="submit">Nachricht senden{% render 'hh-icon', name: 'arrow' %}</button>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "PP Kontakt",
+  "class": "hh-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Kleine Zeile", "default": "Wir helfen dir" },
+    { "type": "richtext", "id": "person", "label": "Ansprechpartner (Name, optional Foto-Text)", "info": "Nur echte Angaben. Leer lassen, solange nicht freigegeben." },
+    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 64 }
+  ],
+  "enabled_on": { "templates": ["page"] },
+  "presets": [{ "name": "PP Kontakt" }]
+}
+{% endschema %}

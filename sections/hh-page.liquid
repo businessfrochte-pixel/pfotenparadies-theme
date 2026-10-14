@@ -1,0 +1,41 @@
+{%- comment -%}
+  PfotenParadies – Infoseite (JARVIS). Überschrift links bündig zum Inhalt; Inhalt aus zentralem Snippet,
+  damit Lieferzeit, Kosten und Fristen überall gleich sind (Werte in snippets/hh-config.liquid).
+{%- endcomment -%}
+{%- assign pg = closest.page | default: page -%}
+<div class="section-background"></div>
+<div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: section.settings %}">
+  <div class="hh hh-page">
+    <header class="hh-page__head">
+      {%- if section.settings.eyebrow != blank -%}<p class="hh-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h1 class="hh-h2 hh-page__title">{{ section.settings.heading | default: pg.title | escape }}</h1>
+      {%- if section.settings.intro != blank -%}<div class="hh-lead">{{ section.settings.intro }}</div>{%- endif -%}
+    </header>
+    {%- case section.settings.body -%}
+      {%- when 'faq' -%}{% render 'hh-faq-list', page_mode: true %}
+      {%- when 'versand' -%}{% render 'hh-shipping-info' %}
+      {%- when 'widerruf' -%}{% render 'hh-returns-info' %}
+      {%- when 'messhilfe' -%}{% render 'hh-measure', show_bed_rule: true, page_mode: true %}
+      {%- else -%}<div class="hh-page__content rte">{{ pg.content }}</div>
+    {%- endcase -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "PP Infoseite",
+  "class": "hh-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Kleine Zeile" },
+    { "type": "text", "id": "heading", "label": "Überschrift (leer = Seitentitel)" },
+    { "type": "richtext", "id": "intro", "label": "Einleitung" },
+    { "type": "select", "id": "body", "label": "Inhalt", "default": "content", "options": [
+      { "value": "content", "label": "Seiteninhalt" }, { "value": "faq", "label": "Häufige Fragen" },
+      { "value": "versand", "label": "Versand & Lieferung" }, { "value": "widerruf", "label": "Rückgabe & Widerruf" },
+      { "value": "messhilfe", "label": "Messhilfe" } ] },
+    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 64 }
+  ],
+  "enabled_on": { "templates": ["page"] },
+  "presets": [{ "name": "PP Infoseite" }]
+}
+{% endschema %}

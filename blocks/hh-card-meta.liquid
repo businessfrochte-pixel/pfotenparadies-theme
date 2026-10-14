@@ -1,0 +1,27 @@
+{%- comment -%} Zweck: Ein vergleichbares Merkmal auf jeder Produktkarte (Größen bzw. Ausführung). {%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign text = ''
+  for o in p.options_with_values
+    if o.values.size > 1
+      assign first = o.values.first
+      assign last = o.values.last
+      assign text = o.values.size | append: ' ' | append: o.name
+      if o.name == 'Größe'
+        assign text = o.values.size | append: ' Größen'
+      endif
+      assign text = text | append: ': ' | append: first | append: '–' | append: last
+      break
+    endif
+  endfor
+  if text == '' and p.has_only_default_variant == false and p.options_with_values.size > 0
+    assign o = p.options_with_values.first
+    if o.values.size == 1
+      assign text = o.name | append: ': ' | append: o.values.first
+    endif
+  endif
+-%}
+{%- if text != '' -%}<p class="hh hh-cardmeta" {{ block.shopify_attributes }}>{{ text | escape }}</p>{%- endif -%}
+{% schema %}
+{ "name": "PP Merkmal (Karte)", "tag": null, "settings": [] }
+{% endschema %}

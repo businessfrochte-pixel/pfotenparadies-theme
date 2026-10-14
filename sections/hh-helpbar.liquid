@@ -1,0 +1,29 @@
+{%- comment -%} PfotenParadies – Hilfe-Leiste (JARVIS). Zweck: Größenzweifel direkt in der Auswahl auflösen. {%- endcomment -%}
+<div class="section-background"></div>
+<div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: section.settings %}">
+  <aside class="hh hh-helpbar" aria-label="Hilfe bei der Auswahl">
+    {% render 'hh-icon', name: 'ruler' %}
+    <p>{{ section.settings.text }}</p>
+    <div class="hh-helpbar__links">
+      <a class="hh-link" href="{{ section.settings.link_1 | default: '/pages/messhilfe' }}">{{ section.settings.label_1 | escape }}</a>
+      <a class="hh-link" href="{{ section.settings.link_2 | default: '/pages/contact' }}">{{ section.settings.label_2 | escape }}</a>
+    </div>
+  </aside>
+</div>
+{% schema %}
+{
+  "name": "PP Hilfe-Leiste",
+  "class": "hh-section",
+  "settings": [
+    { "type": "inline_richtext", "id": "text", "label": "Text", "default": "<strong>Unsicher bei der Größe?</strong> Bei jedem Artikel stehen die Maße – und wir helfen dir vor dem Kauf." },
+    { "type": "text", "id": "label_1", "label": "Link 1", "default": "Hund richtig messen" },
+    { "type": "url", "id": "link_1", "label": "Link 1 – Ziel" },
+    { "type": "text", "id": "label_2", "label": "Link 2", "default": "Beratung anfragen" },
+    { "type": "url", "id": "link_2", "label": "Link 2 – Ziel" },
+    { "type": "header", "content": "Abstände" },
+    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 8 }
+  ],
+  "presets": [{ "name": "PP Hilfe-Leiste" }]
+}
+{% endschema %}

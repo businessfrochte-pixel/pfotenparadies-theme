@@ -7,8 +7,15 @@
   <div class="hh-info__text">
     <h2 class="hh-h3">So widerrufst du</h2>
     <ol class="hh-info__steps">
-      <li>Erkläre deinen Widerruf innerhalb von 14 Tagen nach Erhalt der Ware – am einfachsten über die Schaltfläche <strong>„Vertrag widerrufen“</strong> auf unserer Website. Dafür brauchst du kein Kundenkonto.</li>
-      <li>Du bekommst eine Eingangsbestätigung per E-Mail und alle Infos zur Rücksendung.</li>
+      {%- capture withdraw_url -%}{% render 'hh-config', key: 'withdraw_url' %}{%- endcapture -%}
+      {%- assign withdraw_url = withdraw_url | strip -%}
+      {%- if withdraw_url != blank -%}
+        <li>Erkläre deinen Widerruf innerhalb von 14 Tagen nach Erhalt der Ware – am einfachsten über die Schaltfläche <a class="hh-link" href="{{ withdraw_url }}">„Vertrag widerrufen“</a>. Dafür brauchst du kein Kundenkonto.</li>
+        <li>Du bekommst eine Eingangsbestätigung per E-Mail und alle Infos zur Rücksendung.</li>
+      {%- else -%}
+        <li>Erkläre deinen Widerruf innerhalb von 14 Tagen nach Erhalt der Ware – zum Beispiel über unser <a class="hh-link" href="/pages/contact">Kontaktformular</a> mit deiner Bestellnummer. Dafür brauchst du kein Kundenkonto.</li>
+        <li>Wir bestätigen dir den Eingang per E-Mail und schicken dir alle Infos zur Rücksendung.</li>
+      {%- endif -%}
       <li>Schick die Ware innerhalb von 14 Tagen nach deinem Widerruf zurück.</li>
       <li>Wir erstatten dir den Betrag über die Zahlungsart, mit der du bezahlt hast – spätestens 14 Tage nach deinem Widerruf. Wir dürfen warten, bis die Ware wieder bei uns ist oder du die Rücksendung nachweist.</li>
     </ol>

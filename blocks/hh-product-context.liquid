@@ -1,0 +1,19 @@
+{%- comment -%} Zweck: Wer über eine Anzeige direkt hier landet, sieht sofort den Bereich und kann weiterstöbern. {%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign coll = blank
+  for c in p.collections
+    if c.handle != 'frontpage' and c.handle != 'all'
+      assign coll = c
+      break
+    endif
+  endfor
+-%}
+{%- if coll != blank -%}
+  <nav class="hh hh-pcontext" aria-label="Bereich" {{ block.shopify_attributes }}>
+    <a class="hh-eyebrow" href="{{ coll.url }}">{{ coll.title | escape }}</a>
+  </nav>
+{%- endif -%}
+{% schema %}
+{ "name": "PP Bereich (Produkt)", "tag": null, "settings": [] }
+{% endschema %}

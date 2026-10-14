@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "section": {
       "type": "section",
@@ -88,8 +89,8 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 40,
+        "padding-block-end": 24
       }
     },
     "main": {
@@ -190,11 +191,16 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "hh_card_meta": {
+              "type": "hh-card-meta",
+              "settings": {}
             }
           },
           "block_order": [
             "card-gallery",
             "product_title_4nY4eT",
+            "hh_card_meta",
             "price_EzJzMm"
           ]
         }
@@ -213,10 +219,18 @@
         "padding-block-start": 0,
         "padding-block-end": 32
       }
+    },
+    "hh_help": {
+      "type": "hh-helpbar",
+      "settings": {
+        "padding-block-start": 0,
+        "padding-block-end": 8
+      }
     }
   },
   "order": [
     "section",
+    "hh_help",
     "main"
   ]
 }

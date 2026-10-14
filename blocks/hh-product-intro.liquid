@@ -1,0 +1,17 @@
+{%- comment -%}
+  Zweck: Kurze Einleitung beim Kaufbereich. Sind die strukturierten Produktfelder gepflegt, wird nur der Einleitungsteil
+  der Beschreibung gezeigt (bis zur ersten Zwischenüberschrift); die Details stehen dann im Abschnitt „Details“.
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign structured = false
+  if p.metafields.custom.highlights != blank or p.metafields.custom.material_pflege != blank
+    assign structured = true
+  endif
+-%}
+<div class="hh hh-pintro rte" {{ block.shopify_attributes }}>
+  {%- if structured -%}{{ p.description | split: '<h3' | first }}{%- else -%}{{ p.description }}{%- endif -%}
+</div>
+{% schema %}
+{ "name": "PP Einleitung", "tag": null, "settings": [] }
+{% endschema %}

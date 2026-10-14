@@ -1,0 +1,91 @@
+{%- comment -%}
+  PfotenParadies – Produktdetails (JARVIS). Zweck: Alle Fakten zum Prüfen an einer Stelle – offen sichtbar, nicht in Akkordeons.
+  Quellen: Produktfelder custom.highlights, masse (Zeilen „Bezeichnung | Wert“), material_pflege, lieferumfang, gut_zu_wissen, nicht_geeignet, hersteller.
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  if p == blank
+    assign p = product
+  endif
+  assign mf = p.metafields.custom
+  assign has_any = false
+  if mf.highlights != blank or mf.masse != blank or mf.material_pflege != blank or mf.lieferumfang != blank or mf.gut_zu_wissen != blank or mf.nicht_geeignet != blank
+    assign has_any = true
+  endif
+-%}
+<div class="section-background"></div>
+<div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: section.settings %}">
+  <section class="hh hh-pdetails" aria-labelledby="hh-pd-{{ section.id }}">
+    {%- if has_any -%}
+      <div class="hh-head">
+        <div>
+          <p class="hh-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+          <h2 id="hh-pd-{{ section.id }}" class="hh-h2">{{ section.settings.heading | escape }}</h2>
+        </div>
+      </div>
+      <div class="hh-pdetails__grid">
+        {%- if mf.highlights != blank -%}
+          <div class="hh-pdetails__card hh-pdetails__card--wide hh-pdetails__card--accent">
+            <h3>Alle Vorteile im Überblick</h3>
+            <ul class="hh-highlights">{%- for i in mf.highlights.value -%}<li>{{ i | escape }}</li>{%- endfor -%}</ul>
+          </div>
+        {%- endif -%}
+        {%- if mf.masse != blank -%}
+          {%- assign mlines = mf.masse.value | strip | newline_to_br | split: '<br />' -%}
+          <div class="hh-pdetails__card">
+            <h3>Maße</h3>
+            <dl class="hh-dl">{%- for l in mlines -%}{%- assign c = l | split: '|' -%}<div><dt>{{ c.first | strip | escape }}</dt><dd>{{ c.last | strip | escape }}</dd></div>{%- endfor -%}</dl>
+          </div>
+        {%- endif -%}
+        {%- if mf.lieferumfang != blank -%}
+          <div class="hh-pdetails__card">
+            <h3>Lieferumfang</h3>
+            <p>{{ mf.lieferumfang.value | escape | newline_to_br }}</p>
+          </div>
+        {%- endif -%}
+        {%- if mf.material_pflege != blank -%}
+          {%- assign lines = mf.material_pflege.value | strip | newline_to_br | split: '<br />' -%}
+          <div class="hh-pdetails__card">
+            <h3>Material &amp; Pflege</h3>
+            <ul>{%- for l in lines -%}{%- assign t = l | strip -%}{%- if t != blank -%}<li>{{ t | escape }}</li>{%- endif -%}{%- endfor -%}</ul>
+          </div>
+        {%- endif -%}
+        {%- if mf.gut_zu_wissen != blank -%}
+          <div class="hh-pdetails__card">
+            <h3>Gut zu wissen</h3>
+            <p>{{ mf.gut_zu_wissen.value | escape | newline_to_br }}</p>
+          </div>
+        {%- endif -%}
+        {%- if mf.nicht_geeignet != blank -%}
+          <div class="hh-pdetails__card">
+            <h3>Nicht geeignet für</h3>
+            <p>{{ mf.nicht_geeignet.value | escape | newline_to_br }}</p>
+          </div>
+        {%- endif -%}
+      </div>
+      {%- if mf.hersteller != blank -%}
+        <p class="hh-pdetails__legal"><strong>Herstellerangaben:</strong> {{ mf.hersteller.value | escape | newline_to_br }}</p>
+      {%- endif -%}
+    {%- endif -%}
+    {%- if section.settings.show_faq -%}
+      <div class="hh-pdetails__faq">{% render 'hh-product-faq', product: p %}</div>
+    {%- endif -%}
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "PP Produktdetails",
+  "class": "hh-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Kleine Zeile", "default": "Alles auf einen Blick" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Details zum Produkt" },
+    { "type": "checkbox", "id": "show_faq", "label": "Fragen zum Artikel zeigen", "default": true },
+    { "type": "header", "content": "Abstände" },
+    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 }
+  ],
+  "enabled_on": { "templates": ["product"] },
+  "presets": [{ "name": "PP Produktdetails" }]
+}
+{% endschema %}

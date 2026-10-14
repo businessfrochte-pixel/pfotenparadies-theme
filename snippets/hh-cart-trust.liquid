@@ -1,41 +1,32 @@
 {%- liquid
-  capture def_min
-    render 'hh-config', key: 'delivery_min'
-  endcapture
-  capture def_max
-    render 'hh-config', key: 'delivery_max'
-  endcapture
-  assign def_min = def_min | strip | plus: 0
-  assign def_max = def_max | strip | plus: 0
-  assign cmin = def_min
-  assign cmax = def_max
+  assign cmin = 0
+  assign cmax = 0
   assign etas = ''
   for item in cart.items
-    assign e_min = def_min
-    assign e_max = def_max
-    for tag in item.product.tags
-      if tag contains 'lieferzeit-'
-        assign parts = tag | remove: 'lieferzeit-' | split: '-'
-        assign e_min = parts[0] | plus: 0
-        assign e_max = parts[1] | plus: 0
-      endif
-    endfor
+    capture range
+      render 'hh-eta-range', product: item.product
+    endcapture
+    assign range = range | strip
+    assign parts = range | split: '-'
+    assign e_min = parts[0] | plus: 0
+    assign e_max = parts[1] | plus: 0
     if e_min > cmin
       assign cmin = e_min
     endif
     if e_max > cmax
       assign cmax = e_max
     endif
-    assign etas = etas | append: e_min | append: '-' | append: e_max | append: ','
+    assign etas = etas | append: range | append: ','
   endfor
   assign eta_list = etas | split: ',' | uniq
 -%}
-<div class="hh-ctrust">
+<div class="hh hh-ctrust">
   {%- if cart.item_count > 0 -%}
     <p class="hh-ctrust__eta" data-hh-eta data-min="{{ cmin }}" data-max="{{ cmax }}">Voraussichtliche Lieferung: <strong data-hh-eta-text>in {{ cmin }}–{{ cmax }} Werktagen</strong></p>
     {%- if eta_list.size > 1 -%}
       <p class="hh-ctrust__note">Deine Bestellung enthält Artikel mit unterschiedlicher Lieferzeit und kann in mehreren Paketen ankommen. Versandkosten zahlst du nur einmal.</p>
     {%- endif -%}
+    <p class="hh-ctrust__ship">Versand {% render 'hh-config', key: 'shipping_fee' %} pro Bestellung, ab {% render 'hh-config', key: 'free_shipping' %} kostenlos.</p>
   {%- endif -%}
   <ul>
     <li>Als Gast bestellen</li>

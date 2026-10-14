@@ -19,9 +19,7 @@
 
     {%- render 'meta-tags' -%}
     {%- render 'stylesheets' -%}
-    {{ 'hh-store.css' | asset_url | stylesheet_tag }}
-    {{ 'hh-extra.css' | asset_url | stylesheet_tag }}
-    {%- render 'hh-head' -%}
+    {{ 'hh-brand.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'hh-store.js' | asset_url }}" defer></script>
     {%- render 'card-hover-effect-styles' -%}
     {%- render 'scripts' -%}

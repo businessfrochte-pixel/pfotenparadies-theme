@@ -1,9 +1,12 @@
 <section id="hh-messhilfe" class="hh hh-measure" aria-labelledby="hh-measure2-title">
+  {%- unless page_mode -%}
   <div class="hh-measure__head">
     <p class="hh-eyebrow">Messhilfe</p>
     <h2 id="hh-measure2-title" class="hh-h2">So misst du deinen Hund richtig</h2>
     <p class="hh-lead">Mit einem weichen Maßband dauert es zwei Minuten – und erspart dir Rücksendungen. Vergleiche das Ergebnis danach mit der Maßtabelle auf der Produktseite.</p>
   </div>
+  {%- endunless -%}
+  {%- if page_mode -%}<figure class="hh-measure__figure">{{ 'hh-measure.svg' | inline_asset_content }}<figcaption>Wo du misst: 1 Halsumfang · 2 Brustumfang · 3 Rückenlänge · 4 Liegelänge</figcaption></figure>{%- endif -%}
   <ul class="hh-measure__grid">
     <li><h3>Halsumfang</h3><p>Dort messen, wo das Halsband sitzt. Zwei Finger sollten noch darunter passen.</p><p class="hh-measure__use">Wichtig für: Halsbänder</p></li>
     <li><h3>Brustumfang</h3><p>An der breitesten Stelle des Brustkorbs, direkt hinter den Vorderbeinen.</p><p class="hh-measure__use">Wichtig für: Geschirre, Mäntel</p></li>

@@ -1,0 +1,44 @@
+{%- comment -%}
+  PfotenParadies – Newsletter (JARVIS). Zweck: Wiederkehrende Besucher halten – ohne Pop-up und ohne Rabattversprechen.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+<section class="hh hh-nl" aria-labelledby="hh-nl-title">
+  <div class="hh-nl__inner">
+    <div class="hh-nl__copy">
+      <p class="hh-eyebrow">{{ s.eyebrow | escape }}</p>
+      <h2 id="hh-nl-title" class="hh-nl__title">{{ s.heading | escape }}</h2>
+      <div class="hh-nl__text">{{ s.text }}</div>
+    </div>
+    <div class="hh-nl__box">
+      {%- form 'customer', id: 'hh-newsletter', class: 'hh-nl__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        {%- if form.posted_successfully? -%}
+          <p class="hh-nl__ok" role="status"><strong>Danke für deine Anmeldung!</strong> Falls wir dich um eine Bestätigung bitten, findest du die E-Mail in deinem Postfach.</p>
+        {%- else -%}
+          <label class="hh-nl__label" for="hh-nl-email">Deine E-Mail-Adresse</label>
+          <div class="hh-nl__row">
+            <input id="hh-nl-email" class="hh-nl__input" type="email" name="contact[email]" autocomplete="email" autocapitalize="off" spellcheck="false" required placeholder="name@beispiel.de"{% if form.errors %} aria-invalid="true" aria-describedby="hh-nl-error"{% endif %}>
+            <button class="hh-nl__btn" type="submit">{{ s.button_label | escape }}</button>
+          </div>
+          {%- if form.errors -%}<p id="hh-nl-error" class="hh-nl__err" role="alert">Bitte prüfe deine E-Mail-Adresse.</p>{%- endif -%}
+        {%- endif -%}
+      {%- endform -%}
+      <p class="hh-nl__legal">Mit der Anmeldung bekommst du unseren Newsletter. Details in der <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Datenschutzerklärung</a>.</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PP Newsletter",
+  "class": "hh-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Kleine Zeile", "default": "Newsletter" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Tipps für den Alltag mit Hund" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Pflege-Tipps, Messhilfen und Neuheiten für deinen Hund. Kein Spam, Abmeldung jederzeit mit einem Klick.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button-Text", "default": "Anmelden" }
+  ],
+  "enabled_on": { "groups": ["footer"] },
+  "presets": [{ "name": "PP Newsletter" }]
+}
+{% endschema %}

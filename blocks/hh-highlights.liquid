@@ -1,0 +1,16 @@
+{%- comment -%} Zweck: Die wichtigsten Vorteile direkt beim Kaufbereich – aus dem Produktfeld „Vorteile“. {%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign items = p.metafields.custom.highlights.value
+  assign limit = block.settings.limit
+-%}
+{%- if items != blank -%}
+  <ul class="hh hh-highlights" {{ block.shopify_attributes }}>
+    {%- for item in items limit: limit -%}<li>{{ item | escape }}</li>{%- endfor -%}
+  </ul>
+{%- endif -%}
+{% schema %}
+{ "name": "PP Vorteile (kurz)", "tag": null, "settings": [
+  { "type": "range", "id": "limit", "label": "Anzahl", "min": 1, "max": 6, "step": 1, "default": 3 }
+] }
+{% endschema %}
