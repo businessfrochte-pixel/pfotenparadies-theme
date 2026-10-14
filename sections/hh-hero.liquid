@@ -31,7 +31,7 @@
           {{ s.image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 900px) 45vw, 100vw', widths: '600, 900, 1200, 1400', alt: s.image.alt }}
         </picture>
       {%- else -%}
-        {{ 'hh-hero.svg' | inline_asset_content }}
+        <img src="{{ 'hh-hero.svg' | asset_url }}" width="660" height="792" alt="Illustration: ein Hund liegt entspannt auf einem runden Hundebett im Wohnzimmer" fetchpriority="high" loading="eager" decoding="async" class="hh-hero__art">
       {%- endif -%}
       {%- if s.chip != blank -%}
         <figcaption class="hh-chip hh-hero__chip">{% render 'hh-icon', name: 'bed' %}{{ s.chip | escape }}</figcaption>

@@ -281,14 +281,11 @@ a.hh-eyebrow { justify-content: center; }
 .hh-page__content p { margin: 0 0 var(--hh-s3); }
 .hh-page__content a { color: var(--hh-forest); font-weight: 600; text-underline-offset: 3px; }
 .hh-measure__figure { margin: 0 0 var(--hh-s5); background: var(--hh-cream); border-radius: var(--hh-r-md); padding: var(--hh-s5) var(--hh-s4) var(--hh-s4); }
-.hh-measure__figure svg { display: block; width: 100%; height: auto; max-height: 520px; margin: 0 auto; }
-.hh-measure__figure .hh-mtxt text { font-family: var(--font-body--family); }
+.hh-measure__figure picture { display: block; }
+.hh-measure__figure img { display: block; width: 100%; height: auto; max-width: 940px; margin: 0 auto; }
+.hh-hero__media img.hh-hero__art { object-position: 50% 100%; }
 @media screen and (max-width: 599px) {
-  .hh-measure__figure { overflow: hidden; padding: var(--hh-s4) var(--hh-s2) var(--hh-s3); }
-  .hh-measure__figure svg { width: 138%; max-width: none; margin-left: -38%; }
-  .hh-measure__figure .hh-mtxt { display: none; }
-  .hh-measure__figure .hh-mbadges circle { r: 24px; }
-  .hh-measure__figure .hh-mbadges text { font-size: 30px; transform: translateY(3px); transform-box: fill-box; }
+  .hh-measure__figure { padding: var(--hh-s4) var(--hh-s3) var(--hh-s3); }
 }
 .hh-measure__figure figcaption { margin-top: var(--hh-s2); font-size: var(--hh-fs-note); color: var(--hh-muted); text-align: center; }
 

@@ -6,7 +6,7 @@
     <p class="hh-lead">Mit einem weichen Maßband dauert es zwei Minuten – und erspart dir Rücksendungen. Vergleiche das Ergebnis danach mit der Maßtabelle auf der Produktseite.</p>
   </div>
   {%- endunless -%}
-  {%- if page_mode -%}<figure class="hh-measure__figure">{{ 'hh-measure.svg' | inline_asset_content }}<figcaption>Die Zahlen im Bild gehören zu den Erklärungen darunter.</figcaption></figure>{%- endif -%}
+  {%- if page_mode -%}<figure class="hh-measure__figure"><picture><source media="(max-width: 599px)" srcset="{{ 'hh-measure-mobil.svg' | asset_url }}" width="680" height="520"><img src="{{ 'hh-measure.svg' | asset_url }}" width="940" height="560" loading="eager" decoding="async" alt="Hund in Seitenansicht mit vier Messstellen: 1 Halsumfang dort, wo das Halsband sitzt; 2 Brustumfang direkt hinter den Vorderbeinen; 3 Rückenlänge vom Halsansatz bis zum Rutenansatz; 4 Liegelänge von der Nase bis zum Rutenansatz, im Liegen gemessen."></picture><figcaption>Die Zahlen im Bild gehören zu den Erklärungen darunter.</figcaption></figure>{%- endif -%}
   <ul class="hh-measure__grid">
     <li><h3><span class="hh-measure__n" aria-hidden="true">1</span>Halsumfang</h3><p>Dort messen, wo das Halsband sitzt. Zwei Finger sollten noch darunter passen.</p><p class="hh-measure__use">Wichtig für: Halsbänder</p></li>
     <li><h3><span class="hh-measure__n" aria-hidden="true">2</span>Brustumfang</h3><p>An der breitesten Stelle des Brustkorbs, direkt hinter den Vorderbeinen.</p><p class="hh-measure__use">Wichtig für: Geschirre, Mäntel</p></li>
