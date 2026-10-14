@@ -15,6 +15,13 @@
         "content": "t:content.manage_store_name"
       },
       {
+        "type": "checkbox",
+        "id": "hh_wordmark",
+        "label": "PfotenParadies-Schriftzug statt Logo-Bild",
+        "info": "JARVIS: Schriftzug in der Überschriften-Schrift. Ausschalten, um das hochgeladene Logo-Bild zu zeigen.",
+        "default": false
+      },
+      {
         "type": "image_picker",
         "id": "logo",
         "label": "t:settings.default_logo"

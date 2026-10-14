@@ -3,16 +3,16 @@
     "hh_hero": {
       "type": "hh-hero",
       "settings": {
-        "eyebrow": "Für den Alltag mit Hund",
-        "heading": "Hundezubehör in der Größe, die wirklich passt.",
-        "text": "<p>Ruheplätze, Autozubehör, Pflege und Beschäftigung – mit genauen Maßen und dem Lieferdatum schon vor dem Kauf. Unsicher bei der Größe? Wir beraten dich, bevor du bestellst.</p>",
+        "eyebrow": "Ausgewähltes Hundezubehör",
+        "heading": "Für Hunde, die zur Familie gehören.",
+        "text": "<p>Ruheplätze, Autozubehör, Pflege und Beschäftigung – bewusst ausgewählt, mit genauen Maßen und dem Lieferdatum schon vor dem Kauf. Unsicher bei der Größe? Wir beraten dich persönlich, bevor du bestellst.</p>",
         "button_label": "Sortiment ansehen",
         "button_link": "shopify://collections/all",
         "link_label": "Hund richtig messen",
         "link_url": "shopify://pages/messhilfe",
         "chip": "Bei jedem Bett: Liegefläche in cm",
-        "padding-block-start": 8,
-        "padding-block-end": 8
+        "padding-block-start": 16,
+        "padding-block-end": 24
       }
     },
     "hh_situations": {
@@ -62,7 +62,7 @@
         "sit_4"
       ],
       "settings": {
-        "heading": "Wobei können wir helfen?",
+        "heading": "Wobei dürfen wir helfen?",
         "padding-block-start": 16,
         "padding-block-end": 16
       }
@@ -70,7 +70,7 @@
     "hh_facts": {
       "type": "hh-facts",
       "settings": {
-        "padding-block-start": 16,
+        "padding-block-start": 0,
         "padding-block-end": 24
       }
     },
@@ -422,12 +422,57 @@
         "padding-block-start": 40,
         "padding-block-end": 64
       }
+    },
+    "hh_promise": {
+      "type": "hh-promise",
+      "blocks": {
+        "r1": {
+          "type": "reason",
+          "settings": {
+            "title": "Bewusst ausgewählt",
+            "text": "<p>Eine kleine Auswahl statt endloser Listen. Zu jedem Produkt findest du Maße, Material, Pflege und Lieferumfang – damit du vorher weißt, was ankommt.</p>",
+            "link_label": "Sortiment ansehen",
+            "link": "shopify://collections/all"
+          }
+        },
+        "r2": {
+          "type": "reason",
+          "settings": {
+            "title": "Die Größe, die passt",
+            "text": "<p>Bei Betten zählt die Liegefläche, nicht das Außenmaß. Jede Produktseite zeigt eine Größentabelle – und unsere Messhilfe erklärt Schritt für Schritt, wie du deinen Hund misst.</p>",
+            "link_label": "Zur Messhilfe",
+            "link": "shopify://pages/messhilfe"
+          }
+        },
+        "r3": {
+          "type": "reason",
+          "settings": {
+            "title": "Persönliche Beratung",
+            "text": "<p>Schick uns die Maße deines Hundes. Wir empfehlen dir die passende Größe, bevor du bestellst.</p>",
+            "link_label": "Frage stellen",
+            "link": "shopify://pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "settings": {
+        "eyebrow": "Warum PfotenParadies",
+        "heading": "Weniger Auswahl. Mehr Gewissheit.",
+        "text": "<p>Wir möchten, dass das, was du bestellst, zu deinem Hund und zu deinem Zuhause passt – beim ersten Mal.</p>",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
     }
   },
   "order": [
     "hh_hero",
-    "hh_situations",
     "hh_facts",
+    "hh_situations",
+    "hh_promise",
     "product_list_fa6P9H",
     "hh_kategorien",
     "hh_ruheplatz",
