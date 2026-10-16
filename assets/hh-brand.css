@@ -636,3 +636,8 @@ a.hh-eyebrow { justify-content: center; }
 .shopify-policy__body p, .shopify-policy__body li { margin: 0 0 var(--hh-s3); }
 .shopify-policy__body ul { padding-inline-start: 1.25rem; }
 .shopify-policy__body a { color: var(--hh-forest); font-weight: 600; text-underline-offset: 3px; overflow-wrap: anywhere; }
+
+/* Footer: Rechtliches immer sichtbar */
+.hh-legal-links { display: flex; flex-wrap: wrap; gap: 0 var(--hh-s4); margin: 0; padding: 0; }
+.hh-legal-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--hh-ink); text-decoration: underline; text-decoration-color: var(--hh-line); text-underline-offset: 4px; }
+.hh-legal-links a:hover { text-decoration-color: currentColor; }

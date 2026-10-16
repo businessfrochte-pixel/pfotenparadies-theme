@@ -1,50 +1,15 @@
-
-{% if shop.policies.size > 0 %}
-  <anchored-popover-component
-    data-hover-triggered="true"
-  >
-    <button
-      class="policy-list-trigger button-unstyled"
-      popovertarget="terms-policies-popover"
-      popovertargetaction="toggle"
-      ref="trigger"
-      style="
-        {% render 'typography-style', preset: 'custom', settings: block.settings %}
-        {% if block.settings.text_color != blank %}--color-utilities: {{ block.settings.text_color }};{% endif %}
-      "
-      {{ block.shopify_attributes }}
-    >
-      {{ 'content.terms_and_policies' | t }}
-    </button>
-    <div
-      class="terms-policies-popover color-custom-popover"
-      id="terms-policies-popover"
-      popover="auto"
-      ref="popover"
-    >
-      <ul
-        class="
-          policy_list list-unstyled
-          custom-typography
-          {% if block.settings.font_size != "" %}custom-font-size{% endif %}
-        "
-      >
-        {%- for policy in shop.policies -%}
-          {%- if policy != blank -%}
-            <li>
-              <a
-                href="{{ policy.url }}"
-                class="footer-utilities__text"
-              >
-                {{- policy.title | escape -}}
-              </a>
-            </li>
-          {%- endif -%}
-        {%- endfor -%}
-      </ul>
-    </div>
-  </anchored-popover-component>
-{% endif %}
+{%- comment -%} PfotenParadies (JARVIS, v10): Impressum und Rechtstexte immer sichtbar statt im Aufklapp-Menü – § 5 DDG verlangt unmittelbare Erreichbarkeit. {%- endcomment -%}
+{%- assign imprint = pages['impressum'] -%}
+<ul
+  class="hh-legal-links list-unstyled"
+  style="{% render 'typography-style', preset: 'custom', settings: block.settings %}{% if block.settings.text_color != blank %}--color-utilities: {{ block.settings.text_color }};{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  {%- if imprint != empty and imprint.title != blank -%}<li><a href="{{ imprint.url }}" class="footer-utilities__text">Impressum</a></li>{%- endif -%}
+  {%- for policy in shop.policies -%}
+    {%- if policy != blank -%}<li><a href="{{ policy.url }}" class="footer-utilities__text">{{ policy.title | escape }}</a></li>{%- endif -%}
+  {%- endfor -%}
+</ul>
 
 {% stylesheet %}
   .policy-list-trigger {
