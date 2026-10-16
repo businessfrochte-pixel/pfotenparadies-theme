@@ -3,7 +3,7 @@
     "main": {
       "type": "hh-page",
       "settings": {
-        "eyebrow": "Hilfe",
+        "eyebrow": "",
         "heading": "",
         "intro": "<p>Lieferung, Versand, Rückgabe und Größe – die Antworten auf einen Blick. Deine Frage ist nicht dabei? <a href=\"/pages/contact\">Schreib uns.</a></p>",
         "body": "faq",

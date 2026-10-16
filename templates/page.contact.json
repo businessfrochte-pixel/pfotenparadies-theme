@@ -3,7 +3,7 @@
     "main": {
       "type": "hh-contact",
       "settings": {
-        "eyebrow": "Wir helfen dir",
+        "eyebrow": "",
         "padding-block-start": 40,
         "padding-block-end": 64
       }

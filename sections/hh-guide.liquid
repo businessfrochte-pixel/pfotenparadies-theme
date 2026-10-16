@@ -15,7 +15,7 @@
         </ul>
       {%- endif -%}
       {%- if section.settings.button_label != blank -%}
-        <a class="hh-btn" href="{{ section.settings.button_link | default: '/collections/all' }}">{{ section.settings.button_label | escape }}{% render 'hh-icon', name: 'arrow' %}</a>
+        <a class="hh-btn" href="{{ section.settings.button_link | default: '/collections/all' }}">{{ section.settings.button_label | escape }}</a>
       {%- endif -%}
     </div>
     <div class="hh-guide__aside">

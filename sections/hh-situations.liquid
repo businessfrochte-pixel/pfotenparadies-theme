@@ -4,14 +4,14 @@
 <div class="section-background"></div>
 <div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: section.settings %}">
   <nav class="hh hh-sit hh-reveal" aria-labelledby="hh-sit-{{ section.id }}">
-    <h2 id="hh-sit-{{ section.id }}" class="hh-eyebrow hh-sit__title">{{ section.settings.heading | escape }}</h2>
+    <h2 id="hh-sit-{{ section.id }}" class="hh-sit__title">{{ section.settings.heading | escape }}</h2>
     <ul class="hh-sit__grid">
       {%- for block in section.blocks -%}
         <li {{ block.shopify_attributes }}>
           <a class="hh-sit__item" href="{{ block.settings.link | default: '/collections/all' }}">
             <span class="hh-sit__icon">{% render 'hh-icon', name: block.settings.icon %}</span>
             <span class="hh-sit__text">{{ block.settings.text | escape }}</span>
-            <span class="hh-sit__go"><span>{{ block.settings.cta | escape }}</span>{% render 'hh-icon', name: 'arrow' %}</span>
+            <span class="hh-sit__go">{{ block.settings.cta | escape }}</span>
           </a>
         </li>
       {%- endfor -%}

@@ -8,7 +8,7 @@
         "announcement_hh0": {
           "type": "_announcement",
           "settings": {
-            "text": "Lieferung in 2–4 Werktagen · ab 150 € versandkostenfrei",
+            "text": "Lieferung in 2–4 Werktagen, ab 150 € versandkostenfrei",
             "font": "var(--font-subheading--family)",
             "font_size": "0.875rem",
             "letter_spacing": "normal",

@@ -2,7 +2,7 @@
 <div class="section-background"></div>
 <div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: section.settings %}">
   <section class="hh hh-empty" aria-labelledby="hh-404-title">
-    <p class="hh-eyebrow">Fehler 404</p>
+    <p class="hh-404__code">Fehler 404</p>
     <h1 id="hh-404-title" class="hh-h2">{{ section.settings.heading | escape }}</h1>
     <div class="hh-lead">{{ section.settings.text }}</div>
     <form class="hh-search" action="{{ routes.search_url }}" method="get" role="search">

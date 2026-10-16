@@ -15,7 +15,7 @@
       {%- if s.text != blank -%}<div class="hh-lead">{{ s.text }}</div>{%- endif -%}
       <div class="hh-hero__actions">
         {%- if s.button_label != blank -%}
-          <a class="hh-btn" href="{{ s.button_link | default: routes.all_products_collection_url }}">{{ s.button_label | escape }}{% render 'hh-icon', name: 'arrow' %}</a>
+          <a class="hh-btn" href="{{ s.button_link | default: routes.all_products_collection_url }}">{{ s.button_label | escape }}</a>
         {%- endif -%}
         {%- if s.link_label != blank -%}
           <a class="hh-link" href="{{ s.link_url | default: '/pages/messhilfe' }}">{{ s.link_label | escape }}</a>

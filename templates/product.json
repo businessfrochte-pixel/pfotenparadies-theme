@@ -453,7 +453,7 @@
     "hh_details": {
       "type": "hh-product-details",
       "settings": {
-        "eyebrow": "Alles auf einen Blick",
+        "eyebrow": "",
         "heading": "Details zum Produkt",
         "show_faq": true,
         "padding-block-start": 40,

@@ -6,7 +6,7 @@
 <div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: section.settings %}">
   <section class="hh hh-contact" aria-labelledby="hh-contact-title">
     <div class="hh-contact__info">
-      <p class="hh-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- if section.settings.eyebrow != blank -%}<p class="hh-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
       <h1 id="hh-contact-title" class="hh-h2">{{ closest.page.title | default: page.title | escape }}</h1>
       <div class="hh-lead rte">{{ closest.page.content | default: page.content }}</div>
       <ul class="hh-contact__facts">
@@ -53,7 +53,7 @@
             <textarea id="hh-c-msg" name="contact[body]" rows="6" required placeholder="Worum geht es? Bei Größenfragen gern mit den Maßen deines Hundes.">{{ form.body }}</textarea>
           </div>
           <p class="hh-form__note">Pflichtfelder sind mit * markiert. Wir nutzen deine Angaben nur, um deine Anfrage zu beantworten – mehr in der <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Datenschutzerklärung</a>.</p>
-          <button class="hh-btn" type="submit">Nachricht senden{% render 'hh-icon', name: 'arrow' %}</button>
+          <button class="hh-btn" type="submit">Nachricht senden</button>
         {%- endif -%}
       {%- endform -%}
     </div>
@@ -65,7 +65,7 @@
   "name": "PP Kontakt",
   "class": "hh-section",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Kleine Zeile", "default": "Wir helfen dir" },
+    { "type": "text", "id": "eyebrow", "label": "Kleine Zeile", "default": "" },
     { "type": "richtext", "id": "person", "label": "Ansprechpartner (Name, optional Foto-Text)", "info": "Nur echte Angaben. Leer lassen, solange nicht freigegeben." },
     { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 },
     { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 64 }

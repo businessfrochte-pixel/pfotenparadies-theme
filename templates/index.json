@@ -3,7 +3,7 @@
     "hh_hero": {
       "type": "hh-hero",
       "settings": {
-        "eyebrow": "Ausgewähltes Hundezubehör",
+        "eyebrow": "",
         "heading": "Für Hunde, die zur Familie gehören.",
         "text": "<p>Ruheplätze, Autozubehör, Pflege und Beschäftigung – bewusst ausgewählt, mit genauen Maßen und dem Lieferdatum schon vor dem Kauf. Unsicher bei der Größe? Wir beraten dich persönlich, bevor du bestellst.</p>",
         "button_label": "Sortiment ansehen",
@@ -344,7 +344,7 @@
         "cat_8"
       ],
       "settings": {
-        "eyebrow": "Sortiment",
+        "eyebrow": "",
         "heading": "Alle Bereiche",
         "link_label": "Alle Produkte",
         "padding-block-start": 40,
@@ -403,7 +403,7 @@
         "stp_3"
       ],
       "settings": {
-        "eyebrow": "Größenberatung",
+        "eyebrow": "",
         "heading": "Welches Bett passt zu deinem Hund?",
         "text": "<p>Entscheidend ist nicht das Außenmaß, sondern die Fläche, auf der dein Hund wirklich liegt. Deshalb steht bei jedem Bett die Liegefläche in Zentimetern.</p>",
         "button_label": "Betten vergleichen",
@@ -460,7 +460,7 @@
         "r3"
       ],
       "settings": {
-        "eyebrow": "Warum PfotenParadies",
+        "eyebrow": "",
         "heading": "Weniger Auswahl. Mehr Gewissheit.",
         "text": "<p>Wir möchten, dass das, was du bestellst, zu deinem Hund und zu deinem Zuhause passt – beim ersten Mal.</p>",
         "padding-block-start": 40,

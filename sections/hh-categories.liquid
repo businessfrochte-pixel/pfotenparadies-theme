@@ -26,7 +26,6 @@
         -%}
         <li {{ block.shopify_attributes }}>
           <a class="hh-card" href="{{ url }}">
-            <span class="hh-card__arrow">{% render 'hh-icon', name: 'arrow' %}</span>
             <span class="hh-card__title">{{ title | escape }}</span>
             {%- if block.settings.subtitle != blank -%}<span class="hh-card__sub">{{ block.settings.subtitle | escape }}</span>{%- endif -%}
           </a>

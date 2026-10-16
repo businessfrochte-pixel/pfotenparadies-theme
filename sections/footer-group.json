@@ -200,7 +200,7 @@
     "hh_newsletter": {
       "type": "hh-newsletter",
       "settings": {
-        "eyebrow": "Newsletter",
+        "eyebrow": "",
         "heading": "Tipps für den Alltag mit Hund",
         "text": "<p>Pflege-Tipps, Messhilfen und Neuheiten für deinen Hund. Kein Spam, Abmeldung jederzeit mit einem Klick.</p>",
         "button_label": "Anmelden"

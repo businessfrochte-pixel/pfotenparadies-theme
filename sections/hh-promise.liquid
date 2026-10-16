@@ -15,11 +15,10 @@
       <ol class="hh-promise__list">
         {%- for block in section.blocks -%}
           <li class="hh-promise__item hh-reveal" {{ block.shopify_attributes }}>
-            <span class="hh-promise__num" aria-hidden="true">{{ forloop.index | prepend: '0' }}</span>
             <h3 class="hh-promise__h">{{ block.settings.title | escape }}</h3>
             <div class="hh-promise__text">{{ block.settings.text }}</div>
             {%- if block.settings.link_label != blank -%}
-              <a class="hh-promise__link" href="{{ block.settings.link | default: '/pages/contact' }}">{{ block.settings.link_label | escape }}{% render 'hh-icon', name: 'arrow' %}</a>
+              <a class="hh-promise__link" href="{{ block.settings.link | default: '/pages/contact' }}">{{ block.settings.link_label | escape }}</a>
             {%- endif -%}
           </li>
         {%- endfor -%}
