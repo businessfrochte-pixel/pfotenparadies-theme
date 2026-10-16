@@ -200,18 +200,26 @@ a.hh-eyebrow { justify-content: center; }
 /* Bereiche (Kategorien) */
 .hh-cats__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--hh-s4); }
 .hh-card {
-  position: relative; height: 100%; min-height: 150px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;
+  position: relative; height: 100%; min-height: 112px; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px;
   padding: var(--hh-s5); border-radius: var(--hh-r-md); background: var(--hh-white); box-shadow: inset 0 0 0 1px var(--hh-line); color: var(--hh-ink); text-decoration: none;
   transition: background-color var(--hh-mid) var(--hh-ease), transform var(--hh-mid) var(--hh-ease), box-shadow var(--hh-mid) var(--hh-ease);
 }
 .hh-card__title { font-family: var(--hh-serif); font-weight: 400; font-size: 1.375rem; line-height: 1.25; letter-spacing: 0; }
 .hh-card__sub { font-size: var(--hh-fs-small); line-height: 1.45; color: var(--hh-text); }
+.hh-card--img { justify-content: flex-start; padding: 0 0 var(--hh-s4); overflow: hidden; }
+.hh-card--img .hh-card__title, .hh-card--img .hh-card__sub { padding-inline: var(--hh-s4); }
+.hh-card__media { display: block; aspect-ratio: 4 / 3; margin-bottom: var(--hh-s3); background: var(--hh-cream); overflow: hidden; }
+.hh-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--hh-slow, 400ms) var(--hh-ease); }
+.hh-card--img:hover .hh-card__media img { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) { .hh-card--img:hover .hh-card__media img { transform: none; } }
 .hh-card:hover { background: var(--hh-sand); transform: translateY(-2px); box-shadow: inset 0 0 0 1px var(--hh-sand-deep), var(--hh-shadow-md); }
 
 @media screen and (max-width: 989px) { .hh-cats__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media screen and (max-width: 479px) {
   .hh-cats__grid { gap: var(--hh-s3); }
   .hh-card { min-height: 128px; padding: var(--hh-s4); }
+  .hh-card--img { padding: 0 0 var(--hh-s3); }
+  .hh-card--img .hh-card__title, .hh-card--img .hh-card__sub { padding-inline: var(--hh-s3); }
   .hh-card__title { font-size: 1.0625rem; }
   }
 

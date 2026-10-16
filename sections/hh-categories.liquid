@@ -20,12 +20,14 @@
             assign title = c.title
           endif
           assign url = '/collections/all'
+          assign img = block.settings.image
           if c != blank
             assign url = c.url
           endif
         -%}
         <li {{ block.shopify_attributes }}>
-          <a class="hh-card" href="{{ url }}">
+          <a class="hh-card{% if img != blank %} hh-card--img{% endif %}" href="{{ url }}">
+            {%- if img != blank -%}<span class="hh-card__media">{{ img | image_url: width: 640 | image_tag: loading: 'lazy', widths: '320, 480, 640', sizes: '(min-width: 990px) 22vw, 45vw', alt: '' }}</span>{%- endif -%}
             <span class="hh-card__title">{{ title | escape }}</span>
             {%- if block.settings.subtitle != blank -%}<span class="hh-card__sub">{{ block.settings.subtitle | escape }}</span>{%- endif -%}
           </a>
@@ -40,7 +42,7 @@
   "name": "PP Bereiche",
   "class": "hh-section",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Kleine Zeile", "default": "Sortiment" },
+    { "type": "text", "id": "eyebrow", "label": "Kleine Zeile" },
     { "type": "text", "id": "heading", "label": "Überschrift", "default": "Alle Bereiche" },
     { "type": "text", "id": "link_label", "label": "Link zu allen Produkten", "default": "Alle Produkte" },
     { "type": "header", "content": "Abstände" },
@@ -53,8 +55,9 @@
       "name": "Bereich",
       "settings": [
         { "type": "collection", "id": "collection", "label": "Kollektion" },
+        { "type": "image_picker", "id": "image", "label": "Bild (optional)", "info": "Optional. Sinnvoll, sobald ein Bereich mehrere Produkte hat – sonst wiederholt es nur die Produktbilder." },
         { "type": "text", "id": "title", "label": "Titel (optional)" },
-        { "type": "text", "id": "subtitle", "label": "Merkmal", "default": "Mit genauen Maßen" }
+        { "type": "text", "id": "subtitle", "label": "Merkmal" }
       ]
     }
   ],

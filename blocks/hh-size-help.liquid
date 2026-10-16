@@ -46,7 +46,8 @@
         </tbody>
       </table>
     </div>
-    <p class="hh-size__hint"><span class="visually-hidden">Gewählt: </span><strong data-hh-size-current>{{ current_summary | strip | escape }}</strong>{% if p.metafields.custom.groessen_hinweis != blank %}<br>{{ p.metafields.custom.groessen_hinweis.value | escape }}{% endif %}</p>
+    <p class="visually-hidden" aria-live="polite">Gewählt: <span data-hh-size-current>{{ current_summary | strip | escape }}</span></p>
+    {%- if p.metafields.custom.groessen_hinweis != blank -%}<p class="hh-size__hint">{{ p.metafields.custom.groessen_hinweis.value | escape }}</p>{%- endif -%}
   </div>
 {%- endif -%}
 {% schema %}
