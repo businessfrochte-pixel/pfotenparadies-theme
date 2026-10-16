@@ -31,7 +31,7 @@
           {{ s.image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 900px) 45vw, 100vw', widths: '600, 900, 1200, 1400', alt: s.image.alt }}
         </picture>
       {%- else -%}
-        <img src="{{ 'hh-hero.svg' | asset_url }}" width="660" height="792" alt="Illustration: ein Hund liegt entspannt auf einem runden Hundebett im Wohnzimmer" fetchpriority="high" loading="eager" decoding="async" class="hh-hero__art">
+        <img src="{{ 'hh-r-hero.jpg' | asset_url }}" width="1000" height="1200" alt="Rundes Hundebett in Salbeigrün mit cremefarbenem Liegekissen auf Holzboden" fetchpriority="high" loading="eager" decoding="async" class="hh-hero__art hh-hero__photo">
       {%- endif -%}
       {%- if s.chip != blank -%}
         <figcaption class="hh-chip hh-hero__chip">{% render 'hh-icon', name: 'bed' %}{{ s.chip | escape }}</figcaption>
@@ -53,7 +53,7 @@
     { "type": "text", "id": "link_label", "label": "Zweiter Link", "default": "Hund richtig messen" },
     { "type": "url", "id": "link_url", "label": "Zweiter Link – Ziel" },
     { "type": "header", "content": "Motiv" },
-    { "type": "image_picker", "id": "image", "label": "Bild (Desktop)", "info": "Echtes Anwendungsfoto mit geklärten Bildrechten. Ohne Bild erscheint die Marken-Illustration." },
+    { "type": "image_picker", "id": "image", "label": "Bild (Desktop)", "info": "Anwendungsfoto oder Rendering mit geklärten Bildrechten; muss das tatsächliche Angebot zeigen. Ohne Bild erscheint das hinterlegte Rendering." },
     { "type": "image_picker", "id": "image_mobile", "label": "Bild (Mobil, eigener Ausschnitt)", "info": "Optional – nur nötig, wenn der Desktop-Ausschnitt mobil nicht verständlich ist." },
     { "type": "text", "id": "chip", "label": "Maß-Hinweis auf dem Bild", "default": "Bei jedem Bett: Liegefläche in cm" },
     { "type": "header", "content": "Abstände" },
