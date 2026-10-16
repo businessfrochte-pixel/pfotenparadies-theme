@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "hh-page",
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "intro": "",
+        "body": "content",
+        "padding-block-start": 40,
+        "padding-block-end": 64
+      }
+    }
+  },
+  "order": ["main"]
+}

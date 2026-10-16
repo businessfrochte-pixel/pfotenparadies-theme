@@ -21,8 +21,8 @@
     </ol>
     <h2 class="hh-h3">Die Größe passt nicht?</h2>
     <p>Schick den Artikel innerhalb der Frist zurück und bestell die passende Größe neu. Bevor du bestellst, hilft dir unsere <a class="hh-link" href="/pages/messhilfe">Messhilfe</a>.</p>
-    <h2 class="hh-h3">Die rechtlichen Details</h2>
-    <p>Maßgeblich ist unsere <a class="hh-link" href="/policies/refund-policy">Widerrufsbelehrung</a>.</p>
+    {%- if shop.refund_policy.body != blank -%}<h2 class="hh-h3">Die rechtlichen Details</h2>
+    <p>Maßgeblich ist unsere <a class="hh-link" href="{{ shop.refund_policy.url }}">Widerrufsbelehrung</a>.</p>{%- endif -%}
     <h2 class="hh-h3">Fragen zur Rückgabe?</h2>
     <p><a class="hh-link" href="/pages/contact">Schreib uns</a> – wir antworten {% render 'hh-config', key: 'reply_time' %}.</p>
   </div>

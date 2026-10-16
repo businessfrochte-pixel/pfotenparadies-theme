@@ -1,0 +1,67 @@
+{%- comment -%}
+  PfotenParadies – Über uns (JARVIS, v10). Zweck: Beantwortet "Wer steckt dahinter und worauf kann ich mich verlassen?"
+  Nur Aussagen eintragen, die tatsächlich stimmen: keine erfundene Werkstatt, kein Lager, keine Teamgeschichte, keine eigene Produktprüfung.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+<div class="section-background"></div>
+<div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: s %}">
+  <div class="hh hh-about">
+    <header class="hh-about__head">
+      <h1 class="hh-h2 hh-about__title">{{ s.heading | default: page.title | escape }}</h1>
+      {%- if s.intro != blank -%}<div class="hh-about__lead">{{ s.intro }}</div>{%- endif -%}
+    </header>
+
+    {%- if section.blocks.size > 0 -%}
+      <section class="hh-about__rows" aria-labelledby="hh-about-p-{{ section.id }}">
+        <h2 id="hh-about-p-{{ section.id }}" class="hh-h3 hh-about__sub">{{ s.principles_heading | escape }}</h2>
+        {%- for block in section.blocks -%}
+          <div class="hh-about__row" {{ block.shopify_attributes }}>
+            <h3 class="hh-about__h">{{ block.settings.title | escape }}</h3>
+            <div class="hh-about__text">{{ block.settings.text }}</div>
+          </div>
+        {%- endfor -%}
+      </section>
+    {%- endif -%}
+
+    {%- if s.person_heading != blank -%}
+      <section class="hh-about__person" aria-labelledby="hh-about-who-{{ section.id }}">
+        <div>
+          <h2 id="hh-about-who-{{ section.id }}" class="hh-h3">{{ s.person_heading | escape }}</h2>
+          <div class="hh-about__text">{{ s.person_text }}</div>
+        </div>
+        {%- if s.cta_label != blank -%}
+          <a class="hh-btn" href="{{ s.cta_link | default: '/pages/contact' }}">{{ s.cta_label | escape }}</a>
+        {%- endif -%}
+      </section>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "PP Über uns",
+  "class": "hh-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Überschrift (leer = Seitentitel)" },
+    { "type": "richtext", "id": "intro", "label": "Einleitung" },
+    { "type": "text", "id": "principles_heading", "label": "Überschrift Grundsätze", "default": "Worauf du dich verlassen kannst" },
+    { "type": "text", "id": "person_heading", "label": "Überschrift Ansprechpartner", "default": "Wer hinter PfotenParadies steht" },
+    { "type": "richtext", "id": "person_text", "label": "Text Ansprechpartner" },
+    { "type": "text", "id": "cta_label", "label": "Button-Text", "default": "Nachricht schreiben" },
+    { "type": "url", "id": "cta_link", "label": "Button-Ziel" },
+    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 64 }
+  ],
+  "blocks": [
+    {
+      "type": "principle",
+      "name": "Grundsatz",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titel" },
+        { "type": "richtext", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "PP Über uns" }]
+}
+{% endschema %}
