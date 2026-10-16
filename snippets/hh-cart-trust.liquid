@@ -1,7 +1,6 @@
 {%- liquid
   assign cmin = 0
   assign cmax = 0
-  assign etas = ''
   for item in cart.items
     capture range
       render 'hh-eta-range', product: item.product
@@ -16,17 +15,12 @@
     if e_max > cmax
       assign cmax = e_max
     endif
-    assign etas = etas | append: range | append: ','
   endfor
-  assign eta_list = etas | split: ',' | uniq
 -%}
 <div class="hh hh-ctrust">
   {%- if cart.item_count > 0 -%}
-    <p class="hh-ctrust__eta" data-hh-eta data-min="{{ cmin }}" data-max="{{ cmax }}">Voraussichtliche Lieferung: <strong data-hh-eta-text>in {{ cmin }}–{{ cmax }} Werktagen</strong></p>
-    {%- if eta_list.size > 1 -%}
-      <p class="hh-ctrust__note">Deine Bestellung enthält Artikel mit unterschiedlicher Lieferzeit und kann in mehreren Paketen ankommen. Versandkosten zahlst du nur einmal.</p>
-    {%- endif -%}
-    <p class="hh-ctrust__ship">Versand {% render 'hh-config', key: 'shipping_fee' %} pro Bestellung, ab {% render 'hh-config', key: 'free_shipping' %} kostenlos.</p>
+    <p class="hh-ctrust__eta" data-hh-eta data-min="{{ cmin }}" data-max="{{ cmax }}">Voraussichtliche Lieferung innerhalb Deutschlands: <strong data-hh-eta-text>in {{ cmin }}–{{ cmax }} Werktagen</strong></p>
+    <p class="hh-ctrust__ship">Versand in Deutschland {% render 'hh-config', key: 'shipping_fee' %}, ab {% render 'hh-config', key: 'free_shipping' %} kostenlos. Wir liefern weltweit – <a href="/pages/versand-lieferung">Kosten für andere Länder</a>.</p>
   {%- endif -%}
   <ul>
     <li>Als Gast bestellen</li>

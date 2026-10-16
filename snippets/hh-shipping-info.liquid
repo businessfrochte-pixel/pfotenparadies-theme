@@ -1,1 +1,50 @@
-<section class="hh hh-info" aria-label="Versand und Lieferung"><ul class="hh-info__facts"><li><strong>Lieferzeit</strong><span>in {% render 'hh-config', key: 'delivery' %}</span></li><li><strong>Versandkosten</strong><span>{% render 'hh-config', key: 'shipping_fee' %} pro Bestellung</span></li><li><strong>Kostenloser Versand</strong><span>ab {% render 'hh-config', key: 'free_shipping' %} Bestellwert</span></li><li><strong>Liefergebiet</strong><span>{% render 'hh-config', key: 'ship_to' %}</span></li></ul><div class="hh-info__text"><h2 class="hh-h3">Wann kommt mein Paket an?</h2><p>In der Regel in {% render 'hh-config', key: 'delivery' %} nach Zahlungseingang. Hat ein Artikel eine andere Lieferzeit, steht das voraussichtliche Lieferdatum direkt neben dem Kaufbutton. Enthält deine Bestellung Artikel mit unterschiedlicher Lieferzeit, zeigen wir dir das im Warenkorb, bevor du bestellst.</p><h2 class="hh-h3">Sendungsverfolgung</h2><p>Sobald dein Paket unterwegs ist, bekommst du eine E-Mail mit dem Link zur Sendungsverfolgung.</p><h2 class="hh-h3">Fragen zur Lieferung?</h2><p><a class="hh-link" href="/pages/contact">Schreib uns</a> – wir antworten {% render 'hh-config', key: 'reply_time' %}.</p></div></section>
+{%- comment -%}
+  PfotenParadies – Versand & Lieferung (JARVIS, v9). Zweck: Kunden aus jedem Land sehen auf einen Blick,
+  wann ihre Bestellung ankommt und was der Versand kostet. Daten aus hh-config ('regions'), damit Seite und
+  Shopify-Versandprofil gleich bleiben.
+{%- endcomment -%}
+{%- capture regions -%}{% render 'hh-config', key: 'regions' %}{%- endcapture -%}
+{%- assign regions = regions | strip | split: ';' -%}
+<section class="hh hh-ship" aria-label="Versand und Lieferung">
+  <div class="hh-ship__table">
+    <table>
+      <caption class="visually-hidden">Lieferzeit und Versandkosten nach Lieferland</caption>
+      <thead>
+        <tr><th scope="col">Lieferland</th><th scope="col">Lieferzeit</th><th scope="col">Versand pro Bestellung</th><th scope="col">Kostenlos</th></tr>
+      </thead>
+      <tbody>
+        {%- for r in regions -%}
+          {%- assign c = r | split: '|' -%}
+          {%- assign free = c[3] | strip -%}
+          <tr{% if forloop.first %} class="is-home"{% endif %}>
+            <th scope="row">{{ c[0] | strip }}</th>
+            <td data-label="Lieferzeit">{{ c[1] | strip }}</td>
+            <td data-label="Versand">{{ c[2] | strip }}</td>
+            <td data-label="Kostenlos">{% if free == '–' or free == '-' or free == blank %}<span class="hh-ship__none">–</span>{% else %}{{ free }} Bestellwert{% endif %}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hh-ship__text">
+    <div>
+      <h2 class="hh-h3">Wann kommt meine Bestellung an?</h2>
+      <p>Die Lieferzeit zählt ab Zahlungseingang und gilt für Werktage, also Montag bis Freitag ohne Feiertage. Für Lieferungen innerhalb Deutschlands siehst du das voraussichtliche Lieferdatum direkt beim Kaufbutton.</p>
+      <p>Bei größeren Bestellungen kann deine Lieferung in mehreren Paketen ankommen. Die Versandkosten zahlst du trotzdem nur einmal.</p>
+
+      <h2 class="hh-h3">Sendungsverfolgung</h2>
+      <p>Sobald dein Paket unterwegs ist, bekommst du eine E-Mail mit dem Link zur Sendungsverfolgung – egal, in welches Land wir liefern.</p>
+    </div>
+    <div>
+      <h2 class="hh-h3">Versandkosten</h2>
+      <p>Die Versandkosten richten sich nach dem Lieferland und fallen einmal pro Bestellung an. Den genauen Betrag siehst du an der Kasse, bevor du bestellst. Unsere Preise sind in Euro angegeben.</p>
+
+      <h2 class="hh-h3">Lieferungen außerhalb der EU</h2>
+      <p>In Länder außerhalb der Europäischen Union können Zölle, Einfuhrsteuern und Gebühren des Zustelldienstes anfallen. Sie sind nicht im Preis enthalten, richten sich nach den Regeln des Ziellandes und werden meist bei der Zustellung fällig.</p>
+
+      <h2 class="hh-h3">Fragen zur Lieferung?</h2>
+      <p><a class="hh-link" href="/pages/contact">Schreib uns</a> – wir antworten {% render 'hh-config', key: 'reply_time' %}.</p>
+    </div>
+  </div>
+</section>

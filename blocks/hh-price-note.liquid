@@ -1,5 +1,5 @@
 {%- comment -%} Zweck: Preisangabe nach PAngV – Mehrwertsteuer und Versandkosten direkt am Preis. {%- endcomment -%}
-<p class="hh hh-pricenote" {{ block.shopify_attributes }}>inkl. MwSt., zzgl. <a href="/pages/versand-lieferung">Versand</a> ({% render 'hh-config', key: 'shipping_fee' %}, ab {% render 'hh-config', key: 'free_shipping' %} kostenlos)</p>
+<p class="hh hh-pricenote" {{ block.shopify_attributes }}>inkl. MwSt., zzgl. <a href="/pages/versand-lieferung">Versand</a> (in Deutschland {% render 'hh-config', key: 'shipping_fee' %}, ab {% render 'hh-config', key: 'free_shipping' %} kostenlos)</p>
 {% schema %}
 { "name": "PP Preishinweis", "tag": null, "settings": [] }
 {% endschema %}

@@ -279,7 +279,7 @@ a.hh-eyebrow { justify-content: center; }
 .hh-info { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.4fr); gap: var(--hh-s6); align-items: start; }
 .hh-info__facts { list-style: none; margin: 0; padding: var(--hh-s5); display: grid; gap: var(--hh-s3); background: var(--hh-sage); border-radius: var(--hh-r-md); }
 .hh-info__facts li { display: flex; flex-direction: column; gap: 2px; background: var(--hh-white); border-radius: var(--hh-r-sm); padding: var(--hh-s3) var(--hh-s4); }
-.hh-info__facts strong { font-size: var(--hh-fs-note); font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--hh-clay); }
+.hh-info__facts strong { font-size: var(--hh-fs-note); font-weight: 600; color: var(--hh-clay); }
 .hh-info__facts span { font-size: 1.0625rem; font-weight: 600; color: var(--hh-ink); }
 .hh-info__text { max-width: 68ch; line-height: 1.65; color: var(--hh-text); }
 .hh-info__text .hh-h3:first-child { margin-top: 0; }
@@ -572,4 +572,36 @@ a.hh-eyebrow { justify-content: center; }
   .hh-btn:hover, .hh-card:hover, .hh-sit__item:hover, .button:hover, .add-to-cart-button:hover { transform: none !important; }
   .hh-hero__media, .hh-hero__chip { animation: none !important; }
   .product-card:hover img { transform: none !important; }
+}
+
+/* Versand & Lieferung (JARVIS, v9): Ländertabelle + Erklärtext */
+.hh-ship { display: grid; gap: var(--hh-s7, 56px); }
+.hh-ship__table { border-radius: var(--hh-r-md); background: var(--hh-white); box-shadow: inset 0 0 0 1px var(--hh-line); overflow: hidden; }
+.hh-ship table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.hh-ship thead th { text-align: start; font-size: var(--hh-fs-note); font-weight: 600; color: var(--hh-muted); padding: var(--hh-s3) var(--hh-s4); border-bottom: 1px solid var(--hh-line); background: var(--hh-cream); }
+.hh-ship tbody th, .hh-ship tbody td { text-align: start; padding: var(--hh-s4); border-bottom: 1px solid var(--hh-line); vertical-align: top; color: var(--hh-text); line-height: 1.45; }
+.hh-ship tbody th { font-weight: 600; color: var(--hh-ink); width: 38%; }
+.hh-ship tbody tr:last-child th, .hh-ship tbody tr:last-child td { border-bottom: 0; }
+.hh-ship tr.is-home th, .hh-ship tr.is-home td { background: var(--hh-sage); }
+.hh-ship tr.is-home th { box-shadow: inset 3px 0 0 var(--hh-forest); }
+.hh-ship__none { color: var(--hh-muted); }
+.hh-ship__text { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 var(--hh-s7, 56px); line-height: 1.65; color: var(--hh-text); }
+.hh-ship__text > div { max-width: 62ch; }
+.hh-ship__text .hh-h3:first-child { margin-top: 0; }
+.hh-ship__text p { margin: 0 0 var(--hh-s3); }
+@media screen and (max-width: 899px) {
+  .hh-ship { gap: var(--hh-s6); }
+  .hh-ship__text { grid-template-columns: minmax(0, 1fr); }
+  .hh-ship__text > div + div .hh-h3:first-child { margin-top: var(--hh-s6); }
+}
+@media screen and (max-width: 639px) {
+  .hh-ship thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .hh-ship table, .hh-ship tbody, .hh-ship tr, .hh-ship tbody th, .hh-ship tbody td { display: block; width: auto; }
+  .hh-ship tbody tr { padding: var(--hh-s4); border-bottom: 1px solid var(--hh-line); }
+  .hh-ship tbody tr:last-child { border-bottom: 0; }
+  .hh-ship tbody th, .hh-ship tbody td { padding: 0; border: 0; background: none !important; box-shadow: none !important; }
+  .hh-ship tbody th { margin-bottom: var(--hh-s2); }
+  .hh-ship tbody td { display: flex; justify-content: space-between; gap: var(--hh-s3); padding: 2px 0; }
+  .hh-ship tbody td::before { content: attr(data-label); color: var(--hh-muted); }
+  .hh-ship tr.is-home { background: var(--hh-sage); box-shadow: inset 3px 0 0 var(--hh-forest); }
 }

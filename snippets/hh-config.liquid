@@ -3,7 +3,10 @@
   Werte hier ändern, dann gelten sie überall: Startseite, Produktseite, Warenkorb, FAQ, Infoseiten.
   Die Ankündigungsleiste wird separat im Theme-Editor gepflegt.
   WICHTIG: Versandkosten und Gratisversand-Schwelle sind identisch unter
-  Einstellungen > Versand und Zustellung hinterlegt (Stand 11.10.2026: 5,99 € unter 150 €, ab 150 € kostenlos, nur Deutschland).
+  Einstellungen > Versand und Zustellung hinterlegt (Stand 16.10.2026: Deutschland 5,99 €, ab 150 € kostenlos;
+  weitere Zonen siehe 'regions'). 'regions' speist die Tabelle auf der Seite Versand & Lieferung:
+  Region | Lieferzeit | Versandkosten | kostenlos ab (– = nie). Regionen durch ; trennen.
+  Bei jeder Änderung hier dieselben Werte im Shopify-Versandprofil eintragen (und umgekehrt).
   Abweichende Lieferzeit pro Produkt: Produktfelder custom.lieferzeit_min / custom.lieferzeit_max (oder Tag lieferzeit-MIN-MAX).
   withdraw_url: Link zur elektronischen Widerrufsfunktion (§ 356a BGB), sobald die App eingerichtet ist – bis dahin leer lassen.
 {%- endcomment -%}
@@ -15,6 +18,8 @@
   {%- when 'delivery_max' -%}4
   {%- when 'delivery' -%}2–4 Werktagen
   {%- when 'ship_to' -%}Deutschland
+  {%- when 'ship_scope' -%}weltweit
+  {%- when 'regions' -%}Deutschland|2–4 Werktage|5,99 €|ab 150 €;Österreich und alle weiteren EU-Länder|4–8 Werktage|9,90 €|ab 200 €;Schweiz, Großbritannien, Norwegen und übriges Europa|5–10 Werktage|19,90 €|–;USA und Kanada|7–14 Werktage|24,90 €|–;Alle weiteren Länder|10–20 Werktage|29,90 €|–
   {%- when 'reply_time' -%}werktags innerhalb von 24 Stunden
   {%- when 'email' -%}{{ shop.email }}
   {%- when 'withdraw_url' -%}
