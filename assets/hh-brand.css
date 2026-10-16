@@ -641,3 +641,4 @@ a.hh-eyebrow { justify-content: center; }
 .hh-legal-links { display: flex; flex-wrap: wrap; gap: 0 var(--hh-s4); margin: 0; padding: 0; }
 .hh-legal-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--hh-ink); text-decoration: underline; text-decoration-color: var(--hh-line); text-underline-offset: 4px; }
 .hh-legal-links a:hover { text-decoration-color: currentColor; }
+.hh-legal-links a.footer-utilities__text { color: var(--hh-ink); opacity: 1; }
