@@ -37,7 +37,7 @@
             {%- assign cells = line | split: '|' -%}
             {%- assign key = cells.first | strip -%}
             {%- if key == blank -%}{%- continue -%}{%- endif -%}
-            {%- capture summary -%}{{ key }}:{% for c in cells offset: 1 %} {{ head[forloop.index] | strip }} {{ c | strip }}{% unless forloop.last %},{% endunless %}{% endfor %}{%- endcapture -%}
+            {%- capture summary -%}{{ key }}:{% for c in cells offset: 1 %}{% assign hl = head[forloop.index] | strip %}{% unless forloop.first %}{% assign hl = hl | replace_first: 'Passend', 'passend' | replace_first: 'Geeignet', 'geeignet' %}{% if hl == 'Beispiel' or hl == 'Beispiele' %}{% assign hl = 'z. B.' %}{% endif %}{% endunless %} {{ hl }} {{ c | strip }}{% unless forloop.last %},{% endunless %}{% endfor %}{%- endcapture -%}
             {%- if key == current -%}{%- assign current_summary = summary -%}{%- endif -%}
             <tr data-value="{{ key | escape }}" data-summary="{{ summary | strip | escape }}"{% if key == current %} class="is-active"{% endif %}>
               {%- for c in cells -%}<td>{{ c | strip | escape }}</td>{%- endfor -%}
