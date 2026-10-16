@@ -455,7 +455,7 @@
       "settings": {
         "eyebrow": "",
         "heading": "Details zum Produkt",
-        "show_faq": true,
+        "show_faq": false,
         "padding-block-start": 40,
         "padding-block-end": 24
       }

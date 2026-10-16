@@ -1,5 +1,5 @@
 {%- comment -%}
-  PfotenParadies – Kontakt (JARVIS, v8). Zweck: Ein erreichbarer Ansprechpartner, ehrliche Antwortzeit und ein kurzes Formular
+  PfotenParadies – Kontakt (JARVIS, v11). Zweck: Ein erreichbarer Ansprechpartner, ehrliche Antwortzeit und ein kurzes Formular
   mit den Angaben, die wir für schnelle Hilfe brauchen. Text oben kommt aus dem Seiteninhalt (Shopify > Seiten > Kontakt).
 {%- endcomment -%}
 <div class="section-background"></div>
@@ -44,16 +44,44 @@
               <input id="hh-c-email" type="email" name="contact[email]" autocomplete="email" autocapitalize="off" spellcheck="false" required value="{{ form.email }}"{% if form.errors contains 'email' %} aria-invalid="true" aria-describedby="hh-contact-errors"{% endif %}>
             </div>
           </div>
+          <div class="hh-form__row">
+            <div class="hh-field">
+              <label for="hh-c-topic">Worum geht es?</label>
+              <select id="hh-c-topic" name="contact[Anliegen]">
+                <option value="Frage vor dem Kauf">Frage vor dem Kauf</option>
+                <option value="Größenberatung">Größenberatung</option>
+                <option value="Frage zu meiner Bestellung">Frage zu meiner Bestellung</option>
+                <option value="Rückgabe oder Widerruf">Rückgabe oder Widerruf</option>
+                <option value="Artikel beschädigt oder falsch">Artikel beschädigt oder falsch</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+            </div>
+            <div class="hh-field">
+              <label for="hh-c-product">Artikel <span class="hh-field__opt">(optional)</span></label>
+              <input id="hh-c-product" type="text" name="contact[Artikel]" placeholder="z. B. Wohlfühlbett „Wolke“, Größe M">
+            </div>
+          </div>
           <div class="hh-field">
             <label for="hh-c-order">Bestellnummer <span class="hh-field__opt">(falls vorhanden)</span></label>
             <input id="hh-c-order" type="text" name="contact[Bestellnummer]" inputmode="text" placeholder="z. B. #1001">
           </div>
           <div class="hh-field">
             <label for="hh-c-msg">Deine Nachricht <span aria-hidden="true">*</span></label>
-            <textarea id="hh-c-msg" name="contact[body]" rows="6" required placeholder="Worum geht es? Bei Größenfragen gern mit den Maßen deines Hundes.">{{ form.body }}</textarea>
+            <textarea id="hh-c-msg" name="contact[body]" rows="6" required placeholder="Bei Größenfragen: Rückenlänge oder Liegelänge, Brustumfang und Gewicht deines Hundes.">{{ form.body }}</textarea>
           </div>
           <p class="hh-form__note">Pflichtfelder sind mit * markiert. Wir nutzen deine Angaben nur, um deine Anfrage zu beantworten – mehr in der <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Datenschutzerklärung</a>.</p>
           <button class="hh-btn" type="submit">Nachricht senden</button>
+          <script>
+            (function () {
+              try {
+                var q = new URLSearchParams(location.search), pr = q.get('produkt');
+                if (!pr) return;
+                var f = document.getElementById('hh-c-product'), t = document.getElementById('hh-c-topic');
+                if (f && !f.value) f.value = pr.slice(0, 120);
+                if (t) t.value = 'Frage vor dem Kauf';
+              } catch (e) {}
+            })();
+          </script>
         {%- endif -%}
       {%- endform -%}
     </div>

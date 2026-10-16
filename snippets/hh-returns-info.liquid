@@ -3,6 +3,10 @@
     <li><strong>Widerrufsfrist</strong><span>14 Tage ab Erhalt der Ware</span></li>
     <li><strong>Erstattung</strong><span>spätestens 14 Tage nach Widerruf</span></li>
     <li><strong>Zahlungsweg</strong><span>wie bei deiner Bestellung</span></li>
+    {%- capture rc -%}{% render 'hh-config', key: 'return_costs' %}{%- endcapture -%}{%- assign rc = rc | strip -%}
+    {%- capture rl -%}{% render 'hh-config', key: 'return_country' %}{%- endcapture -%}{%- assign rl = rl | strip -%}
+    {%- if rc != blank -%}<li><strong>Rücksendekosten</strong><span>{{ rc }}</span></li>{%- endif -%}
+    {%- if rl != blank -%}<li><strong>Rücksendung nach</strong><span>{{ rl }}</span></li>{%- endif -%}
   </ul>
   <div class="hh-info__text">
     <h2 class="hh-h3">So widerrufst du</h2>
@@ -19,6 +23,8 @@
       <li>Schick die Ware innerhalb von 14 Tagen nach deinem Widerruf zurück.</li>
       <li>Wir erstatten dir den Betrag über die Zahlungsart, mit der du bezahlt hast – spätestens 14 Tage nach deinem Widerruf. Wir dürfen warten, bis die Ware wieder bei uns ist oder du die Rücksendung nachweist.</li>
     </ol>
+    <h2 class="hh-h3">Beschädigt oder falsch geliefert?</h2>
+    <p>Das ist kein Widerruf, sondern ein Gewährleistungsfall: Schreib uns mit Bestellnummer und Foto. Du bekommst einen einwandfreien Ersatz oder dein Geld zurück, die Kosten für Rücksendung und Ersatz tragen wir.</p>
     <h2 class="hh-h3">Die Größe passt nicht?</h2>
     <p>Schick den Artikel innerhalb der Frist zurück und bestell die passende Größe neu. Bevor du bestellst, hilft dir unsere <a class="hh-link" href="/pages/messhilfe">Messhilfe</a>.</p>
     {%- if shop.refund_policy.body != blank -%}<h2 class="hh-h3">Die rechtlichen Details</h2>

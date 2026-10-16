@@ -8,6 +8,8 @@
   Region | Lieferzeit | Versandkosten | kostenlos ab (– = nie). Regionen durch ; trennen.
   Bei jeder Änderung hier dieselben Werte im Shopify-Versandprofil eintragen (und umgekehrt).
   Abweichende Lieferzeit pro Produkt: Produktfelder custom.lieferzeit_min / custom.lieferzeit_max (oder Tag lieferzeit-MIN-MAX).
+  return_costs / return_country: Wer die Rücksendung beim Widerruf bezahlt (z. B. "Die Rücksendung ist für dich kostenlos.") und wohin sie geht
+  (z. B. "Deutschland"). Erst eintragen, wenn vom Eigentümer entschieden – leer = Satz wird nicht angezeigt.
   withdraw_url: Link zur elektronischen Widerrufsfunktion (§ 356a BGB), sobald die App eingerichtet ist – bis dahin leer lassen.
 {%- endcomment -%}
 {%- case key -%}
@@ -20,7 +22,9 @@
   {%- when 'ship_to' -%}Deutschland
   {%- when 'ship_scope' -%}weltweit
   {%- when 'regions' -%}Deutschland|2–4 Werktage|5,99 €|ab 150 €;Österreich und alle weiteren EU-Länder|4–8 Werktage|9,90 €|ab 200 €;Schweiz, Großbritannien, Norwegen und übriges Europa|5–10 Werktage|19,90 €|–;USA und Kanada|7–14 Werktage|24,90 €|–;Alle weiteren Länder|10–20 Werktage|29,90 €|–
-  {%- when 'reply_time' -%}werktags innerhalb von 24 Stunden
+  {%- when 'reply_time' -%}in der Regel innerhalb von zwei Werktagen
   {%- when 'email' -%}{{ shop.email }}
+  {%- when 'return_costs' -%}
+  {%- when 'return_country' -%}
   {%- when 'withdraw_url' -%}
 {%- endcase -%}

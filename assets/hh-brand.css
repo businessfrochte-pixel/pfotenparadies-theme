@@ -333,10 +333,10 @@ a.hh-eyebrow { justify-content: center; }
 .hh-field { display: grid; gap: 6px; }
 .hh-field label { font-size: var(--hh-fs-small); font-weight: 600; color: var(--hh-ink); }
 .hh-field__opt { font-weight: 400; color: var(--hh-muted); }
-.hh-field input, .hh-field textarea { width: 100%; min-height: 48px; padding: 12px 14px; border: 1px solid var(--hh-line); border-radius: var(--hh-r-sm); background: var(--hh-cream); font: inherit; font-size: 1rem; color: var(--hh-ink); transition: border-color var(--hh-fast) var(--hh-ease), box-shadow var(--hh-fast) var(--hh-ease), background-color var(--hh-fast) var(--hh-ease); }
+.hh-field input, .hh-field textarea, .hh-field select { width: 100%; min-height: 48px; padding: 12px 14px; border: 1px solid var(--hh-line); border-radius: var(--hh-r-sm); background: var(--hh-cream); font: inherit; font-size: 1rem; color: var(--hh-ink); transition: border-color var(--hh-fast) var(--hh-ease), box-shadow var(--hh-fast) var(--hh-ease), background-color var(--hh-fast) var(--hh-ease); }
 .hh-field textarea { min-height: 150px; resize: vertical; line-height: 1.5; }
 .hh-field input::placeholder, .hh-field textarea::placeholder { color: var(--hh-muted); }
-.hh-field input:focus, .hh-field textarea:focus { outline: none; border-color: var(--hh-forest); background: var(--hh-white); box-shadow: 0 0 0 3px rgba(46, 74, 59, .18); }
+.hh-field input:focus, .hh-field textarea:focus, .hh-field select:focus { outline: none; border-color: var(--hh-forest); background: var(--hh-white); box-shadow: 0 0 0 3px rgba(46, 74, 59, .18); }
 .hh-field input[aria-invalid='true'] { border-color: var(--hh-clay); }
 .hh-form__note { font-size: var(--hh-fs-note); color: var(--hh-muted); line-height: 1.5; }
 .hh-form__note a { color: inherit; text-underline-offset: 3px; }
@@ -642,3 +642,5 @@ a.hh-eyebrow { justify-content: center; }
 .hh-legal-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--hh-ink); text-decoration: underline; text-decoration-color: var(--hh-line); text-underline-offset: 4px; }
 .hh-legal-links a:hover { text-decoration-color: currentColor; }
 .hh-legal-links a.footer-utilities__text { color: var(--hh-ink); opacity: 1; }
+
+.hh-field select { appearance: none; padding-inline-end: 40px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%232E4A3B' stroke-width='1.6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; }

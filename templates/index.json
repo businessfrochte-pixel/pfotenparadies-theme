@@ -23,7 +23,7 @@
           "settings": {
             "icon": "bed",
             "text": "Mein Hund braucht einen besseren Schlafplatz",
-            "cta": "Betten & Decken",
+            "cta": "Schlafplätze ansehen",
             "link": "shopify://collections/schlafen-liegen"
           }
         },
@@ -281,7 +281,7 @@
           "settings": {
             "collection": "unterwegs-auto",
             "title": "Unterwegs & Auto",
-            "subtitle": "Schondecken und Reisezubehör"
+            "subtitle": "Für Autofahrten mit Hund"
           }
         },
         "cat_3": {
@@ -289,7 +289,7 @@
           "settings": {
             "collection": "spielzeug-beschaftigung",
             "title": "Spielzeug & Beschäftigung",
-            "subtitle": "Schnüffeln, kauen, knobeln"
+            "subtitle": "Beschäftigung für drinnen"
           }
         },
         "cat_4": {
@@ -313,7 +313,7 @@
           "settings": {
             "collection": "futtern-trinken",
             "title": "Füttern & Trinken",
-            "subtitle": "Näpfe und Aufbewahrung"
+            "subtitle": "Für Futter und Wasser"
           }
         },
         "cat_7": {
@@ -406,7 +406,7 @@
         "eyebrow": "",
         "heading": "Welches Bett passt zu deinem Hund?",
         "text": "<p>Entscheidend ist nicht das Außenmaß, sondern die Fläche, auf der dein Hund wirklich liegt. Deshalb steht bei jedem Bett die Liegefläche in Zentimetern.</p>",
-        "button_label": "Betten vergleichen",
+        "button_label": "Betten ansehen",
         "button_link": "shopify://collections/schlafen-liegen",
         "steps_heading": "In 3 Schritten zur richtigen Größe",
         "more_label": "Zur ausführlichen Messhilfe",
@@ -429,19 +429,10 @@
         "r1": {
           "type": "reason",
           "settings": {
-            "title": "Bewusst ausgewählt",
-            "text": "<p>Eine kleine Auswahl statt endloser Listen. Zu jedem Produkt findest du Maße, Material, Pflege und Lieferumfang – damit du vorher weißt, was ankommt.</p>",
+            "title": "Vor dem Kauf alles wissen",
+            "text": "<p>Zu jedem Produkt findest du Maße, Material, Pflege und Lieferumfang – damit du vorher weißt, was ankommt.</p>",
             "link_label": "Sortiment ansehen",
             "link": "shopify://collections/all"
-          }
-        },
-        "r2": {
-          "type": "reason",
-          "settings": {
-            "title": "Die Größe, die passt",
-            "text": "<p>Bei Betten zählt die Liegefläche, nicht das Außenmaß. Jede Produktseite zeigt eine Größentabelle – und unsere Messhilfe erklärt Schritt für Schritt, wie du deinen Hund misst.</p>",
-            "link_label": "Zur Messhilfe",
-            "link": "shopify://pages/messhilfe"
           }
         },
         "r3": {
@@ -456,7 +447,6 @@
       },
       "block_order": [
         "r1",
-        "r2",
         "r3"
       ],
       "settings": {
