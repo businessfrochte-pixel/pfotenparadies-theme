@@ -1,0 +1,80 @@
+{%- comment -%}
+  PfotenParadies – Hauptprodukt im Fokus (JARVIS, v14). Zweck: Das Angebot früh begehrenswert und beurteilbar machen:
+  Detailbild der entscheidenden Eigenschaft, drei Eigenschaften mit ihrer Wirkung im Alltag, Preis und ein klarer nächster Schritt.
+  Nur Eigenschaften eintragen, die im Produktdatensatz belegt sind.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign p = s.product
+  assign size_count = 0
+  if p != blank
+    for o in p.options_with_values
+      if o.name == 'Größe'
+        assign size_count = o.values.size
+        assign size_first = o.values.first
+        assign size_last = o.values.last
+      endif
+    endfor
+  endif
+-%}
+<div class="section-background"></div>
+<div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: s %}">
+  <section class="hh hh-spot" aria-labelledby="hh-spot-{{ section.id }}">
+    <div class="hh-spot__media">
+      {%- if s.image != blank -%}
+        {{ s.image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '600, 900, 1200', sizes: '(min-width: 990px) 50vw, 100vw', alt: s.image.alt }}
+      {%- elsif p.featured_image != blank -%}
+        {{ p.featured_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '600, 900, 1200', sizes: '(min-width: 990px) 50vw, 100vw' }}
+      {%- endif -%}
+      {%- if s.caption != blank -%}<p class="hh-spot__cap">{{ s.caption | escape }}</p>{%- endif -%}
+    </div>
+    <div class="hh-spot__body">
+      <h2 id="hh-spot-{{ section.id }}" class="hh-spot__title">{{ s.heading | default: p.title | escape }}</h2>
+      {%- if s.lead != blank -%}<div class="hh-spot__lead">{{ s.lead }}</div>{%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <dl class="hh-spot__feats">
+          {%- for block in section.blocks -%}
+            <div class="hh-spot__feat" {{ block.shopify_attributes }}>
+              <dt>{{ block.settings.title | escape }}</dt>
+              <dd>{{ block.settings.text | escape }}</dd>
+            </div>
+          {%- endfor -%}
+        </dl>
+      {%- endif -%}
+      {%- if p != blank -%}
+        <div class="hh-spot__buy">
+          <p class="hh-spot__price">
+            <span class="hh-spot__amount">{% if p.price_varies %}ab {% endif %}{{ p.price_min | money }}</span>
+            {%- if size_count > 1 -%}<span class="hh-spot__sizes">{{ size_count }} Größen ({{ size_first }}–{{ size_last }}), Liegefläche in cm</span>{%- endif -%}
+          </p>
+          <a class="hh-btn" href="{{ p.url }}">{{ s.button_label | default: 'Größe wählen' | escape }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "PP Hauptprodukt",
+  "class": "hh-section",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Produkt" },
+    { "type": "image_picker", "id": "image", "label": "Detailbild", "info": "Zeigt die Eigenschaft, die den Kauf entscheidet (z. B. Material, Verschluss, Rand)." },
+    { "type": "text", "id": "caption", "label": "Bildunterschrift (optional)" },
+    { "type": "text", "id": "heading", "label": "Überschrift (leer = Produktname)" },
+    { "type": "richtext", "id": "lead", "label": "Einleitung" },
+    { "type": "text", "id": "button_label", "label": "Button-Text", "default": "Größe wählen" },
+    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "blocks": [
+    { "type": "feature", "name": "Eigenschaft", "settings": [
+      { "type": "text", "id": "title", "label": "Eigenschaft" },
+      { "type": "text", "id": "text", "label": "Wirkung im Alltag" }
+    ] }
+  ],
+  "max_blocks": 4,
+  "presets": [{ "name": "PP Hauptprodukt" }]
+}
+{% endschema %}

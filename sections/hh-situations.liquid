@@ -1,15 +1,21 @@
 {%- comment -%}
-  PfotenParadies – Einstieg nach Anlass (JARVIS). Zweck: Besucher finden über ihre Situation statt über Produktnamen.
+  PfotenParadies – Einstieg nach Anlass (JARVIS, v14). Zweck: Unentschlossene finden über ihre Alltagssituation zum passenden Produkt.
+  Mit Bild: Anwendungsszene (nicht dasselbe Freisteller-Bild wie im Sortiment), damit der Nutzen vorstellbar wird.
 {%- endcomment -%}
 <div class="section-background"></div>
 <div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: section.settings %}">
-  <nav class="hh hh-sit hh-reveal" aria-labelledby="hh-sit-{{ section.id }}">
+  {%- assign has_img = false -%}{%- for block in section.blocks -%}{%- if block.settings.image != blank -%}{%- assign has_img = true -%}{%- endif -%}{%- endfor -%}
+  <nav class="hh hh-sit{% if has_img %} hh-sit--img{% endif %}" aria-labelledby="hh-sit-{{ section.id }}">
     <h2 id="hh-sit-{{ section.id }}" class="hh-sit__title">{{ section.settings.heading | escape }}</h2>
     <ul class="hh-sit__grid">
       {%- for block in section.blocks -%}
         <li {{ block.shopify_attributes }}>
           <a class="hh-sit__item" href="{{ block.settings.link | default: '/collections/all' }}">
-            <span class="hh-sit__icon">{% render 'hh-icon', name: block.settings.icon %}</span>
+            {%- if block.settings.image != blank -%}
+              <span class="hh-sit__media">{{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400, 600, 800', sizes: '(min-width: 990px) 23vw, 46vw', alt: '' }}</span>
+            {%- else -%}
+              <span class="hh-sit__icon">{% render 'hh-icon', name: block.settings.icon %}</span>
+            {%- endif -%}
             <span class="hh-sit__text">{{ block.settings.text | escape }}</span>
             <span class="hh-sit__go">{{ block.settings.cta | escape }}</span>
           </a>
@@ -34,6 +40,7 @@
       "type": "situation",
       "name": "Situation",
       "settings": [
+        { "type": "image_picker", "id": "image", "label": "Anwendungsbild (optional)", "info": "Szene, die den Nutzen zeigt – nicht das Freisteller-Bild aus dem Sortiment." },
         { "type": "select", "id": "icon", "label": "Symbol", "default": "bed", "options": [
           { "value": "bed", "label": "Bett" }, { "value": "car", "label": "Auto" }, { "value": "paw", "label": "Pfote" },
           { "value": "toy", "label": "Spielzeug" }, { "value": "leash", "label": "Leine" }, { "value": "bowl", "label": "Napf" },

@@ -4,14 +4,14 @@
       "type": "hh-hero",
       "settings": {
         "eyebrow": "",
-        "heading": "Hundebetten und Zubehör – mit allen Maßen, bevor du bestellst.",
-        "text": "<p>Bei jedem Bett die Liegefläche in cm und bei jeder Größe eine Maßtabelle – so findest du die passende Größe schon vor dem Kauf.</p>",
-        "button_label": "Sortiment ansehen",
-        "button_link": "shopify://collections/all",
-        "link_label": "Hund richtig messen",
-        "link_url": "shopify://pages/messhilfe",
+        "heading": "Ein Bett mit Rand, in das sich dein Hund hineinkuscheln kann.",
+        "text": "<p>Der rundum gepolsterte Rand gibt Halt zum Anlehnen, die Liegefläche bleibt formstabil und der Bezug darf in die Waschmaschine. Bei jeder Größe steht die Liegefläche in cm.</p>",
+        "button_label": "Wohlfühlbett ansehen",
+        "button_link": "shopify://products/wohlfuehlbett-wolke",
+        "link_label": "Ganzes Sortiment",
+        "link_url": "shopify://collections/all",
         "chip": "",
-        "padding-block-start": 20,
+        "padding-block-start": 16,
         "padding-block-end": 24,
         "image": "shopify://shop_images/pfotenparadies-hero-hundebett.jpg"
       }
@@ -19,7 +19,7 @@
     "hh_facts": {
       "type": "hh-facts",
       "settings": {
-        "padding-block-start": 0,
+        "padding-block-start": 24,
         "padding-block-end": 24
       }
     },
@@ -214,92 +214,6 @@
         "padding-block-end": 40
       }
     },
-    "hh_kategorien": {
-      "type": "hh-categories",
-      "blocks": {
-        "cat_1": {
-          "type": "category",
-          "settings": {
-            "collection": "schlafen-liegen",
-            "title": "Schlafen & Liegen",
-            "subtitle": "Liegefläche in cm bei jedem Bett"
-          }
-        },
-        "cat_2": {
-          "type": "category",
-          "settings": {
-            "collection": "unterwegs-auto",
-            "title": "Unterwegs & Auto",
-            "subtitle": "Für Autofahrten mit Hund"
-          }
-        },
-        "cat_3": {
-          "type": "category",
-          "settings": {
-            "collection": "spielzeug-beschaftigung",
-            "title": "Spielzeug & Beschäftigung",
-            "subtitle": "Beschäftigung für drinnen"
-          }
-        },
-        "cat_4": {
-          "type": "category",
-          "settings": {
-            "collection": "leinen-halsbander-geschirre",
-            "title": "Leinen & Geschirre",
-            "subtitle": "Mit Maßtabelle für Hals und Brust"
-          }
-        },
-        "cat_5": {
-          "type": "category",
-          "settings": {
-            "collection": "pflege-hygiene",
-            "title": "Pflege & Hygiene",
-            "subtitle": "Sauber nach jedem Spaziergang"
-          }
-        },
-        "cat_6": {
-          "type": "category",
-          "settings": {
-            "collection": "futtern-trinken",
-            "title": "Füttern & Trinken",
-            "subtitle": "Für Futter und Wasser"
-          }
-        },
-        "cat_7": {
-          "type": "category",
-          "settings": {
-            "collection": "training",
-            "title": "Training",
-            "subtitle": "Kleine Helfer zum gemeinsamen Üben"
-          }
-        },
-        "cat_8": {
-          "type": "category",
-          "settings": {
-            "collection": "wetter-bekleidung",
-            "title": "Wetter & Bekleidung",
-            "subtitle": "Mäntel nach Rückenlänge"
-          }
-        }
-      },
-      "block_order": [
-        "cat_1",
-        "cat_2",
-        "cat_3",
-        "cat_4",
-        "cat_5",
-        "cat_6",
-        "cat_7",
-        "cat_8"
-      ],
-      "settings": {
-        "eyebrow": "",
-        "heading": "Alle Bereiche",
-        "link_label": "Alle Produkte",
-        "padding-block-start": 40,
-        "padding-block-end": 32
-      }
-    },
     "hh_ruheplatz": {
       "type": "hh-guide",
       "blocks": {
@@ -372,48 +286,100 @@
         "padding-block-end": 64
       }
     },
-    "hh_promise": {
-      "type": "hh-promise",
+    "hh_spot": {
+      "type": "hh-spotlight",
       "blocks": {
-        "r1": {
-          "type": "reason",
+        "f1": {
+          "type": "feature",
           "settings": {
-            "title": "Vor dem Kauf alles wissen",
-            "text": "<p>Zu jedem Produkt findest du Maße, Material, Pflege und Lieferumfang – damit du vorher weißt, was ankommt.</p>",
-            "link_label": "Sortiment ansehen",
-            "link": "shopify://collections/all"
+            "title": "Polsterrand rundum",
+            "text": "Zum Anlehnen und Kopf-Ablegen – ideal für Hunde, die sich gern einrollen."
           }
         },
-        "r3": {
-          "type": "reason",
+        "f2": {
+          "type": "feature",
           "settings": {
-            "title": "Persönliche Beratung",
-            "text": "<p>Schick uns die Maße deines Hundes. Wir empfehlen dir die passende Größe, bevor du bestellst.</p>",
-            "link_label": "Frage stellen",
-            "link": "shopify://pages/contact"
+            "title": "8 cm Liegefläche aus viskoelastischem Schaum",
+            "text": "Mehr Polster unter Schulter und Hüfte als ein dünnes Kissen."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "title": "Bezug mit Reißverschluss",
+            "text": "Abnehmen, bei 30 °C waschen, wieder aufziehen."
           }
         }
       },
       "block_order": [
-        "r1",
-        "r3"
+        "f1",
+        "f2",
+        "f3"
       ],
       "settings": {
-        "eyebrow": "",
-        "heading": "Weniger Auswahl. Mehr Gewissheit.",
-        "text": "<p>Wir möchten, dass das, was du bestellst, zu deinem Hund und zu deinem Zuhause passt – beim ersten Mal.</p>",
-        "padding-block-start": 40,
-        "padding-block-end": 40
+        "product": "wohlfuehlbett-wolke",
+        "image": "shopify://shop_images/pfotenparadies-bett-detail.jpg",
+        "caption": "Velours-Bezug mit Reißverschluss am unteren Rand (Demo-Abbildung)",
+        "heading": "Wohlfühlbett „Wolke“",
+        "lead": "<p>Ein Rückzugsort für Hunde, die beim Schlafen Halt suchen: weich am Rand, stabil in der Mitte.</p>",
+        "button_label": "Größe wählen",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "hh_sit2": {
+      "type": "hh-situations",
+      "blocks": {
+        "s1": {
+          "type": "situation",
+          "settings": {
+            "image": "shopify://shop_images/pfotenparadies-szene-auto.jpg",
+            "icon": "car",
+            "text": "Autofahrten ohne Haare und Matsch auf dem Sitz",
+            "cta": "Für unterwegs",
+            "link": "shopify://collections/unterwegs-auto"
+          }
+        },
+        "s2": {
+          "type": "situation",
+          "settings": {
+            "image": "shopify://shop_images/pfotenparadies-szene-pfoten.jpg",
+            "icon": "paw",
+            "text": "Saubere Pfoten nach dem Spaziergang",
+            "cta": "Pflege ansehen",
+            "link": "shopify://collections/pflege-hygiene"
+          }
+        },
+        "s3": {
+          "type": "situation",
+          "settings": {
+            "image": "shopify://shop_images/pfotenparadies-szene-schnueffeln.jpg",
+            "icon": "toy",
+            "text": "Beschäftigung für Regentage und ruhige Abende",
+            "cta": "Beschäftigung",
+            "link": "shopify://collections/spielzeug-beschaftigung"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "heading": "Und für den restlichen Alltag mit Hund",
+        "padding-block-start": 32,
+        "padding-block-end": 24
       }
     }
   },
   "order": [
     "hh_hero",
-    "hh_facts",
+    "hh_spot",
+    "hh_sit2",
     "product_list_fa6P9H",
-    "hh_kategorien",
-    "hh_promise",
     "hh_ruheplatz",
+    "hh_facts",
     "hh_faq"
   ]
 }
