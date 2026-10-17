@@ -3,24 +3,81 @@
     "hh_hero": {
       "type": "hh-hero",
       "settings": {
-        "eyebrow": "",
-        "heading": "Ein Bett mit Rand, in das sich dein Hund hineinkuscheln kann.",
-        "text": "<p>Rundum gepolstert, damit dein Hund den Kopf ablegen und sich anlehnen kann. In vier Größen – jede mit Liegefläche in cm.</p>",
-        "button_label": "Wohlfühlbett ansehen",
-        "button_link": "shopify://products/wohlfuehlbett-wolke",
-        "link_label": "Ganzes Sortiment",
-        "link_url": "shopify://collections/all",
-        "chip": "",
+        "heading": "Für den Alltag mit Hund – in der Größe, die wirklich passt.",
+        "text": "<p>Betten, Autoschutz, Pfotenpflege und Beschäftigung – bei jedem Produkt mit genauen Maßen in cm. Unsicher bei der Größe? Wir beraten dich, bevor du bestellst.</p>",
+        "button_label": "Sortiment ansehen",
+        "button_link": "shopify://collections/all",
+        "link_label": "Hund richtig messen",
+        "link_url": "shopify://pages/messhilfe",
+        "needs_title": "Wobei können wir helfen?",
+        "draft_note": "Abbildungen: Entwurfsdarstellungen",
         "padding-block-start": 16,
-        "padding-block-end": 24,
-        "image": "shopify://shop_images/pfotenparadies-hero-hundebett.jpg"
-      }
+        "padding-block-end": 8
+      },
+      "blocks": {
+        "n1": {
+          "type": "need",
+          "settings": {
+            "text": "Mein Hund braucht einen besseren Schlafplatz",
+            "sub": "Betten mit Polsterrand, Liegefläche in cm",
+            "link": "shopify://collections/schlafen-liegen",
+            "image": "shopify://shop_images/pfotenparadies-hero-hundebett.jpg",
+            "icon": "bed"
+          }
+        },
+        "n2": {
+          "type": "need",
+          "settings": {
+            "text": "Autofahrten ohne Haare und Matsch auf dem Sitz",
+            "sub": "Schondecke für die Rückbank",
+            "link": "shopify://collections/unterwegs-auto",
+            "image": "shopify://shop_images/pfotenparadies-szene-auto.jpg",
+            "icon": "car"
+          }
+        },
+        "n3": {
+          "type": "need",
+          "settings": {
+            "text": "Nasse, schmutzige Pfoten nach dem Spaziergang",
+            "sub": "Pfotenreiniger in drei Größen",
+            "link": "shopify://collections/pflege-hygiene",
+            "image": "shopify://shop_images/pfotenparadies-szene-pfoten.jpg",
+            "icon": "paw"
+          }
+        },
+        "n4": {
+          "type": "need",
+          "settings": {
+            "text": "Beschäftigung für Regentage und ruhige Abende",
+            "sub": "Schnüffelteppich zum Suchen von Leckerlis",
+            "link": "shopify://collections/spielzeug-beschaftigung",
+            "image": "shopify://shop_images/pfotenparadies-szene-schnueffeln.jpg",
+            "icon": "toy"
+          }
+        },
+        "n5": {
+          "type": "need",
+          "settings": {
+            "text": "Ein Geschenk für jemanden mit Hund",
+            "sub": "Ideen ganz ohne Größenauswahl",
+            "link": "shopify://collections/geschenke-fuer-hundefreunde",
+            "icon": "gift"
+          }
+        }
+      },
+      "block_order": [
+        "n1",
+        "n2",
+        "n3",
+        "n4",
+        "n5"
+      ]
     },
     "hh_facts": {
       "type": "hh-facts",
       "settings": {
-        "padding-block-start": 24,
-        "padding-block-end": 24
+        "padding-block-start": 8,
+        "padding-block-end": 16
       }
     },
     "product_list_fa6P9H": {
@@ -326,60 +383,14 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
-    },
-    "hh_sit2": {
-      "type": "hh-situations",
-      "blocks": {
-        "s1": {
-          "type": "situation",
-          "settings": {
-            "image": "shopify://shop_images/pfotenparadies-szene-auto.jpg",
-            "icon": "car",
-            "text": "Autofahrten ohne Haare und Matsch auf dem Sitz",
-            "cta": "Für unterwegs",
-            "link": "shopify://collections/unterwegs-auto"
-          }
-        },
-        "s2": {
-          "type": "situation",
-          "settings": {
-            "image": "shopify://shop_images/pfotenparadies-szene-pfoten.jpg",
-            "icon": "paw",
-            "text": "Saubere Pfoten nach dem Spaziergang",
-            "cta": "Pflege ansehen",
-            "link": "shopify://collections/pflege-hygiene"
-          }
-        },
-        "s3": {
-          "type": "situation",
-          "settings": {
-            "image": "shopify://shop_images/pfotenparadies-szene-schnueffeln.jpg",
-            "icon": "toy",
-            "text": "Beschäftigung für Regentage und ruhige Abende",
-            "cta": "Beschäftigung",
-            "link": "shopify://collections/spielzeug-beschaftigung"
-          }
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3"
-      ],
-      "settings": {
-        "heading": "Und für den restlichen Alltag mit Hund",
-        "padding-block-start": 36,
-        "padding-block-end": 24
-      }
     }
   },
   "order": [
     "hh_hero",
+    "hh_facts",
     "hh_spot",
-    "hh_sit2",
     "product_list_fa6P9H",
     "hh_ruheplatz",
-    "hh_facts",
     "hh_faq"
   ]
 }
