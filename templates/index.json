@@ -3,16 +3,17 @@
     "hh_hero": {
       "type": "hh-hero",
       "settings": {
-        "heading": "Für den Alltag mit Hund – in der Größe, die wirklich passt.",
-        "text": "<p>Betten, Autoschutz, Pfotenpflege und Beschäftigung – bei jedem Produkt mit genauen Maßen in cm. Unsicher bei der Größe? Wir beraten dich, bevor du bestellst.</p>",
-        "button_label": "Sortiment ansehen",
+        "heading": "Für eure kleinen und großen Hundemomente.",
+        "text": "<p>Hundezubehör für gemütliche Ruhepausen, gemeinsame Ausflüge und Beschäftigung zu Hause. Entdecke, was zu eurem Alltag passt.</p>",
+        "button_label": "Zubehör entdecken",
         "button_link": "shopify://collections/all",
-        "link_label": "Hund richtig messen",
+        "link_label": "",
         "link_url": "shopify://pages/messhilfe",
         "needs_title": "Wobei können wir helfen?",
         "draft_note": "Abbildungen: Entwurfsdarstellungen",
         "padding-block-start": 16,
-        "padding-block-end": 8
+        "padding-block-end": 8,
+        "service_note": "Unsicher bei der Auswahl? <a href=\"/pages/contact\">Wir helfen dir vor dem Kauf.</a>"
       },
       "blocks": {
         "n1": {

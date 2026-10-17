@@ -160,6 +160,9 @@ a.hh-eyebrow { justify-content: center; }
 .hh-entry__lead p { margin: 0; }
 .hh-entry__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--hh-s4) var(--hh-s6); }
 .hh-entry__actions .hh-link { background-position: left calc(100% - 10px); padding-bottom: 0; }
+.hh-entry .hh-entry__service { display: flex; align-items: center; gap: var(--hh-s2); margin: var(--hh-s5) 0 0; font-size: var(--hh-fs-small); color: var(--hh-text); }
+.hh-entry__service svg { width: 20px; height: 20px; flex: 0 0 auto; color: var(--hh-forest); }
+.hh-entry__service a { color: var(--hh-forest); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .hh-entry__needs { background: var(--hh-white); border-radius: var(--hh-r-md); padding: var(--hh-s4); box-shadow: 0 18px 40px -28px rgba(31, 45, 38, .45); }
 .hh-entry__needs-title { margin: 0 0 var(--hh-s2); padding: 0 var(--hh-s2); font-size: var(--hh-fs-small); font-weight: 600; color: var(--hh-clay); }
 .hh-entry__needs ul { list-style: none; margin: 0; padding: 0; }
