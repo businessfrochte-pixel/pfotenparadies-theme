@@ -239,7 +239,8 @@
         "flyout_delay": 45,
         "flyout_pause_days": 14,
         "flyout_heading": "5 € für deine erste Nacht mit uns",
-        "flyout_text": "Tritt dem Club bei: 5 € Willkommensvorteil ab 59 €, neue Schlafhelfer 48 Stunden früher und ein Schlafbrief im Monat."
+        "flyout_text": "Tritt dem Club bei: 5 € Willkommensvorteil ab 59 €, neue Schlafhelfer 48 Stunden früher und ein Schlafbrief im Monat.",
+        "conditions": "Willkommensvorteil: 5 € Rabatt ab 59 € Bestellwert, einmal pro Person, nicht mit anderen Codes kombinierbar."
       }
     }
   },

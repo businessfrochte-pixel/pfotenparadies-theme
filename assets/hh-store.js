@@ -151,35 +151,51 @@
 
 /* 6) Nachtwerk: Set wählen / „Dazu“ / Zum Set wechseln.
    Ohne JS funktionieren die Formulare (POST /cart/add) und der Set-Link normal.
-   Mit JS: Ladezustand gegen Doppelklick, danach Warenkorbseite mit aktuellem Stand. */
+   Mit JS: Ladezustand gegen Doppelklick, jede Antwort wird geprüft; danach Warenkorbseite mit aktuellem Stand.
+   Set-Wechsel: erst Einzelartikel reduzieren, dann Set hinzufügen; scheitert das Hinzufügen, werden die Mengen zurückgesetzt. */
 (function () {
   var root = (window.Shopify && Shopify.routes && Shopify.routes.root) || '/';
-  function busy(el, on) { if (!el) return; el.toggleAttribute('aria-busy', on); el.classList.toggle('is-busy', on); if ('disabled' in el) el.disabled = on; }
-  function toCart() { if (location.pathname.replace(/\/$/, '') === root.replace(/\/$/, '') + 'cart' || /\/cart\/?$/.test(location.pathname)) location.reload(); else location.href = root + 'cart'; }
-  function fail(el, msg) {
+  var JSONH = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
+  function busy(el, on) { if (!el) return; el.classList.toggle('is-busy', on); el.setAttribute('aria-busy', on ? 'true' : 'false'); if ('disabled' in el) el.disabled = on; }
+  function toCart() { if (/\/cart\/?$/.test(location.pathname)) location.reload(); else location.href = root + 'cart'; }
+  function check(r) { if (r.ok) return r.json().catch(function () { return {}; }); return r.json().catch(function () { return {}; }).then(function (j) { var e = new Error(j.description || ''); e.user = !!j.description; throw e; }); }
+  function fail(el, err) {
     busy(el, false);
     var p = el && el.closest('li, .nw-upsell__set, .nw-setoffer__item');
     if (!p) return;
     var e = p.querySelector('.nw-err'); if (!e) { e = document.createElement('p'); e.className = 'nw-err'; e.setAttribute('role', 'alert'); p.appendChild(e); }
-    e.textContent = msg || 'Das hat nicht geklappt. Bitte versuch es noch einmal.';
+    e.textContent = (err && err.user && err.message) || 'Das hat nicht geklappt. Bitte lade die Seite neu und versuch es noch einmal.';
   }
   document.addEventListener('submit', function (ev) {
     var f = ev.target; if (!f.matches || !f.matches('form[data-nw-quick-add]')) return;
     ev.preventDefault();
-    var btn = f.querySelector('button'); if (btn && btn.classList.contains('is-busy')) return; busy(btn, true);
+    var btn = f.querySelector('button[type="submit"]'); if (btn && btn.classList.contains('is-busy')) return; busy(btn, true);
     fetch(root + 'cart/add.js', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(f) })
-      .then(function (r) { if (!r.ok) return r.json().then(function (j) { throw new Error(j.description || j.message); }); toCart(); })
-      .catch(function (e) { fail(btn, e && e.message); });
+      .then(check).then(toCart)
+      .catch(function (e) { fail(btn, e); });
   });
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest && ev.target.closest('[data-nw-set-swap]'); if (!a) return;
     ev.preventDefault(); if (a.classList.contains('is-busy')) return; busy(a, true);
-    var keys = (a.dataset.removeKeys || '').split(',').filter(Boolean), updates = {};
-    keys.forEach(function (k) { var i = k.lastIndexOf(':'); updates[k.slice(0, i)] = +k.slice(i + 1) || 0; });
-    var json = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
-    fetch(root + 'cart/add.js', { method: 'POST', headers: json, body: JSON.stringify({ items: [{ id: +a.dataset.setVariant, quantity: 1 }] }) })
-      .then(function (r) { if (!r.ok) throw new Error(); return keys.length ? fetch(root + 'cart/update.js', { method: 'POST', headers: json, body: JSON.stringify({ updates: updates }) }) : null; })
+    var down = {}, back = {}, readd = [];
+    (a.dataset.removeKeys || '').split(',').filter(Boolean).forEach(function (k) {
+      var p = k.split('|'), key = p[0], left = +p[1] || 0;
+      down[key] = left;
+      if (left > 0) back[key] = left + 1; else readd.push({ id: +p[2], quantity: 1 });
+    });
+    var hasDown = Object.keys(down).length > 0;
+    (hasDown ? fetch(root + 'cart/update.js', { method: 'POST', headers: JSONH, body: JSON.stringify({ updates: down }) }).then(check) : Promise.resolve())
+      .then(function () {
+        return fetch(root + 'cart/add.js', { method: 'POST', headers: JSONH, body: JSON.stringify({ items: [{ id: +a.dataset.setVariant, quantity: 1 }] }) }).then(check)
+          .catch(function (e) {
+            if (!hasDown) throw e;
+            var undo = [];
+            if (Object.keys(back).length) undo.push(fetch(root + 'cart/update.js', { method: 'POST', headers: JSONH, body: JSON.stringify({ updates: back }) }));
+            if (readd.length) undo.push(fetch(root + 'cart/add.js', { method: 'POST', headers: JSONH, body: JSON.stringify({ items: readd }) }));
+            return Promise.all(undo).then(function () { throw e; }, function () { throw e; });
+          });
+      })
       .then(toCart)
-      .catch(function () { fail(a); });
+      .catch(function (e) { fail(a, e); });
   });
 })();

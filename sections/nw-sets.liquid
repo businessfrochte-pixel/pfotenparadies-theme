@@ -1,7 +1,7 @@
 {%- comment -%}
   Nachtwerk – Sets im Bento-Raster (JARVIS, 19.10.2026; Stil „Bento Box Grid“ aus UI UX Pro Max).
   Zweck: Warenkorbwert erhöhen mit echtem Nutzen (mehrere Störquellen auf einmal) und ehrlicher Ersparnis
-  („einzeln X · du sparst Y“ live aus den Einzelpreisen, kein Streichpreis). Erstes Set groß, die übrigen kleiner.
+  („einzeln X · du sparst Y“ live aus den Einzelpreisen der Set-Varianten, nur wenn alle Teile lieferbar; kein Streichpreis/compare_at_price). Erstes Set groß, die übrigen kleiner.
 {%- endcomment -%}
 {%- assign s = section.settings -%}
 {%- assign coll = s.collection -%}
@@ -20,8 +20,13 @@
       {%- for set in coll.products limit: 4 -%}
         {%- assign items = set.metafields.custom.set_items.value -%}
         {%- assign single = 0 -%}
-        {%- for it in items -%}{%- assign single = single | plus: it.price -%}{%- endfor -%}
+        {%- assign all_avail = true -%}
+        {%- for v in set.metafields.custom.set_variants.value -%}
+          {%- assign single = single | plus: v.price -%}
+          {%- unless v.available -%}{%- assign all_avail = false -%}{%- endunless -%}
+        {%- endfor -%}
         {%- assign save = single | minus: set.price -%}
+        {%- unless all_avail -%}{%- assign save = 0 -%}{%- endunless -%}
         <li class="nw-set{% if forloop.first %} nw-set--lead{% endif %}">
           <a class="nw-set__link" href="{{ set.url }}">
             <span class="nw-set__media nw-set__media--{{ items.size | at_most: 3 }}">

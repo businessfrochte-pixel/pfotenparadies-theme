@@ -836,7 +836,7 @@ h1, h2, h3, .h1, .h2, .h3, .hh-h2, .hh-h3, .hh-spot__title, .hh-guide h2, .hh-fa
   .nw-set:nth-child(4) .nw-set__media { width: 46%; flex: 0 0 46%; aspect-ratio: auto; }
 }
 .nw-set__body { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px 20px; flex: 1 1 auto; }
-.nw-set__save { align-self: flex-start; padding: 4px 10px; border-radius: 999px; background: #F5EBDD; color: var(--hh-clay-deep); font-size: .8125rem; font-weight: 600; }
+.nw-set__save { align-self: flex-start; padding: 4px 10px; border-radius: 999px; background: #F5EBDD; color: var(--hh-clay-deep); font-size: .875rem; font-weight: 600; }
 .nw-set__name { font-family: var(--hh-serif); font-weight: 500; font-size: 1.375rem; letter-spacing: -.02em; line-height: 1.2; }
 .nw-set--lead .nw-set__name { font-size: clamp(1.5rem, 1.2rem + 1vw, 2.125rem); }
 .nw-set__why { color: var(--hh-text); line-height: 1.5; }
@@ -947,3 +947,10 @@ h1, h2, h3, .h1, .h2, .h3, .hh-h2, .hh-h3, .hh-spot__title, .hh-guide h2, .hh-fa
 .nw-stoerer__list > li { display: flex; } .nw-stoerer__list .nw-st { flex: 1 1 auto; }
 .nw-setoffer .nw-setoffer__btn { width: 100%; justify-content: center; background: transparent; color: var(--hh-forest); box-shadow: inset 0 0 0 1.5px var(--hh-forest); }
 .nw-setoffer .nw-setoffer__btn:hover { background: var(--hh-forest); color: #fff; }
+
+.nw-upsell__item { grid-template-columns: 56px 1fr; }
+.nw-upsell__form { grid-column: 1 / -1; display: flex; gap: 8px; }
+.nw-upsell__select { flex: 1 1 auto; min-width: 0; min-height: 44px; padding: 0 36px 0 14px; border: 1px solid var(--hh-line); border-radius: 999px; background: var(--hh-white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231D2640' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 14px center; appearance: none; font: inherit; font-size: .9375rem; color: var(--hh-ink); cursor: pointer; }
+.nw-upsell__select:focus-visible { outline: 3px solid var(--hh-clay); outline-offset: 2px; }
+@media (min-width: 750px) { .nw-upsell__item { grid-template-columns: 56px minmax(0, 1fr) auto; } .nw-upsell__form { grid-column: auto; } .nw-upsell__select { max-width: 170px; } }
+.nw-upsell__set .nw-err { color: #fff; background: #8A2B17; padding: 6px 10px; border-radius: 8px; }
