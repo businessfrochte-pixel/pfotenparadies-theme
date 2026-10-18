@@ -10,7 +10,7 @@
     <ul class="hh-sit__grid">
       {%- for block in section.blocks -%}
         <li {{ block.shopify_attributes }}>
-          <a class="hh-sit__item" href="{{ block.settings.link | default: '/collections/all' }}">
+          <a class="hh-sit__item" href="{{ block.settings.link | default: '/collections/hundezubehoer' }}">
             {%- if block.settings.image != blank -%}
               <span class="hh-sit__media">{{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400, 600, 800', sizes: '(min-width: 990px) 23vw, 46vw', alt: '' }}</span>
             {%- else -%}
