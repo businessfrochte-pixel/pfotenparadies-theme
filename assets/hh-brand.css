@@ -231,7 +231,7 @@ a.hh-eyebrow { justify-content: center; }
 .hh-facts svg { flex: 0 0 auto; width: 22px; height: 22px; color: var(--hh-forest); margin-top: 1px; }
 .hh-facts strong { display: block; font-size: 1.0625rem; font-weight: 500; color: var(--hh-ink); }
 @media screen and (max-width: 899px) { .hh-facts ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media screen and (max-width: 479px) { .hh-facts ul { gap: var(--hh-s4) var(--hh-s3); padding: var(--hh-s4) 0; } .hh-facts li { flex-direction: column; gap: 6px; font-size: .875rem; } .hh-facts strong { font-size: 1rem; } }
+@media screen and (max-width: 479px) { .hh-facts ul { gap: var(--hh-s3) var(--hh-s3); padding: var(--hh-s4) 0; } .hh-facts li { gap: 8px; font-size: .875rem; line-height: 1.45; } .hh-facts svg { width: 18px; height: 18px; margin-top: 2px; } .hh-facts strong { font-size: .9375rem; } }
 
 /* Bereiche (Kategorien) */
 .hh-cats__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--hh-s4); }
