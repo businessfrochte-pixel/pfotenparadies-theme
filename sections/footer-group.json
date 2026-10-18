@@ -197,18 +197,54 @@
         "padding-block-end": 48
       }
     },
-    "hh_newsletter": {
-      "type": "hh-newsletter",
+    "hh_club": {
+      "type": "hh-club",
+      "blocks": {
+        "p1": {
+          "type": "perk",
+          "settings": {
+            "icon": "clock",
+            "title": "48 Stunden früher",
+            "text": "Neue Produkte siehst du zuerst – bevor sie im Shop stehen."
+          }
+        },
+        "p2": {
+          "type": "perk",
+          "settings": {
+            "icon": "gift",
+            "title": "Angebote nur für Mitglieder",
+            "text": "Ein paar Mal im Jahr, nur per E-Mail – nie öffentlich im Shop."
+          }
+        },
+        "p3": {
+          "type": "perk",
+          "settings": {
+            "icon": "mail",
+            "title": "Ein Brief im Monat",
+            "text": "Praktische Ideen für den Alltag mit Hund. Kein Werbe-Dauerfeuer."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
       "settings": {
-        "eyebrow": "",
-        "heading": "Neues von PfotenParadies",
-        "text": "<p>Wir schreiben dir, wenn neue Produkte dazukommen – selten und ohne Spam. Abmeldung jederzeit mit einem Klick.</p>",
-        "button_label": "Anmelden"
+        "kicker": "PfotenParadies Club",
+        "heading": "Für alle, die für ihren Hund nur das Passende wollen.",
+        "text": "<p>Mitglieder erfahren zuerst, was neu ist – und bekommen Angebote, die nicht im Shop stehen. Kostenlos und jederzeit kündbar.</p>",
+        "button_label": "Mitglied werden",
+        "flyout": true,
+        "flyout_delay": 45,
+        "flyout_pause_days": 14,
+        "flyout_heading": "Neues für euren Alltag – zuerst für Mitglieder",
+        "flyout_text": "Neue Produkte 48 Stunden früher, Angebote nur für Mitglieder und ein Brief im Monat mit Alltagstipps."
       }
     }
   },
   "order": [
-    "hh_newsletter",
+    "hh_club",
     "footer_m9NzUG",
     "footer_utilities_jLGE8U"
   ]
