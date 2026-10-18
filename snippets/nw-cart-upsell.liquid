@@ -1,0 +1,129 @@
+{%- comment -%}
+  Nachtwerk – Warenkorb-Empfehlungen (JARVIS, 19.10.2026). Läuft im Warenkorb-Fenster und auf der Warenkorbseite.
+  1. Set-Wechsel: Liegt ein Teil eines Sets im Warenkorb, zeigt ein Hinweis das Set mit dem kleinsten Aufpreis und die Ersparnis.
+     „Zum Set wechseln“ ersetzt die Einzelartikel durch das Set (JS), ohne JS führt der Link zur Set-Seite.
+  2. „Passt dazu“: höchstens 1 Ergänzung (Wettbewerbsanalyse 18.10.2026: eine Empfehlung, Kasse bleibt sichtbar) aus custom.upsell der Artikel im Warenkorb – nur Artikel mit ≥ 25 % DB als Zusatzkauf
+     (Ohrstöpsel einzeln ausgeschlossen: 17 % wegen eigener Fracht; Kalkulation 18.10.2026).
+  Keine Empfehlung blockiert den Weg zur Kasse; sie steht unter den Artikeln.
+{%- endcomment -%}
+{%- if cart.item_count > 0 -%}
+  {%- liquid
+    assign in_cart = cart.items | map: 'product_id' | join: ','
+    assign in_cart = ',' | append: in_cart | append: ','
+    assign best_set = nil
+    assign best_save = 0
+    assign best_extra = 0
+    for item in cart.items
+      assign sets = item.product.metafields.custom.sets.value
+      for set in sets
+        assign key = ',' | append: set.id | append: ','
+        if in_cart contains key or set.available == false
+          continue
+        endif
+        assign single = 0
+        assign have_sum = 0
+        for it in set.metafields.custom.set_items.value
+          assign single = single | plus: it.price
+          assign ikey = ',' | append: it.id | append: ','
+          if in_cart contains ikey
+            assign have_sum = have_sum | plus: it.price
+          endif
+        endfor
+        assign save = single | minus: set.price
+        assign extra_try = set.price | minus: have_sum
+        if save > 0 and extra_try > 0
+          if best_set == nil or extra_try < best_extra
+            assign best_extra = extra_try
+            assign best_save = save
+            assign best_set = set
+          endif
+        endif
+      endfor
+    endfor
+  -%}
+  <div class="hh nw-upsell">
+    {%- if best_set -%}
+      {%- liquid
+        assign have = 0
+        assign have_keys = ''
+        assign missing = ''
+        for it in best_set.metafields.custom.set_items.value
+          assign key = ',' | append: it.id | append: ','
+          if in_cart contains key
+            for item in cart.items
+              if item.product_id == it.id
+                assign have = have | plus: item.final_price
+                assign left = item.quantity | minus: 1
+                assign have_keys = have_keys | append: item.key | append: ':' | append: left | append: ','
+                break
+              endif
+            endfor
+          else
+            assign short = it.title | split: ' mit ' | first | split: ',' | first
+            if missing != ''
+              assign missing = missing | append: ' + '
+            endif
+            assign missing = missing | append: short
+          endif
+        endfor
+        assign extra = best_set.price | minus: have
+      -%}
+      {%- if extra > 0 -%}
+        <div class="nw-upsell__set">
+          <span class="nw-upsell__set-icon">{% render 'hh-icon', name: 'set' %}</span>
+          <div class="nw-upsell__set-body">
+            <p class="nw-upsell__set-title">Mach ein Set daraus</p>
+            <p class="nw-upsell__set-text">Für <strong class="hh-tnum">+{{ extra | money }}</strong> kommt {{ missing | escape }} dazu – als Set „{{ best_set.title | split: '„' | last | split: '“' | first | escape }}“ sparst du {{ best_save | money }}.</p>
+          </div>
+          <a class="nw-upsell__set-btn" href="{{ best_set.url }}" data-nw-set-swap data-set-variant="{{ best_set.selected_or_first_available_variant.id }}" data-remove-keys="{{ have_keys }}">Zum Set wechseln</a>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- liquid
+      assign shown = ''
+      assign count = 0
+    -%}
+    {%- capture recos -%}
+      {%- for item in cart.items -%}
+        {%- for rec in item.product.metafields.custom.upsell.value -%}
+          {%- liquid
+            assign key = ',' | append: rec.id | append: ','
+            if in_cart contains key or shown contains key or rec.available == false or count >= 1
+              continue
+            endif
+            if best_set
+              assign bkey = ',' | append: rec.id | append: ','
+              assign set_keys = best_set.metafields.custom.set_items.value | map: 'id' | join: ','
+              assign set_keys = ',' | append: set_keys | append: ','
+              if set_keys contains bkey
+                continue
+              endif
+            endif
+            assign shown = shown | append: key
+            assign count = count | plus: 1
+            assign v = rec.selected_or_first_available_variant
+          -%}
+          <li class="nw-upsell__item">
+            <a class="nw-upsell__img" href="{{ rec.url }}" tabindex="-1" aria-hidden="true">{%- if rec.featured_image -%}{{ rec.featured_image | image_url: width: 160, height: 160, crop: 'center' | image_tag: loading: 'lazy', alt: '', width: 72, height: 72 }}{%- endif -%}</a>
+            <div class="nw-upsell__info">
+              <a class="nw-upsell__name" href="{{ rec.url }}">{{ rec.title | escape }}</a>
+              <span class="nw-upsell__meta">{%- unless rec.has_only_default_variant -%}{{ v.title | escape }} · {% endunless -%}<span class="hh-tnum">{{ v.price | money }}</span></span>
+            </div>
+            <form method="post" action="{{ routes.cart_add_url }}" data-nw-quick-add>
+              <input type="hidden" name="id" value="{{ v.id }}">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="nw-upsell__add" aria-label="{{ rec.title | escape }} hinzufügen">{% render 'hh-icon', name: 'plus' %}<span>Dazu</span></button>
+            </form>
+          </li>
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if count > 0 -%}
+      <div class="nw-upsell__recos">
+        <p class="nw-upsell__title">Passt dazu</p>
+        <ul class="nw-upsell__list">{{ recos }}</ul>
+      </div>
+    {%- endif -%}
+  </div>
+{%- endif -%}

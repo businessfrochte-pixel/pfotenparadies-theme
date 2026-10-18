@@ -1,12 +1,5 @@
 {
   "sections": {
-    "hh_facts": {
-      "type": "hh-facts",
-      "settings": {
-        "padding-block-start": 8,
-        "padding-block-end": 16
-      }
-    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -46,7 +39,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Unsere Schlafhelfer</h2>",
+                "text": "<h2>Einzeln entdecken</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -319,7 +312,8 @@
             "text": "Licht",
             "sub": "Straßenlaterne, Standby-Licht, früher Sonnenaufgang",
             "link": "shopify://collections/schlaf-licht",
-            "icon": "light"
+            "icon": "light",
+            "product": "schlafmaske-3d"
           }
         },
         "st2": {
@@ -328,7 +322,8 @@
             "text": "Geräusche",
             "sub": "Verkehr, Nachbarn, Schnarchen",
             "link": "shopify://collections/schlaf-geraeusche",
-            "icon": "sound"
+            "icon": "sound",
+            "product": "rauschgeraet-nachtlicht"
           }
         },
         "st3": {
@@ -337,7 +332,8 @@
             "text": "Liegen & Kissen",
             "sub": "Kissen zu hoch, zu flach oder zu warm",
             "link": "shopify://collections/schlaf-liegen",
-            "icon": "neck"
+            "icon": "neck",
+            "product": "nackenkissen-memory-foam"
           }
         },
         "st4": {
@@ -346,7 +342,8 @@
             "text": "Aufwachen",
             "sub": "Schriller Wecker, dunkle Wintermorgen",
             "link": "shopify://collections/schlaf-aufwachen",
-            "icon": "sunrise"
+            "icon": "sunrise",
+            "product": "lichtwecker-sonnenaufgang"
           }
         }
       },
@@ -368,13 +365,24 @@
         "media_index": 4,
         "needs_title": "Was stört deinen Schlaf?",
         "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-end": 0,
+        "proof": "Sets ab 27,90 €|Lieferdatum vor dem Kauf|14 Tage Rückgabe"
+      }
+    },
+    "nw_sets": {
+      "type": "nw-sets",
+      "settings": {
+        "heading": "Zusammen schläft es sich besser",
+        "text": "Sets gegen mehrere Störquellen – günstiger als einzeln gekauft.",
+        "collection": "schlaf-sets",
+        "padding-block-start": 64,
+        "padding-block-end": 24
       }
     }
   },
   "order": [
     "nw_hero",
-    "hh_facts",
+    "nw_sets",
     "product_list_fa6P9H",
     "hh_spot",
     "hh_ruheplatz",

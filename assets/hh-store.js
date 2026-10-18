@@ -148,3 +148,38 @@
     });
   }).observe(document.documentElement, { childList: true, subtree: true });
 })();
+
+/* 6) Nachtwerk: Set wählen / „Dazu“ / Zum Set wechseln.
+   Ohne JS funktionieren die Formulare (POST /cart/add) und der Set-Link normal.
+   Mit JS: Ladezustand gegen Doppelklick, danach Warenkorbseite mit aktuellem Stand. */
+(function () {
+  var root = (window.Shopify && Shopify.routes && Shopify.routes.root) || '/';
+  function busy(el, on) { if (!el) return; el.toggleAttribute('aria-busy', on); el.classList.toggle('is-busy', on); if ('disabled' in el) el.disabled = on; }
+  function toCart() { if (location.pathname.replace(/\/$/, '') === root.replace(/\/$/, '') + 'cart' || /\/cart\/?$/.test(location.pathname)) location.reload(); else location.href = root + 'cart'; }
+  function fail(el, msg) {
+    busy(el, false);
+    var p = el && el.closest('li, .nw-upsell__set, .nw-setoffer__item');
+    if (!p) return;
+    var e = p.querySelector('.nw-err'); if (!e) { e = document.createElement('p'); e.className = 'nw-err'; e.setAttribute('role', 'alert'); p.appendChild(e); }
+    e.textContent = msg || 'Das hat nicht geklappt. Bitte versuch es noch einmal.';
+  }
+  document.addEventListener('submit', function (ev) {
+    var f = ev.target; if (!f.matches || !f.matches('form[data-nw-quick-add]')) return;
+    ev.preventDefault();
+    var btn = f.querySelector('button'); if (btn && btn.classList.contains('is-busy')) return; busy(btn, true);
+    fetch(root + 'cart/add.js', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(f) })
+      .then(function (r) { if (!r.ok) return r.json().then(function (j) { throw new Error(j.description || j.message); }); toCart(); })
+      .catch(function (e) { fail(btn, e && e.message); });
+  });
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest && ev.target.closest('[data-nw-set-swap]'); if (!a) return;
+    ev.preventDefault(); if (a.classList.contains('is-busy')) return; busy(a, true);
+    var keys = (a.dataset.removeKeys || '').split(',').filter(Boolean), updates = {};
+    keys.forEach(function (k) { var i = k.lastIndexOf(':'); updates[k.slice(0, i)] = +k.slice(i + 1) || 0; });
+    var json = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
+    fetch(root + 'cart/add.js', { method: 'POST', headers: json, body: JSON.stringify({ items: [{ id: +a.dataset.setVariant, quantity: 1 }] }) })
+      .then(function (r) { if (!r.ok) throw new Error(); return keys.length ? fetch(root + 'cart/update.js', { method: 'POST', headers: json, body: JSON.stringify({ updates: updates }) }) : null; })
+      .then(toCart)
+      .catch(function () { fail(a); });
+  });
+})();

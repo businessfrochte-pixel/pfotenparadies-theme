@@ -275,6 +275,13 @@
             "hh_intro": {
               "type": "hh-product-intro",
               "settings": {}
+            },
+            "nw_sets": {
+              "type": "nw-set-offer",
+              "settings": {
+                "title": "Im Set günstiger",
+                "limit": 2
+              }
             }
           },
           "block_order": [
@@ -286,6 +293,7 @@
             "variant_picker_R3rGDr",
             "hh_size_help",
             "buy_buttons_eYQEYi",
+            "nw_sets",
             "hh_trust",
             "hh_intro"
           ]

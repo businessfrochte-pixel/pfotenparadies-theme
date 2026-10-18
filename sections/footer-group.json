@@ -197,18 +197,54 @@
         "padding-block-end": 48
       }
     },
-    "hh_newsletter": {
-      "type": "hh-newsletter",
+    "nw_club": {
+      "type": "nw-club",
+      "blocks": {
+        "p1": {
+          "type": "perk",
+          "settings": {
+            "icon": "gift",
+            "title": "5 € Willkommensvorteil",
+            "text": "Per E-Mail, für deine erste Bestellung ab 59 €."
+          }
+        },
+        "p2": {
+          "type": "perk",
+          "settings": {
+            "icon": "clock",
+            "title": "48 Stunden früher",
+            "text": "Neue Schlafhelfer und Sets bekommst du zuerst – bevor sie im Shop stehen."
+          }
+        },
+        "p3": {
+          "type": "perk",
+          "settings": {
+            "icon": "mail",
+            "title": "Ein Schlafbrief im Monat",
+            "text": "Eine konkrete Idee für ruhigere Nächte. Kein Werbe-Dauerfeuer."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
       "settings": {
-        "eyebrow": "",
-        "heading": "Neues von Nachtwerk",
-        "text": "<p>Wir schreiben dir, wenn neue Schlafhelfer dazukommen – selten und ohne Spam. Abmeldung jederzeit mit einem Klick.</p>",
-        "button_label": "Anmelden"
+        "kicker": "Nachtwerk Club",
+        "heading": "Für Menschen, die ihre Nächte ernst nehmen.",
+        "text": "<p>Mitglieder bekommen, was nicht im Shop steht. Kostenlos und jederzeit kündbar.</p>",
+        "button_label": "Mitglied werden",
+        "flyout": true,
+        "flyout_delay": 45,
+        "flyout_pause_days": 14,
+        "flyout_heading": "5 € für deine erste Nacht mit uns",
+        "flyout_text": "Tritt dem Club bei: 5 € Willkommensvorteil ab 59 €, neue Schlafhelfer 48 Stunden früher und ein Schlafbrief im Monat."
       }
     }
   },
   "order": [
-    "hh_newsletter",
+    "nw_club",
     "footer_m9NzUG",
     "footer_utilities_jLGE8U"
   ]

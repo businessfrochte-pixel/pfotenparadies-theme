@@ -1,0 +1,48 @@
+{%- comment -%}
+  Nachtwerk – „Im Set günstiger“ direkt unter dem Kaufbutton (JARVIS, 19.10.2026).
+  Quelle: Produktfeld custom.sets (Liste von Set-Produkten). Ersparnis wird live aus den Einzelpreisen der Set-Inhalte (custom.set_items) berechnet –
+  kein Streichpreis, sondern ehrlicher Vergleich „einzeln zusammen“. Nur Sets mit DB ≥ 25 % angelegt (Kalkulation 18.10.2026).
+{%- endcomment -%}
+{%- assign p = closest.product -%}
+{%- assign sets = p.metafields.custom.sets.value -%}
+{%- if sets != blank and sets.size > 0 -%}
+  <div class="hh nw-setoffer" {{ block.shopify_attributes }}>
+    <p class="nw-setoffer__title">{% render 'hh-icon', name: 'set' %}<span>{{ block.settings.title | escape }}</span></p>
+    <ul class="nw-setoffer__list">
+      {%- for set in sets limit: block.settings.limit -%}
+        {%- unless set.available -%}{%- continue -%}{%- endunless -%}
+        {%- assign items = set.metafields.custom.set_items.value -%}
+        {%- assign single = 0 -%}
+        {%- for it in items -%}{%- assign single = single | plus: it.price -%}{%- endfor -%}
+        {%- assign save = single | minus: set.price -%}
+        <li class="nw-setoffer__item">
+          <a class="nw-setoffer__media" href="{{ set.url }}" tabindex="-1" aria-hidden="true">
+            {%- for it in items limit: 3 -%}
+              {%- if it.featured_image -%}<span>{{ it.featured_image | image_url: width: 160, height: 160, crop: 'center' | image_tag: loading: 'lazy', alt: '', width: 80, height: 80 }}</span>{%- endif -%}
+            {%- endfor -%}
+          </a>
+          <div class="nw-setoffer__body">
+            <a class="nw-setoffer__name" href="{{ set.url }}">{{ set.title | split: ':' | first | escape }}</a>
+            <p class="nw-setoffer__what">{% for it in items %}{{ it.title | split: ' mit ' | first | split: ',' | first }}{% unless forloop.last %} + {% endunless %}{% endfor %}</p>
+            {%- if save > 0 -%}<p class="nw-setoffer__price"><span>Du sparst {{ save | money }} gegenüber einzeln ({{ single | money }})</span></p>{%- endif -%}
+          </div>
+          <form method="post" action="{{ routes.cart_add_url }}" class="nw-setoffer__form" data-nw-quick-add>
+            <input type="hidden" name="id" value="{{ set.selected_or_first_available_variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="nw-setoffer__btn" aria-label="{{ set.title | split: ':' | first | escape }} in den Warenkorb">{% render 'hh-icon', name: 'plus' %}<span>Set für {{ set.price | money }} in den Warenkorb</span></button>
+          </form>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "NW Im Set günstiger",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Überschrift", "default": "Im Set günstiger" },
+    { "type": "range", "id": "limit", "label": "Höchstens", "min": 1, "max": 3, "step": 1, "default": 2 }
+  ]
+}
+{% endschema %}

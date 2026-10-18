@@ -30,6 +30,12 @@
             <a class="nw-hero__link" href="{{ s.link_url | default: '#nw-stoerer' }}">{{ s.link_label | escape }}</a>
           {%- endif -%}
         </div>
+        {%- if s.proof != blank -%}
+          <ul class="nw-hero__proof">
+            {%- assign proofs = s.proof | split: '|' -%}
+            {%- for pr in proofs -%}<li>{% render 'hh-icon', name: 'check' %}<span>{{ pr | strip | escape }}</span></li>{%- endfor -%}
+          </ul>
+        {%- endif -%}
       </div>
       {%- if media != blank -%}
         <figure class="nw-hero__media">
@@ -51,8 +57,9 @@
           {%- for block in section.blocks -%}
             {%- assign b = block.settings -%}
             <li {{ block.shopify_attributes }}>
-              <a class="nw-st" href="{{ b.link | default: '/collections/schlafhelfer' }}">
+              <a class="nw-st{% if b.product != blank %} nw-st--img{% endif %}" href="{{ b.link | default: '/collections/schlafhelfer' }}">
                 <span class="nw-st__icon">{% render 'hh-icon', name: b.icon %}</span>
+                {%- if b.product != blank and b.product.featured_image -%}<span class="nw-st__img">{{ b.product.featured_image | image_url: width: 320, height: 320, crop: 'center' | image_tag: loading: 'lazy', alt: '', width: 160, height: 160 }}</span>{%- endif -%}
                 <span class="nw-st__text">
                   <span class="nw-st__title">{{ b.text | escape }}</span>
                   {%- if b.sub != blank -%}<span class="nw-st__sub">{{ b.sub | escape }}</span>{%- endif -%}
@@ -79,6 +86,7 @@
     { "type": "url", "id": "button_link", "label": "Button-Link" },
     { "type": "text", "id": "link_label", "label": "Zweiter Link", "default": "Nach Störquelle wählen" },
     { "type": "url", "id": "link_url", "label": "Zweiter Link – Ziel" },
+    { "type": "text", "id": "proof", "label": "Kurze Fakten (mit | trennen)", "default": "Sets ab 27,90 €|Lieferdatum vor dem Kauf|14 Tage Rückgabe" },
     { "type": "header", "content": "Motiv" },
     { "type": "product", "id": "product", "label": "Produkt im Lampenlicht" },
     { "type": "range", "id": "media_index", "label": "Welches Produktbild", "min": 1, "max": 10, "step": 1, "default": 1 },
@@ -96,6 +104,7 @@
         { "type": "text", "id": "text", "label": "Störquelle", "default": "Licht" },
         { "type": "text", "id": "sub", "label": "Situation aus Kundensicht" },
         { "type": "url", "id": "link", "label": "Ziel (passende Auswahl)" },
+        { "type": "product", "id": "product", "label": "Produktbild (optional)" },
         { "type": "select", "id": "icon", "label": "Symbol", "default": "light", "options": [
           { "value": "light", "label": "Licht" }, { "value": "sound", "label": "Geräusche" }, { "value": "neck", "label": "Nacken/Kissen" },
           { "value": "sunrise", "label": "Aufwachen" }, { "value": "ear", "label": "Ohr" }, { "value": "moon", "label": "Mond" }, { "value": "layers", "label": "Decke" } ] }

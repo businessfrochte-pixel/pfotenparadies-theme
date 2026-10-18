@@ -13,7 +13,8 @@
     assign pct = 100
   endif
 -%}
-{%- if threshold > 0 and cart.item_count > 0 -%}
+{%- comment -%} Nachtwerk: Balken erst ab 50 € Restbetrag – bei kleinen Warenkörben motiviert eine ferne 150-€-Schwelle nicht (Versandschwelle ist shopweit, gilt auch für PfotenParadies). {%- endcomment -%}
+{%- if threshold > 0 and cart.item_count > 0 and remaining <= 5000 -%}
   <div class="hh-fs{% if remaining <= 0 %} hh-fs--done{% endif %}" role="status">
     {%- if remaining > 0 -%}
       <p>Noch <strong>{{ remaining | money }}</strong> bis zum <strong>kostenlosen Versand</strong></p>
