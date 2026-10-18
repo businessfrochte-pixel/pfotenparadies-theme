@@ -204,15 +204,15 @@
           "type": "perk",
           "settings": {
             "icon": "gift",
-            "title": "5 € Willkommensvorteil",
-            "text": "Per E-Mail, für deine erste Bestellung ab 59 €."
+            "title": "5 € Willkommensvorteil",
+            "text": "Per E-Mail, für deine erste Bestellung ab 59 €."
           }
         },
         "p2": {
           "type": "perk",
           "settings": {
             "icon": "clock",
-            "title": "48 Stunden früher",
+            "title": "48 Stunden früher",
             "text": "Neue Schlafhelfer und Sets bekommst du zuerst – bevor sie im Shop stehen."
           }
         },
@@ -238,8 +238,8 @@
         "flyout": true,
         "flyout_delay": 45,
         "flyout_pause_days": 14,
-        "flyout_heading": "5 € für deine erste Nacht mit uns",
-        "flyout_text": "Tritt dem Club bei: 5 € Willkommensvorteil ab 59 €, neue Schlafhelfer 48 Stunden früher und ein Schlafbrief im Monat."
+        "flyout_heading": "5 € für deine erste Nacht mit uns",
+        "flyout_text": "Tritt dem Club bei: 5 € Willkommensvorteil ab 59 €, neue Schlafhelfer 48 Stunden früher und ein Schlafbrief im Monat."
       }
     }
   },

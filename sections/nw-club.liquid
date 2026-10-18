@@ -1,7 +1,7 @@
 {%- comment -%}
   Nachtwerk Club (JARVIS, 19.10.2026). Zweck: E-Mail-Liste als wichtigster eigener Kanal – exklusiv statt „Newsletter“.
-  Angebot (BERECHNUNG 18.10.2026): 5 € Willkommensvorteil ab 59 € Bestellwert hält jeden Artikel ≥ 25 % DB.
-  Versprechen nur, was organisatorisch gehalten wird: Code + Willkommensmail (Shopify E-Mail/Flow) und „48 Stunden früher“ sind Eigentümer-Aktionen vor Start.
+  Angebot (BERECHNUNG 18.10.2026): 5 € Willkommensvorteil ab 59 € Bestellwert hält jeden Artikel ≥ 25 % DB.
+  Versprechen nur, was organisatorisch gehalten wird: Code + Willkommensmail (Shopify E-Mail/Flow) und „48 Stunden früher“ sind Eigentümer-Aktionen vor Start.
   Einblendung: dezentes Seitenfenster nach 45 s oder 55 % Scrolltiefe, nie auf Warenkorb/Kasse, höchstens alle 14 Tage, schließbar mit Esc.
 {%- endcomment -%}
 {%- assign s = section.settings -%}
@@ -86,9 +86,12 @@
       fly.querySelector('[data-nw-fly-close]').addEventListener('click', hide);
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !fly.hidden) hide(); });
       setTimeout(show, (+fly.dataset.delay || 45) * 1000);
-      addEventListener('scroll', function onS() {
-        var h = document.documentElement; if ((h.scrollTop + innerHeight) / h.scrollHeight > .55) { removeEventListener('scroll', onS); show(); }
-      }, { passive: true });
+      function onS(e) {
+        var el = e.target === document ? document.documentElement : e.target;
+        if (!el || !el.scrollHeight || el.scrollHeight <= innerHeight) return;
+        if ((el.scrollTop + el.clientHeight) / el.scrollHeight > .55) { document.removeEventListener('scroll', onS, true); show(); }
+      }
+      document.addEventListener('scroll', onS, { capture: true, passive: true });
     })();
   </script>
 {%- endif -%}
@@ -106,8 +109,8 @@
     { "type": "checkbox", "id": "flyout", "label": "Dezentes Seitenfenster zeigen", "default": true },
     { "type": "range", "id": "flyout_delay", "label": "Nach Sekunden", "min": 20, "max": 120, "step": 5, "unit": "s", "default": 45 },
     { "type": "range", "id": "flyout_pause_days", "label": "Pause nach Anzeige", "min": 3, "max": 60, "step": 1, "unit": "d", "default": 14 },
-    { "type": "text", "id": "flyout_heading", "label": "Seitenfenster: Überschrift", "default": "5 € für deine erste Nacht mit uns" },
-    { "type": "text", "id": "flyout_text", "label": "Seitenfenster: Text", "default": "Tritt dem Club bei: Willkommensvorteil ab 59 €, neue Schlafhelfer 48 Stunden früher und ein Schlafbrief im Monat." }
+    { "type": "text", "id": "flyout_heading", "label": "Seitenfenster: Überschrift", "default": "5 € für deine erste Nacht mit uns" },
+    { "type": "text", "id": "flyout_text", "label": "Seitenfenster: Text", "default": "Tritt dem Club bei: Willkommensvorteil ab 59 €, neue Schlafhelfer 48 Stunden früher und ein Schlafbrief im Monat." }
   ],
   "blocks": [
     { "type": "perk", "name": "Vorteil", "settings": [
