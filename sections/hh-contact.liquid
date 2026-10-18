@@ -11,7 +11,7 @@
       <div class="hh-lead rte">{{ closest.page.content | default: page.content }}</div>
       <ul class="hh-contact__facts">
         <li>{% render 'hh-icon', name: 'chat' %}<span><strong>Antwort {% render 'hh-config', key: 'reply_time' %}</strong>per E-Mail an deine Adresse</span></li>
-        <li>{% render 'hh-icon', name: 'ruler' %}<span><strong>Frage zur Größe?</strong>Schick uns die Maße deines Hundes mit – dann empfehlen wir dir die passende Größe.</span></li>
+        <li>{% render 'hh-icon', name: 'ruler' %}<span><strong>Frage zur Auswahl?</strong>Beschreib kurz, was dich nachts stört – dann sagen wir dir ehrlich, was passt und was nicht.</span></li>
         <li>{% render 'hh-icon', name: 'truck' %}<span><strong>Frage zur Bestellung?</strong>Mit Bestellnummer können wir dir am schnellsten helfen.</span></li>
       </ul>
       {%- if section.settings.person != blank -%}<p class="hh-contact__person">{{ section.settings.person }}</p>{%- endif -%}
@@ -67,7 +67,7 @@
           </div>
           <div class="hh-field">
             <label for="hh-c-msg">Deine Nachricht <span aria-hidden="true">*</span></label>
-            <textarea id="hh-c-msg" name="contact[body]" rows="6" required placeholder="Bei Größenfragen: Rückenlänge oder Liegelänge, Brustumfang und Gewicht deines Hundes.">{{ form.body }}</textarea>
+            <textarea id="hh-c-msg" name="contact[body]" rows="6" required placeholder="Zum Beispiel: Ich schlafe auf der Seite und wache von Straßenlärm auf.">{{ form.body }}</textarea>
           </div>
           <p class="hh-form__note">Pflichtfelder sind mit * markiert. Wir nutzen deine Angaben nur, um deine Anfrage zu beantworten – mehr in der <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Datenschutzerklärung</a>.</p>
           <button class="hh-btn" type="submit">Nachricht senden</button>

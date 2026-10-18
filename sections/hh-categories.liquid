@@ -9,7 +9,7 @@
         {%- if section.settings.eyebrow != blank -%}<p class="hh-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
         <h2 id="hh-cats-{{ section.id }}" class="hh-h2">{{ section.settings.heading | escape }}</h2>
       </div>
-      {%- if section.settings.link_label != blank -%}<a class="hh-link hh-link--arrow" href="{{ routes.all_products_collection_url }}">{{ section.settings.link_label | escape }}</a>{%- endif -%}
+      {%- if section.settings.link_label != blank -%}<a class="hh-link hh-link--arrow" href="{{ '/collections/schlafhelfer' }}">{{ section.settings.link_label | escape }}</a>{%- endif -%}
     </div>
     <ul class="hh-cats__grid">
       {%- for block in section.blocks -%}
@@ -19,7 +19,7 @@
           if title == blank and c != blank
             assign title = c.title
           endif
-          assign url = '/collections/all'
+          assign url = '/collections/schlafhelfer'
           assign img = block.settings.image
           if c != blank
             assign url = c.url

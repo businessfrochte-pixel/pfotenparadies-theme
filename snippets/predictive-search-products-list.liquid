@@ -64,7 +64,7 @@
             </li>
           {% endfor %}
         {% else %}
-          {% for product in products limit: limit %}
+          {% for product in products limit: limit %}{%- if product.tags contains 'shop-hund' -%}{%- continue -%}{%- endif -%}
             <li
               class="predictive-search-results__card predictive-search-results__card--product"
               ref="recentlyViewedItems[]"
@@ -92,7 +92,7 @@
       {% liquid
         assign limit = limit | default: 8
       %}
-      {% for product in products limit: limit %}
+      {% for product in products limit: limit %}{%- if product.tags contains 'shop-hund' -%}{%- continue -%}{%- endif -%}
         <li
           class="predictive-search-results__card predictive-search-results__card--product"
           ref="resultsItems[]"

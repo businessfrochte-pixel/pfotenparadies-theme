@@ -169,7 +169,7 @@
       },
       "name": "t:names.product_list",
       "settings": {
-        "collection": "all",
+        "collection": "schlafhelfer",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 4,

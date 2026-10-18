@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "main": { "type": "hh-page", "settings": { "eyebrow": "", "heading": "Was stört deinen Schlaf?", "intro": "", "body": "ratgeber", "padding-block-start": 40, "padding-block-end": 64 } }
+  },
+  "order": ["main"]
+}

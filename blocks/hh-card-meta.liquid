@@ -7,9 +7,14 @@
       assign first = o.values.first
       assign last = o.values.last
       assign text = o.values.size | append: ' ' | append: o.name
-      if o.name == 'Größe'
-        assign text = o.values.size | append: ' Größen'
-      endif
+      case o.name
+        when 'Größe'
+          assign text = o.values.size | append: ' Größen'
+        when 'Farbe'
+          assign text = o.values.size | append: ' Farben'
+        when 'Ausführung'
+          assign text = o.values.size | append: ' Ausführungen'
+      endcase
       assign text = text | append: ': ' | append: first | append: '–' | append: last
       break
     endif

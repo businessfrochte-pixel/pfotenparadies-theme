@@ -5,7 +5,7 @@
     {% render 'hh-icon', name: section.settings.icon %}
     <p>{{ section.settings.text }}</p>
     <div class="hh-helpbar__links">
-      <a class="hh-link" href="{{ section.settings.link_1 | default: '/pages/messhilfe' }}">{{ section.settings.label_1 | escape }}</a>
+      <a class="hh-link" href="{{ section.settings.link_1 | default: '/pages/schlafratgeber' }}">{{ section.settings.label_1 | escape }}</a>
       <a class="hh-link" href="{{ section.settings.link_2 | default: '/pages/contact' }}">{{ section.settings.label_2 | escape }}</a>
     </div>
   </aside>
@@ -15,9 +15,9 @@
   "name": "PP Hilfe-Leiste",
   "class": "hh-section",
   "settings": [
-    { "type": "select", "id": "icon", "label": "Symbol", "default": "ruler", "options": [{ "value": "ruler", "label": "Maßband" }, { "value": "gift", "label": "Geschenk" }, { "value": "chat", "label": "Beratung" }] },
+    { "type": "select", "id": "icon", "label": "Symbol", "default": "ruler", "options": [{ "value": "ruler", "label": "Maßband" }, { "value": "gift", "label": "Geschenk" }, { "value": "chat", "label": "Beratung" }, { "value": "moon", "label": "Mond" }] },
     { "type": "inline_richtext", "id": "text", "label": "Text", "default": "<strong>Unsicher bei der Größe?</strong> Bei jedem Artikel stehen die Maße – und wir helfen dir vor dem Kauf." },
-    { "type": "text", "id": "label_1", "label": "Link 1", "default": "Hund richtig messen" },
+    { "type": "text", "id": "label_1", "label": "Link 1", "default": "Zum Schlafratgeber" },
     { "type": "url", "id": "link_1", "label": "Link 1 – Ziel" },
     { "type": "text", "id": "label_2", "label": "Link 2", "default": "Beratung anfragen" },
     { "type": "url", "id": "link_2", "label": "Link 2 – Ziel" },

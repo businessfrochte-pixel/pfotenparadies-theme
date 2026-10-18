@@ -1,79 +1,5 @@
 {
   "sections": {
-    "hh_hero": {
-      "type": "hh-hero",
-      "settings": {
-        "heading": "Für eure kleinen und großen Hundemomente.",
-        "text": "<p>Hundezubehör für gemütliche Ruhepausen, gemeinsame Ausflüge und Beschäftigung zu Hause. Entdecke, was zu eurem Alltag passt.</p>",
-        "button_label": "Zubehör entdecken",
-        "button_link": "shopify://collections/all",
-        "link_label": "",
-        "link_url": "shopify://pages/messhilfe",
-        "needs_title": "Wobei können wir helfen?",
-        "draft_note": "Abbildungen: Entwurfsdarstellungen",
-        "padding-block-start": 16,
-        "padding-block-end": 8,
-        "service_note": "Unsicher bei der Auswahl? <a href=\"/pages/contact\">Wir helfen dir vor dem Kauf.</a>"
-      },
-      "blocks": {
-        "n1": {
-          "type": "need",
-          "settings": {
-            "text": "Mein Hund braucht einen besseren Schlafplatz",
-            "sub": "Betten mit Polsterrand, Liegefläche in cm",
-            "link": "shopify://collections/schlafen-liegen",
-            "image": "shopify://shop_images/pfotenparadies-hero-hundebett.jpg",
-            "icon": "bed"
-          }
-        },
-        "n2": {
-          "type": "need",
-          "settings": {
-            "text": "Autofahrten ohne Haare und Matsch auf dem Sitz",
-            "sub": "Schondecke für die Rückbank",
-            "link": "shopify://collections/unterwegs-auto",
-            "image": "shopify://shop_images/pfotenparadies-szene-auto.jpg",
-            "icon": "car"
-          }
-        },
-        "n3": {
-          "type": "need",
-          "settings": {
-            "text": "Nasse, schmutzige Pfoten nach dem Spaziergang",
-            "sub": "Pfotenreiniger in drei Größen",
-            "link": "shopify://collections/pflege-hygiene",
-            "image": "shopify://shop_images/pfotenparadies-szene-pfoten.jpg",
-            "icon": "paw"
-          }
-        },
-        "n4": {
-          "type": "need",
-          "settings": {
-            "text": "Beschäftigung für Regentage und ruhige Abende",
-            "sub": "Schnüffelteppich zum Suchen von Leckerlis",
-            "link": "shopify://collections/spielzeug-beschaftigung",
-            "image": "shopify://shop_images/pfotenparadies-szene-schnueffeln.jpg",
-            "icon": "toy"
-          }
-        },
-        "n5": {
-          "type": "need",
-          "settings": {
-            "text": "Ein Geschenk für jemanden mit Hund",
-            "sub": "Ideen ganz ohne Größenauswahl",
-            "link": "shopify://collections/geschenke-fuer-hundefreunde",
-            "icon": "gift"
-          }
-        }
-      },
-      "block_order": [
-        "n1",
-        "n2",
-        "n3",
-        "n4",
-        "n5"
-      ]
-    },
     "hh_facts": {
       "type": "hh-facts",
       "settings": {
@@ -120,7 +46,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Unser Sortiment</h2>",
+                "text": "<h2>Unsere Schlafhelfer</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -253,7 +179,7 @@
       },
       "name": "t:names.product_list",
       "settings": {
-        "collection": "all",
+        "collection": "schlafhelfer",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 8,
@@ -278,40 +204,40 @@
         "chk_1": {
           "type": "check",
           "settings": {
-            "label": "Streckt sich gern aus:",
-            "text": "eher ein flaches Kissen oder eine Matte mit großer Liegefläche."
+            "label": "Seitenschläfer:",
+            "text": "eher ein höheres, festes Kissen – es füllt den Abstand zur Schulter."
           }
         },
         "chk_2": {
           "type": "check",
           "settings": {
-            "label": "Rollt sich ein und lehnt sich an:",
-            "text": "eher ein Bett mit Rand."
+            "label": "Rückenschläfer:",
+            "text": "eher ein mittelhohes Kissen."
           }
         },
         "chk_3": {
           "type": "check",
           "settings": {
-            "label": "Älter oder steif:",
-            "text": "auf einen niedrigen Einstieg achten."
+            "label": "Bauchschläfer:",
+            "text": "eher ein flaches Kissen oder gar keins."
           }
         },
         "stp_1": {
           "type": "step",
           "settings": {
-            "text": "Miss deinen Hund im ausgestreckten Liegen – von der Nase bis zum Rutenansatz."
+            "text": "Leg dich in deiner üblichen Position auf dein Kissen."
           }
         },
         "stp_2": {
           "type": "step",
           "settings": {
-            "text": "Rechne 20 bis 30 cm dazu."
+            "text": "Lass jemanden von der Seite schauen: Bilden Kopf und Wirbelsäule eine gerade Linie?"
           }
         },
         "stp_3": {
           "type": "step",
           "settings": {
-            "text": "Vergleiche mit der <strong>Liegefläche</strong> beim Bett – nicht mit dem Außenmaß."
+            "text": "Kippt der Kopf nach oben, ist das Kissen <strong>zu hoch</strong> – kippt er nach unten, ist es <strong>zu flach</strong>."
           }
         }
       },
@@ -325,13 +251,13 @@
       ],
       "settings": {
         "eyebrow": "",
-        "heading": "Welches Bett passt zu deinem Hund?",
-        "text": "<p>Entscheidend ist nicht das Außenmaß, sondern die Fläche, auf der dein Hund wirklich liegt. Deshalb steht bei jedem Bett die Liegefläche in Zentimetern.</p>",
-        "button_label": "Betten ansehen",
-        "button_link": "shopify://collections/schlafen-liegen",
-        "steps_heading": "In 3 Schritten zur richtigen Größe",
-        "more_label": "Zur ausführlichen Messhilfe",
-        "more_link": "shopify://pages/messhilfe",
+        "heading": "Welches Kissen passt zu deiner Schlafposition?",
+        "text": "<p>Entscheidend ist der Abstand zwischen Kopf und Matratze. Liegt der Kopf zu hoch oder zu tief, knickt der Hals ab.</p>",
+        "button_label": "Kissen und Decken ansehen",
+        "button_link": "shopify://collections/schlaf-liegen",
+        "steps_heading": "So prüfst du deine Kissenhöhe",
+        "more_label": "Zum Schlafratgeber",
+        "more_link": "shopify://pages/schlafratgeber",
         "padding-block-start": 32,
         "padding-block-end": 32
       }
@@ -350,22 +276,22 @@
         "f1": {
           "type": "feature",
           "settings": {
-            "title": "Polsterrand rundum",
-            "text": "Zum Anlehnen und Kopf-Ablegen – ideal für Hunde, die sich gern einrollen."
+            "title": "Gleichmäßiges Rauschen",
+            "text": "Überdeckt Geräusche, die sonst plötzlich auftauchen – Türen, Autos, Stimmen."
           }
         },
         "f2": {
           "type": "feature",
           "settings": {
-            "title": "8 cm Liegefläche aus viskoelastischem Schaum",
-            "text": "Mehr Polster unter Schulter und Hüfte als ein dünnes Kissen."
+            "title": "Warmes, dimmbares Nachtlicht",
+            "text": "Genug Licht für den Weg ins Bad, ohne das Schlafzimmer zu erhellen."
           }
         },
         "f3": {
           "type": "feature",
           "settings": {
-            "title": "Bezug mit Reißverschluss",
-            "text": "Abnehmen, bei 30 °C waschen, wieder aufziehen."
+            "title": "Auch als Bluetooth-Lautsprecher",
+            "text": "Hörbuch oder eigene Einschlafklänge vom Handy abspielen."
           }
         }
       },
@@ -375,22 +301,82 @@
         "f3"
       ],
       "settings": {
-        "product": "wohlfuehlbett-wolke",
-        "image": "shopify://shop_images/pfotenparadies-bett-detail.jpg",
-        "caption": "Velours-Bezug mit Reißverschluss am unteren Rand",
-        "heading": "Wohlfühlbett „Wolke“",
-        "lead": "<p>Ein Rückzugsort für Hunde, die beim Schlafen Halt suchen: weich am Rand, stabil in der Mitte.</p>",
-        "button_label": "Größe wählen",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "product": "rauschgeraet-nachtlicht",
+        "caption": "",
+        "heading": "Wenn Geräusche dich wecken",
+        "lead": "<p>Ein Rauschgerät macht die Nacht nicht leiser – es macht sie gleichmäßiger. Unregelmäßige Geräusche fallen dadurch weniger auf.</p>",
+        "button_label": "Zum Rauschgerät",
+        "padding-block-start": 56,
+        "padding-block-end": 56
+      }
+    },
+    "nw_hero": {
+      "type": "nw-hero",
+      "blocks": {
+        "st1": {
+          "type": "stoerer",
+          "settings": {
+            "text": "Licht",
+            "sub": "Straßenlaterne, Standby-Licht, früher Sonnenaufgang",
+            "link": "shopify://collections/schlaf-licht",
+            "icon": "light"
+          }
+        },
+        "st2": {
+          "type": "stoerer",
+          "settings": {
+            "text": "Geräusche",
+            "sub": "Verkehr, Nachbarn, Schnarchen",
+            "link": "shopify://collections/schlaf-geraeusche",
+            "icon": "sound"
+          }
+        },
+        "st3": {
+          "type": "stoerer",
+          "settings": {
+            "text": "Liegen & Kissen",
+            "sub": "Kissen zu hoch, zu flach oder zu warm",
+            "link": "shopify://collections/schlaf-liegen",
+            "icon": "neck"
+          }
+        },
+        "st4": {
+          "type": "stoerer",
+          "settings": {
+            "text": "Aufwachen",
+            "sub": "Schriller Wecker, dunkle Wintermorgen",
+            "link": "shopify://collections/schlaf-aufwachen",
+            "icon": "sunrise"
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2",
+        "st3",
+        "st4"
+      ],
+      "settings": {
+        "kicker": "",
+        "heading": "Schlaf ohne Licht, Lärm und falsches Kissen.",
+        "text": "<p>Nachtwerk sortiert Schlafhelfer nach dem, was dich nachts stört – mit ehrlichen Angaben, was sie können und was nicht.</p>",
+        "button_label": "Alle Schlafhelfer ansehen",
+        "button_link": "shopify://collections/schlafhelfer",
+        "link_label": "Zum Schlafratgeber",
+        "link_url": "shopify://pages/schlafratgeber",
+        "product": "schlafmaske-3d",
+        "media_index": 4,
+        "needs_title": "Was stört deinen Schlaf?",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     }
   },
   "order": [
-    "hh_hero",
+    "nw_hero",
     "hh_facts",
-    "hh_spot",
     "product_list_fa6P9H",
+    "hh_spot",
     "hh_ruheplatz",
     "hh_faq"
   ]

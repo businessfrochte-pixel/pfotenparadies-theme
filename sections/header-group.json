@@ -8,7 +8,7 @@
         "announcement_hh0": {
           "type": "_announcement",
           "settings": {
-            "text": "In Deutschland in 2–4 Werktagen, ab 150 € versandkostenfrei. Wir liefern weltweit.",
+            "text": "Lieferung nach Deutschland in 7–12 Werktagen, ab 150 € versandkostenfrei.",
             "link": "shopify://pages/versand-lieferung",
             "font": "var(--font-subheading--family)",
             "font_size": "0.875rem",
@@ -25,7 +25,7 @@
       "settings": {
         "speed": 5,
         "section_width": "page-width",
-        "background_color": "#2E4A3B",
+        "background_color": "#1D2640",
         "divider_width": 0,
         "divider_color": "{{ settings.color_palette.color2 }}",
         "padding-block-start": 10,
@@ -49,7 +49,7 @@
           "type": "_header-menu",
           "static": true,
           "settings": {
-            "menu": "main-menu",
+            "menu": "nachtwerk-hauptmenue",
             "type_font_primary_size": "1.125rem",
             "menu_font_style": "inverse",
             "type_font_primary_link": "subheading",

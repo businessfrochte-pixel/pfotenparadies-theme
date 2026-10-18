@@ -38,7 +38,7 @@
           "static": true,
           "settings": {
             "extend_summary": true,
-            "background_color": "#F3E9DB",
+            "background_color": "#ECEAE4",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
@@ -93,7 +93,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>Das könnte deinem Hund auch gefallen</h3>",
+                "text": "<h3>Passt gut dazu</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -225,7 +225,7 @@
       },
       "name": "t:names.product_list",
       "settings": {
-        "collection": "all",
+        "collection": "schlafhelfer",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 4,

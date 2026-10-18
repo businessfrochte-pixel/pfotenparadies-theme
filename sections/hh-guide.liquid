@@ -15,7 +15,7 @@
         </ul>
       {%- endif -%}
       {%- if section.settings.button_label != blank -%}
-        <a class="hh-btn" href="{{ section.settings.button_link | default: '/collections/all' }}">{{ section.settings.button_label | escape }}</a>
+        <a class="hh-btn" href="{{ section.settings.button_link | default: '/collections/schlafhelfer' }}">{{ section.settings.button_label | escape }}</a>
       {%- endif -%}
     </div>
     <div class="hh-guide__aside">
@@ -24,7 +24,7 @@
       <ol class="hh-steps">
         {%- for block in steps -%}<li {{ block.shopify_attributes }}><span>{{ block.settings.text }}</span></li>{%- endfor -%}
       </ol>
-      {%- if section.settings.more_label != blank -%}<a class="hh-link hh-link--arrow" href="{{ section.settings.more_link | default: '/pages/messhilfe' }}">{{ section.settings.more_label | escape }}</a>{%- endif -%}
+      {%- if section.settings.more_label != blank -%}<a class="hh-link hh-link--arrow" href="{{ section.settings.more_link | default: '/pages/schlafratgeber' }}">{{ section.settings.more_label | escape }}</a>{%- endif -%}
     </div>
   </section>
 </div>

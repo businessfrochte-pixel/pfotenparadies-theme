@@ -3,7 +3,7 @@
   assign p = closest.product
   assign coll = blank
   for c in p.collections
-    if c.handle != 'frontpage' and c.handle != 'all'
+    if c.handle != 'frontpage' and c.handle != 'all' and c.handle != 'schlafhelfer'
       assign coll = c
       break
     endif

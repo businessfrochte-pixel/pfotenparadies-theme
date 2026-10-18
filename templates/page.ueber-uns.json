@@ -3,18 +3,47 @@
     "main": {
       "type": "hh-about",
       "blocks": {
-        "p1": { "type": "principle", "settings": { "title": "Die passende Größe beim ersten Mal", "text": "<p>Bei Betten nennen wir die Liegefläche, nicht nur das Außenmaß. Jede Größenauswahl hat ihre Maßtabelle direkt daneben, und unsere <a href=\"/pages/messhilfe\">Messhilfe</a> zeigt, wie du deinen Hund richtig misst.</p>" } },
-        "p2": { "type": "principle", "settings": { "title": "Konkret statt übertrieben", "text": "<p>Zu jedem Produkt stehen Maße, Material, Pflege und Lieferumfang. Wir schreiben auch dazu, wofür ein Produkt nicht gedacht ist. Bewertungen zeigen wir nur, wenn sie von echten Kundinnen und Kunden stammen.</p>" } },
-        "p3": { "type": "principle", "settings": { "title": "Du weißt, was es kostet und wann es kommt", "text": "<p>Versandkosten und Lieferzeit stehen am Preis und im Warenkorb, nicht erst an der Kasse. Innerhalb Deutschlands siehst du das voraussichtliche Lieferdatum direkt am Kaufbutton. Für alle anderen Länder gilt unsere Übersicht <a href=\"/pages/versand-lieferung\">Versand &amp; Lieferung</a>.</p>" } },
-        "p4": { "type": "principle", "settings": { "title": "Rückgabe ohne Umwege", "text": "<p>Passt etwas nicht, kannst du es innerhalb von 14 Tagen zurückgeben – ohne Kundenkonto. Wie das geht, steht unter <a href=\"/pages/rueckgabe-widerruf\">Rückgabe &amp; Widerruf</a>.</p>" } }
+        "p1": {
+          "type": "principle",
+          "settings": {
+            "title": "Sortiert nach dem, was dich stört",
+            "text": "<p>Statt Kategorien nach Warengruppen findest du bei uns Licht, Geräusche, Liegen und Aufwachen. Unser <a href=\"/pages/schlafratgeber\">Schlafratgeber</a> erklärt, welches Hilfsmittel wofür gedacht ist.</p>"
+          }
+        },
+        "p2": {
+          "type": "principle",
+          "settings": {
+            "title": "Keine Heilversprechen",
+            "text": "<p>Eine Schlafmaske hält Licht ab, Ohrstöpsel dämpfen Geräusche – das schreiben wir so. Wir versprechen keinen „perfekten Schlaf“ und keine Wirkung gegen Schlafstörungen. Bei jedem Produkt steht auch, für wen es nicht geeignet ist. Bewertungen zeigen wir nur, wenn sie von echten Kundinnen und Kunden stammen.</p>"
+          }
+        },
+        "p3": {
+          "type": "principle",
+          "settings": {
+            "title": "Du weißt, was es kostet und wann es kommt",
+            "text": "<p>Versandkosten und Lieferzeit stehen am Produkt und im Warenkorb, nicht erst an der Kasse. Das voraussichtliche Lieferdatum siehst du direkt am Kaufbutton.</p>"
+          }
+        },
+        "p4": {
+          "type": "principle",
+          "settings": {
+            "title": "Rückgabe ohne Umwege",
+            "text": "<p>Passt etwas nicht, kannst du es innerhalb von 14 Tagen zurückgeben – ohne Kundenkonto. Wie das geht, steht unter <a href=\"/pages/rueckgabe-widerruf\">Rückgabe &amp; Widerruf</a>.</p>"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4"],
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
       "settings": {
         "heading": "",
-        "intro": "<p>PfotenParadies ist ein kleiner Onlineshop für den Alltag mit Hund: für den Schlafplatz, die Autofahrt, nasse Pfoten nach dem Spaziergang und ruhige Abende zu Hause.</p><p>Wir führen bewusst wenige Produkte und beschreiben jedes so genau, dass du vor dem Kauf weißt, ob es zu deinem Hund passt.</p>",
+        "intro": "<p>Nachtwerk ist ein kleiner Onlineshop für Menschen, die nachts von etwas Bestimmtem gestört werden: Licht im Schlafzimmer, Lärm von Straße oder Partner, ein Kissen, das nicht zur Schlafposition passt, oder ein Wecker, der einen aus dem Tiefschlaf reißt.</p><p>Wir führen bewusst wenige Hilfsmittel und sortieren sie nach diesen Störquellen – mit ehrlichen Angaben dazu, was sie können und was nicht.</p>",
         "principles_heading": "Worauf du dich verlassen kannst",
-        "person_heading": "Wer hinter PfotenParadies steht",
-        "person_text": "<p>PfotenParadies wird von Nils Frochte in Beckum betrieben. Wenn du uns schreibst, landet deine Nachricht direkt beim Betreiber und nicht in einer Warteschleife. Wir antworten in der Regel innerhalb von zwei Werktagen.</p>",
+        "person_heading": "Wer hinter Nachtwerk steht",
+        "person_text": "<p>Nachtwerk wird von Nils Frochte in Beckum betrieben. Wenn du uns schreibst, landet deine Nachricht direkt beim Betreiber. Wir antworten in der Regel innerhalb von zwei Werktagen.</p>",
         "cta_label": "Nachricht schreiben",
         "cta_link": "shopify://pages/contact",
         "padding-block-start": 40,
@@ -22,5 +51,7 @@
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

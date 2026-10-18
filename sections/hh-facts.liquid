@@ -1,28 +1,26 @@
 {%- comment -%}
-  PfotenParadies – Kaufgrund bei uns als prüfbare Fakten (JARVIS, E1/E5). Lieferzeit und Versandkosten stehen in der Ankündigungsleiste und am Produkt, daher hier nicht doppelt (K2). Werte kommen zentral aus snippets/hh-config.liquid.
+  Nachtwerk – Kaufgrund bei uns als prüfbare Fakten (JARVIS). Nur Aussagen, die der Shop tatsächlich einlöst.
 {%- endcomment -%}
 <div class="section-background"></div>
 <div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: section.settings %}">
-  <section class="hh hh-facts" aria-label="Warum bei PfotenParadies bestellen">
+  <section class="hh hh-facts" aria-label="Warum bei Nachtwerk bestellen">
     <ul>
-      <li>{% render 'hh-icon', name: 'ruler' %}<span><strong>Liegefläche in cm</strong>Bei jedem Bett angegeben. <a class="hh-link" href="/pages/messhilfe">Zur Messhilfe</a></span></li>
+      <li>{% render 'hh-icon', name: 'moon' %}<span><strong>Nach Störquelle sortiert</strong>Licht, Geräusche, Liegen, Aufwachen. <a class="hh-link" href="/pages/schlafratgeber">Zum Ratgeber</a></span></li>
+      <li>{% render 'hh-icon', name: 'check' %}<span><strong>Auch „nicht geeignet für“</strong>Bei jedem Produkt steht, wofür es nicht gedacht ist.</span></li>
       <li>{% render 'hh-icon', name: 'truck' %}<span><strong>Lieferdatum vorab</strong>Steht bei jedem Produkt direkt am Kaufbutton.</span></li>
       <li>{% render 'hh-icon', name: 'return' %}<span><strong>14 Tage Rückgabe</strong><a class="hh-link" href="/pages/rueckgabe-widerruf">So funktioniert es</a></span></li>
-      <li>{% render 'hh-icon', name: 'chat' %}<span><strong>Beratung vor dem Kauf</strong><a class="hh-link" href="/pages/contact">Schreib uns</a> – Antwort {% render 'hh-config', key: 'reply_time' %}.</span></li>
     </ul>
   </section>
 </div>
 
 {% schema %}
 {
-  "name": "PP Fakten",
+  "name": "NW Fakten",
   "class": "hh-section",
   "settings": [
-    { "type": "paragraph", "content": "Lieferzeit, Versandkosten und Antwortzeit werden zentral in snippets/hh-config.liquid gepflegt." },
-    { "type": "header", "content": "Abstände" },
-    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 8 },
+    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 24 },
     { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 24 }
   ],
-  "presets": [{ "name": "PP Fakten" }]
+  "presets": [{ "name": "NW Fakten" }]
 }
 {% endschema %}

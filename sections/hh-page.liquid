@@ -15,7 +15,7 @@
       {%- when 'faq' -%}{% render 'hh-faq-list', page_mode: true %}
       {%- when 'versand' -%}{% render 'hh-shipping-info' %}
       {%- when 'widerruf' -%}{% render 'hh-returns-info' %}
-      {%- when 'messhilfe' -%}{% render 'hh-measure', show_bed_rule: true, page_mode: true %}
+      {%- when 'ratgeber' -%}{% render 'nw-ratgeber' %}
       {%- else -%}<div class="hh-page__content rte">{{ pg.content }}</div>
     {%- endcase -%}
   </div>
@@ -31,7 +31,7 @@
     { "type": "select", "id": "body", "label": "Inhalt", "default": "content", "options": [
       { "value": "content", "label": "Seiteninhalt" }, { "value": "faq", "label": "Häufige Fragen" },
       { "value": "versand", "label": "Versand & Lieferung" }, { "value": "widerruf", "label": "Rückgabe & Widerruf" },
-      { "value": "messhilfe", "label": "Messhilfe" } ] },
+      { "value": "ratgeber", "label": "Schlafratgeber" } ] },
     { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 40 },
     { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 64 }
   ],

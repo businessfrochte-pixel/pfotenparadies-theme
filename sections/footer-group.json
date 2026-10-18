@@ -43,7 +43,7 @@
             "text_LWt8Pz": {
               "type": "text",
               "settings": {
-                "text": "<h2>PfotenParadies</h2>",
+                "text": "<h2>Nachtwerk</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -67,7 +67,7 @@
             "text_f9CFLH": {
               "type": "text",
               "settings": {
-                "text": "<p>Zubehör für den Alltag mit Hund – mit genauen Maßen, dem Lieferdatum vor dem Kauf und Beratung, wenn du unsicher bist.</p><p>Fragen? <a href=\"/pages/contact\">Schreib uns</a> – wir antworten in der Regel innerhalb von zwei Werktagen.</p>",
+                "text": "<p>Hilfsmittel gegen Licht, Geräusche und unbequemes Liegen – mit ehrlichen Angaben, was sie können und was nicht.</p><p>Fragen? <a href=\"/pages/contact\">Schreib uns</a> – wir antworten in der Regel innerhalb von zwei Werktagen.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -109,7 +109,7 @@
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0,
-            "menu": "footer",
+            "menu": "nachtwerk-service",
             "heading": "Hilfe & Service"
           },
           "blocks": {}
@@ -129,7 +129,7 @@
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0,
-            "menu": "footer-sortiment",
+            "menu": "nachtwerk-sortiment",
             "heading": "Sortiment"
           },
           "blocks": {}
@@ -144,7 +144,7 @@
       "settings": {
         "section_width": "page-width",
         "gap": 40,
-        "background_color": "#E7EEE6",
+        "background_color": "#E3E7EE",
         "padding-block-start": 56,
         "padding-block-end": 40
       }
@@ -192,7 +192,7 @@
         "gap": 24,
         "divider_thickness": 1,
         "divider_color": "{{ settings.color_palette.color2 }}",
-        "background_color": "#E7EEE6",
+        "background_color": "#E3E7EE",
         "padding-block-start": 20,
         "padding-block-end": 48
       }
@@ -201,8 +201,8 @@
       "type": "hh-newsletter",
       "settings": {
         "eyebrow": "",
-        "heading": "Neues von PfotenParadies",
-        "text": "<p>Wir schreiben dir, wenn neue Produkte dazukommen – selten und ohne Spam. Abmeldung jederzeit mit einem Klick.</p>",
+        "heading": "Neues von Nachtwerk",
+        "text": "<p>Wir schreiben dir, wenn neue Schlafhelfer dazukommen – selten und ohne Spam. Abmeldung jederzeit mit einem Klick.</p>",
         "button_label": "Anmelden"
       }
     }

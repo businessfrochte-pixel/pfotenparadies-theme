@@ -224,7 +224,13 @@
       "type": "hh-helpbar",
       "settings": {
         "padding-block-start": 0,
-        "padding-block-end": 8
+        "padding-block-end": 8,
+        "icon": "moon",
+        "text": "<strong>Unsicher, was zu dir passt?</strong> Bei jedem Artikel steht, wofür er gedacht ist – und wofür nicht.",
+        "label_1": "Zum Schlafratgeber",
+        "link_1": "shopify://pages/schlafratgeber",
+        "label_2": "Frage stellen",
+        "link_2": "shopify://pages/contact"
       }
     }
   },

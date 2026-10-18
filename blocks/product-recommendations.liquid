@@ -96,7 +96,7 @@
         endif
       %}
       {% capture list_items %}
-        {% for product in products limit: block_settings.max_products %}
+        {% for product in products limit: block_settings.max_products %}{%- if product.tags contains 'shop-hund' -%}{%- continue -%}{%- endif -%}
           <div class="resource-list__item">
             {% content_for 'block',
               type: '_product-card',

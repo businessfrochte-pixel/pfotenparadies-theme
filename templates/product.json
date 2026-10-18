@@ -263,9 +263,9 @@
             "hh_size_help": {
               "type": "hh-size-help",
               "settings": {
-                "title": "Welche Größe passt?",
-                "link_label": "Hund richtig messen",
-                "link": "shopify://pages/messhilfe"
+                "title": "Was passt zu dir?",
+                "link_label": "Zum Schlafratgeber",
+                "link": "shopify://pages/schlafratgeber"
               }
             },
             "hh_trust": {

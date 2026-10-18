@@ -45,7 +45,7 @@
         <div class="hh-spot__buy">
           <p class="hh-spot__price">
             <span class="hh-spot__amount">{% if p.price_varies %}ab {% endif %}{{ p.price_min | money }}</span>
-            {%- if size_count > 1 -%}<span class="hh-spot__sizes">{{ size_count }} Größen ({{ size_first }}–{{ size_last }}), Liegefläche in cm</span>{%- endif -%}
+            {%- if size_count > 1 -%}<span class="hh-spot__sizes">{{ size_count }} Varianten ({{ size_first }}–{{ size_last }})</span>{%- endif -%}
           </p>
           <a class="hh-btn" href="{{ p.url }}">{{ s.button_label | default: 'Größe wählen' | escape }}</a>
         </div>

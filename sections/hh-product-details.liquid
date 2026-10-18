@@ -28,7 +28,7 @@
           {%- assign mlines = mf.masse.value | strip | newline_to_br | split: '<br />' -%}
           <div class="hh-pdetails__row">
             <h3>Maße</h3>
-            <dl class="hh-dl">{%- for l in mlines -%}{%- assign c = l | split: '|' -%}<div><dt>{{ c.first | strip | escape }}</dt><dd>{{ c.last | strip | escape }}</dd></div>{%- endfor -%}</dl>
+            <dl class="hh-dl">{%- for l in mlines -%}{%- assign c = l | split: '|' -%}{%- if c.size > 1 -%}<div><dt>{{ c.first | strip | escape }}</dt><dd>{{ c.last | strip | escape }}</dd></div>{%- elsif l != blank -%}<div><dt>Angabe</dt><dd>{{ l | strip | escape }}</dd></div>{%- endif -%}{%- endfor -%}</dl>
           </div>
         {%- endif -%}
         {%- if mf.material_pflege != blank -%}
