@@ -27,8 +27,8 @@
     {{- settings.brand_home_description -}}
   {%- elsif template.name == 'page' -%}
     {%- case suffix -%}
-      {%- when 'faq' -%}Antworten zu Lieferzeit (nach Deutschland in {{ delivery }}), Versandkosten, Rückgabe und Auswahl der Schlafhelfer bei {{ brand }}.
-      {%- when 'versand' -%}Lieferung nach Deutschland in {{ delivery }}, Versand {{ fee | strip }}, ab {{ free | strip }} kostenlos. Lieferzeiten und Kosten für andere Länder bei {{ brand }}.
+      {%- when 'faq' -%}Antworten zu Versand, Rückgabe, Club und Auswahl der Schlafhelfer bei {{ brand }}.
+      {%- when 'versand' -%}Kostenloser Versand ab {{ free | strip }}, darunter {{ fee | strip }} innerhalb Deutschlands. Lieferzeiten und Kosten für alle Länder bei {{ brand }}.
       {%- when 'widerruf' -%}Widerruf und Rückgabe bei {{ brand }}: Frist, Ablauf, Kosten und Erstattung.
       {%- when 'contact' -%}Fragen zu Schlafhelfern oder zu deiner Bestellung? Schreib {{ brand }} – wir antworten {% render 'hh-config', key: 'reply_time' %}.
       {%- when 'ueber-uns' -%}{{ brand }} sortiert Schlafhelfer nach Störquelle – Licht, Geräusche, Liegen, Aufwachen. Bei jedem Produkt steht, wofür es nicht gedacht ist.

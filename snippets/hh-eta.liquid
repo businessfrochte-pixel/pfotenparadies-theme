@@ -7,3 +7,6 @@
   assign dmax = parts[1]
 -%}
 <p class="hh-eta" data-hh-eta data-min="{{ dmin }}" data-max="{{ dmax }}">{% render 'hh-icon', name: 'truck' %}<span>Lieferung voraussichtlich <strong data-hh-eta-text>in {{ dmin }}–{{ dmax }} Werktagen</strong><small>nach {% render 'hh-config', key: 'ship_to' %}, mit Sendungsverfolgung</small></span></p>
+{%- capture reason -%}{% render 'hh-config', key: 'delivery_reason' %}{%- endcapture -%}
+{%- assign reason = reason | strip -%}
+{%- if reason != blank -%}<details class="hh-eta__why"><summary>Warum dauert das etwas länger?</summary><p>{{ reason }}</p></details>{%- endif -%}

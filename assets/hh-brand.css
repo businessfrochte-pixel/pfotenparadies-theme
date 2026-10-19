@@ -980,3 +980,28 @@ h1, h2, h3, .h1, .h2, .h3, .hh-h2, .hh-h3, .hh-spot__title, .hh-guide h2, .hh-fa
 .nw-setparts__sum { margin: 6px 0 0; padding-top: 8px; border-top: 1px solid var(--hh-line); color: var(--hh-ink); }
 .nw-setparts__note { display: flex; gap: 8px; align-items: flex-start; margin: 6px 0 0; font-size: .9375rem; line-height: 1.45; color: var(--hh-text); }
 .nw-setparts__note svg { flex: none; width: 18px; height: 18px; margin-top: 2px; }
+
+/* Club – Mitgliedsangebot und Code (19.10.2026) */
+.nw-club__card-offer { position: relative; display: grid; gap: 4px; color: #C9CFDD; font-size: .9375rem; line-height: 1.35; max-width: 22ch; }
+.nw-club__card-num { font-family: var(--hh-serif); font-weight: 500; letter-spacing: -.04em; line-height: .9; font-size: clamp(3.5rem, 2.6rem + 3vw, 5rem); color: var(--hh-brass-soft); }
+.nw-club__card-top { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.nw-club__card-top .nw-club__card-name { font-size: 1.25rem; padding: 4px 12px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(232, 180, 103, .5); color: var(--hh-brass-soft); font-family: inherit; letter-spacing: 0; }
+.nw-club__card { aspect-ratio: auto; min-height: 240px; }
+.nw-club__ok--code { display: grid; gap: 10px; padding: 22px; }
+.nw-club__ok--code p { margin: 0; }
+.nw-club__ok-title { font-family: var(--hh-serif); font-weight: 500; font-size: 1.5rem; letter-spacing: -.02em; }
+.nw-club__code { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 8px 8px 18px; border-radius: 14px; background: var(--hh-cream); border: 1px dashed var(--hh-line-strong, #B9BFCC); }
+.nw-club__code-val { font-weight: 700; font-size: 1.25rem; letter-spacing: .08em; color: var(--hh-ink); }
+.nw-club__copybtn { min-height: 44px; padding: 0 16px; border: 0; border-radius: 10px; background: var(--hh-ink); color: #fff; font: inherit; font-weight: 600; cursor: pointer; transition: background-color var(--hh-fast) var(--hh-ease); }
+.nw-club__copybtn:focus-visible, .nw-club .nw-club__activate:focus-visible { outline: 3px solid var(--hh-brass-soft); outline-offset: 2px; }
+.nw-club .nw-club__activate { color: #fff; }
+.nw-club__activate { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 999px; background: var(--nw-deep); color: #fff; font-weight: 600; text-decoration: none; text-align: center; }
+.nw-club__activate:hover { background: #26304D; }
+.nw-club__ok-note { font-size: .875rem; color: var(--hh-text); }
+
+/* Lieferzeit-Erklärung auf der Produktseite (aufklappbar) */
+.hh-eta__why { margin: 6px 0 0 30px; font-size: .9375rem; color: var(--hh-text); }
+.hh-eta__why summary { cursor: pointer; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; min-height: 32px; display: inline-flex; align-items: center; }
+.hh-eta__why summary::-webkit-details-marker { display: none; }
+.hh-eta__why summary:focus-visible { outline: 3px solid var(--hh-brass-soft); outline-offset: 2px; border-radius: 4px; }
+.hh-eta__why p { margin: 4px 0 0; line-height: 1.5; }

@@ -356,7 +356,7 @@
       "settings": {
         "kicker": "",
         "heading": "Schlaf ohne Licht, Lärm und falsches Kissen.",
-        "text": "<p>Nachtwerk sortiert Schlafhelfer nach dem, was dich nachts stört. Bei jedem Artikel siehst du das voraussichtliche Lieferdatum und wofür er nicht gedacht ist.</p>",
+        "text": "<p>Nachtwerk sortiert Schlafhelfer nach dem, was dich nachts stört. Bei jedem Artikel steht, wofür er gedacht ist – und wofür nicht.</p>",
         "button_label": "Alle Schlafhelfer ansehen",
         "button_link": "shopify://collections/schlafhelfer",
         "link_label": "Zum Schlafratgeber",
@@ -366,7 +366,7 @@
         "needs_title": "Was stört deinen Schlaf?",
         "padding-block-start": 0,
         "padding-block-end": 0,
-        "proof": "Sets ab [SET_MIN]|Lieferdatum vor dem Kauf|Bei jedem Produkt: wofür es nicht gedacht ist"
+        "proof": "Sets ab [SET_MIN]|Kostenloser Versand ab [FREE_SHIP]|Club: 5 € auf deine erste Bestellung"
       }
     },
     "nw_sets": {

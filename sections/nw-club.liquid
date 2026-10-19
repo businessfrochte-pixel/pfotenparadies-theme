@@ -9,6 +9,10 @@
   – Jeder Vorteil hat 'Eingerichtet'; nicht eingerichtete Vorteile werden nicht angezeigt.
   – Seitenfenster nur mit eingerichtetem Willkommensvorteil, nur auf Startseite, Infoseiten und Ratgeber (nie bei Auswahl, Produkt, Suche, Warenkorb);
     mobil kompakt mit Link zum Club-Bereich statt Formular.
+  Ausbau 19.10.2026 (Eigentümer: „richtig exklusiv“, 5 € ab 60 €): Rabattcode NACHTWERK5 in Shopify angelegt (nur Schlafhelfer + Sets, ab 60 €,
+  einmal pro Person). Der Code erscheint sofort nach der Anmeldung (kein Warten auf eine Mail) und lässt sich per Link direkt aktivieren.
+  Kein „Double-Opt-in“-Satz, solange 'doi_active' nicht gesetzt ist (Einstellung in Shopify vom Eigentümer prüfen).
+  Exklusiv durch echtes Mitglieder-Angebot und Gestaltung – keine erfundene Knappheit, keine Mitgliederzahlen.
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
@@ -32,7 +36,20 @@
     <input id="FIELD_ID" class="nw-club__input" type="email" name="contact[email]" autocomplete="email" autocapitalize="off" spellcheck="false" required placeholder="name@beispiel.de">
     <button class="nw-club__btn" type="submit">{{ s.button_label | escape }}</button>
   </div>
-  <p class="nw-club__legal">Kostenlos, jederzeit mit einem Klick abmeldbar. Du bekommst zuerst eine E-Mail zur Bestätigung. {% if s.offer_active and s.conditions != blank %}{{ s.conditions | escape }} {% endif %}Details in der <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Datenschutzerklärung</a>.</p>
+  <p class="nw-club__legal">Kostenlos, jederzeit mit einem Klick abmeldbar.{% if s.doi_active %} Du bekommst zuerst eine E-Mail zur Bestätigung.{% endif %} {% if s.offer_active and s.conditions != blank %}{{ s.conditions | escape }} {% endif %}Details in der <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Datenschutzerklärung</a>.</p>
+{%- endcapture -%}
+{%- capture welcome -%}
+  {%- if s.offer_active and s.offer_code != blank -%}
+    <div class="nw-club__ok nw-club__ok--code" role="status" tabindex="-1">
+      <strong class="nw-club__ok-title">Willkommen im Club.</strong>
+      <p>Dein Code für 5 € auf die erste Bestellung ab 60 €:</p>
+      <p class="nw-club__code"><span class="nw-club__code-val">{{ s.offer_code | escape }}</span><button type="button" class="nw-club__copybtn" data-nw-copy="{{ s.offer_code | escape }}">Kopieren</button></p>
+      <a class="nw-club__activate" href="/discount/{{ s.offer_code | url_encode }}?redirect=/collections/schlafhelfer">Code aktivieren und Schlafhelfer ansehen</a>
+      <p class="nw-club__ok-note">Der Code wird beim Bezahlen automatisch abgezogen, wenn du über diesen Link einkaufst.{% if s.doi_active %} Bitte bestätige noch deine Anmeldung über den Link in deinem Postfach.{% endif %}</p>
+    </div>
+  {%- else -%}
+    <p class="nw-club__ok" role="status"><strong>Danke, du bist eingetragen.</strong>{% if s.doi_active %} Bitte bestätige deine Anmeldung über den Link in deinem Postfach.{% endif %}</p>
+  {%- endif -%}
 {%- endcapture -%}
 
 <section id="nachtwerk-club" class="hh nw-club" aria-labelledby="nw-club-title">
@@ -56,13 +73,13 @@
     <div class="nw-club__panel">
       <div class="nw-club__card" aria-hidden="true">
         <span class="nw-club__card-glow"></span>
-        <span class="nw-club__card-top">{% render 'hh-wordmark' %}</span>
-        <span class="nw-club__card-name">Club</span>
-        <span class="nw-club__card-line">Kostenlos, jederzeit kündbar</span>
+        <span class="nw-club__card-top">{% render 'hh-wordmark' %}<span class="nw-club__card-name">Club</span></span>
+        {%- if s.offer_active -%}<span class="nw-club__card-offer"><span class="nw-club__card-num">5&nbsp;€</span><span>auf deine erste Bestellung ab 60&nbsp;€</span></span>{%- endif -%}
+        <span class="nw-club__card-line">Mitgliedschaft kostenlos, jederzeit kündbar</span>
       </div>
       {%- form 'customer', id: 'nw-club-form', class: 'nw-club__form' -%}
         {%- if form.posted_successfully? -%}
-          <p class="nw-club__ok" role="status"><strong>Fast geschafft.</strong> Bitte bestätige deine Anmeldung über den Link in deinem Postfach – danach bist du im Club{% if s.offer_active %} und bekommst deinen Willkommensvorteil per E-Mail{% endif %}.</p>
+          {{ welcome }}
         {%- else -%}
           {{ form_inner | replace: 'FIELD_ID', 'nw-club-email' }}
           {%- if form.errors -%}<p class="nw-club__err" role="alert">Bitte prüfe deine E-Mail-Adresse.</p>{%- endif -%}
@@ -72,6 +89,14 @@
   </div>
 </section>
 
+<script>
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-nw-copy]'); if (!b) return;
+    var done = function () { b.textContent = 'Kopiert'; setTimeout(function () { b.textContent = 'Kopieren'; }, 1800); };
+    try { navigator.clipboard.writeText(b.dataset.nwCopy).then(done, done); } catch (err) { done(); }
+  });
+  (function () { var ok = document.querySelector('#nachtwerk-club .nw-club__ok--code'); if (ok && /customer_posted=true/.test(location.search + location.hash)) ok.focus(); })();
+</script>
 {%- if fly_ok -%}
   <aside class="nw-fly" id="nw-fly" hidden role="dialog" aria-modal="false" aria-labelledby="nw-fly-title" data-delay="{{ s.flyout_delay }}" data-pause-days="{{ s.flyout_pause_days }}">
     <button class="nw-fly__close" type="button" aria-label="Hinweis schließen" data-nw-fly-close>{% render 'hh-icon', name: 'close' %}</button>
@@ -81,7 +106,7 @@
     <a class="nw-fly__go" href="#nachtwerk-club" data-nw-fly-close>Zum Club</a>
     {%- form 'customer', id: 'nw-club-fly', class: 'nw-club__form nw-fly__form' -%}
       {%- if form.posted_successfully? -%}
-        <p class="nw-club__ok" role="status"><strong>Fast geschafft.</strong> Bitte bestätige deine Anmeldung über den Link in deinem Postfach.</p>
+        {{ welcome }}
       {%- else -%}
         {{ form_inner | replace: 'FIELD_ID', 'nw-fly-email' }}
         {%- if form.errors -%}<p class="nw-club__err" role="alert">Bitte prüfe deine E-Mail-Adresse.</p>{%- endif -%}
@@ -147,6 +172,8 @@
     { "type": "header", "content": "Willkommensvorteil" },
     { "type": "paragraph", "content": "Erst einschalten, wenn Rabattcode, Double-Opt-in und Willkommensmail eingerichtet und mit einer Testanmeldung geprüft sind." },
     { "type": "checkbox", "id": "offer_active", "label": "Willkommensvorteil ist eingerichtet", "default": false },
+    { "type": "text", "id": "offer_code", "label": "Rabattcode (wird nach der Anmeldung angezeigt)", "info": "Muss unter Rabatte aktiv sein." },
+    { "type": "checkbox", "id": "doi_active", "label": "Double-Opt-in ist in Shopify eingeschaltet", "info": "Erst setzen, wenn die Bestätigungsmail tatsächlich verschickt wird.", "default": false },
     { "type": "text", "id": "conditions", "label": "Bedingungen des Willkommensvorteils", "default": "Willkommensvorteil: 5 € Rabatt ab 59 € Bestellwert, einmal pro Person, nicht mit anderen Codes kombinierbar." },
     { "type": "header", "content": "Seitenfenster" },
     { "type": "checkbox", "id": "flyout", "label": "Dezentes Seitenfenster zeigen", "info": "Erscheint nur mit eingerichtetem Willkommensvorteil und nur auf Startseite, Infoseiten und Ratgeber.", "default": true },

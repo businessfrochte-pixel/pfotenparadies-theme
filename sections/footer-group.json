@@ -204,9 +204,9 @@
           "type": "perk",
           "settings": {
             "icon": "gift",
-            "live": false,
-            "title": "5 € Willkommensvorteil",
-            "text": "Per E-Mail, für deine erste Bestellung ab 59 €."
+            "live": true,
+            "title": "5 € Willkommensvorteil",
+            "text": "Auf deine erste Bestellung ab 60 € – für alle Schlafhelfer und Sets."
           }
         },
         "p2": {
@@ -226,26 +226,38 @@
             "title": "Ein Schlafbrief im Monat",
             "text": "Eine konkrete Idee für ruhigere Nächte. Kein Werbe-Dauerfeuer."
           }
+        },
+        "p_now": {
+          "type": "perk",
+          "settings": {
+            "live": true,
+            "icon": "check",
+            "title": "Sofort einlösbar",
+            "text": "Kein Warten auf eine Mail: Dein Code erscheint direkt nach der Anmeldung und lässt sich mit einem Klick aktivieren."
+          }
         }
       },
       "block_order": [
         "p1",
+        "p_now",
         "p2",
         "p3"
       ],
       "settings": {
         "kicker": "Nachtwerk Club",
         "heading": "Für Menschen, die ihre Nächte ernst nehmen.",
-        "text": "<p>Mitglieder bekommen, was nicht im Shop steht. Kostenlos und jederzeit kündbar.</p>",
+        "text": "<p>Mitglieder bekommen 5 € auf ihre erste Bestellung ab 60 € – der Code erscheint direkt nach der Anmeldung.</p>",
         "button_label": "Mitglied werden",
         "text_basic": "<p>Trag dich ein, und wir schreiben dir, wenn es neue Schlafhelfer oder Sets gibt.</p>",
-        "offer_active": false,
+        "offer_active": true,
         "flyout": true,
         "flyout_delay": 45,
         "flyout_pause_days": 14,
-        "flyout_heading": "5 € für deine erste Nacht mit uns",
-        "flyout_text": "Tritt dem kostenlosen Club bei: 5 € Willkommensvorteil für deine erste Bestellung ab 59 €.",
-        "conditions": "Willkommensvorteil: 5 € Rabatt ab 59 € Bestellwert, einmal pro Person, nicht mit anderen Codes kombinierbar."
+        "flyout_heading": "5 € für deine erste Nacht mit uns",
+        "flyout_text": "Tritt dem kostenlosen Nachtwerk Club bei: 5 € auf deine erste Bestellung ab 60 €. Dein Code erscheint sofort.",
+        "conditions": "Willkommensvorteil: 5 € Rabatt auf die erste Bestellung ab 60 € Warenwert (Schlafhelfer und Sets), einmal pro Person, nicht mit anderen Codes kombinierbar.",
+        "offer_code": "NACHTWERK5",
+        "doi_active": false
       }
     }
   },
