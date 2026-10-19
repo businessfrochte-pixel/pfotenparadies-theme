@@ -99,7 +99,7 @@
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "square",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -263,46 +263,6 @@
         "padding-block-end": 64
       }
     },
-    "hh_spot": {
-      "type": "hh-spotlight",
-      "blocks": {
-        "f1": {
-          "type": "feature",
-          "settings": {
-            "title": "Gleichmäßiges Rauschen",
-            "text": "Überdeckt Geräusche, die sonst plötzlich auftauchen – Türen, Autos, Stimmen."
-          }
-        },
-        "f2": {
-          "type": "feature",
-          "settings": {
-            "title": "Warmes, dimmbares Nachtlicht",
-            "text": "Genug Licht für den Weg ins Bad, ohne das Schlafzimmer zu erhellen."
-          }
-        },
-        "f3": {
-          "type": "feature",
-          "settings": {
-            "title": "Auch als Bluetooth-Lautsprecher",
-            "text": "Hörbuch oder eigene Einschlafklänge vom Handy abspielen."
-          }
-        }
-      },
-      "block_order": [
-        "f1",
-        "f2",
-        "f3"
-      ],
-      "settings": {
-        "product": "rauschgeraet-nachtlicht",
-        "caption": "",
-        "heading": "Wenn Geräusche dich wecken",
-        "lead": "<p>Ein Rauschgerät macht die Nacht nicht leiser – es macht sie gleichmäßiger. Unregelmäßige Geräusche fallen dadurch weniger auf.</p>",
-        "button_label": "Zum Rauschgerät",
-        "padding-block-start": 56,
-        "padding-block-end": 56
-      }
-    },
     "nw_hero": {
       "type": "nw-hero",
       "blocks": {
@@ -312,8 +272,7 @@
             "text": "Licht",
             "sub": "Straßenlaterne, Standby-Licht, früher Sonnenaufgang",
             "link": "shopify://collections/schlaf-licht",
-            "icon": "light",
-            "product": "schlafmaske-3d"
+            "icon": "light"
           }
         },
         "st2": {
@@ -322,8 +281,7 @@
             "text": "Geräusche",
             "sub": "Verkehr, Nachbarn, Schnarchen",
             "link": "shopify://collections/schlaf-geraeusche",
-            "icon": "sound",
-            "product": "rauschgeraet-nachtlicht"
+            "icon": "sound"
           }
         },
         "st3": {
@@ -332,8 +290,7 @@
             "text": "Liegen & Kissen",
             "sub": "Kissen zu hoch, zu flach oder zu warm",
             "link": "shopify://collections/schlaf-liegen",
-            "icon": "neck",
-            "product": "nackenkissen-memory-foam"
+            "icon": "neck"
           }
         },
         "st4": {
@@ -342,8 +299,7 @@
             "text": "Aufwachen",
             "sub": "Schriller Wecker, dunkle Wintermorgen",
             "link": "shopify://collections/schlaf-aufwachen",
-            "icon": "sunrise",
-            "product": "lichtwecker-sonnenaufgang"
+            "icon": "sunrise"
           }
         }
       },
@@ -354,19 +310,16 @@
         "st4"
       ],
       "settings": {
-        "kicker": "",
         "heading": "Schlaf ohne Licht, Lärm und falsches Kissen.",
-        "text": "<p>Nachtwerk sortiert Schlafhelfer nach dem, was dich nachts stört. Bei jedem Artikel steht, wofür er gedacht ist – und wofür nicht.</p>",
+        "text": "<p>Schlafhelfer, sortiert nach dem, was dich nachts stört – mit klaren Angaben, wofür sie gedacht sind und wofür nicht.</p>",
         "button_label": "Alle Schlafhelfer ansehen",
         "button_link": "shopify://collections/schlafhelfer",
-        "link_label": "Zum Schlafratgeber",
-        "link_url": "shopify://pages/schlafratgeber",
-        "product": "schlafmaske-3d",
-        "media_index": 1,
+        "link_label": "Was stört deinen Schlaf?",
+        "link_url": "#nw-stoerer",
         "needs_title": "Was stört deinen Schlaf?",
         "padding-block-start": 0,
         "padding-block-end": 0,
-        "proof": "Sets ab [SET_MIN]|Kostenloser Versand ab [FREE_SHIP]|Club: 5 € auf deine erste Bestellung"
+        "facts": "Versand kostenlos ab [FREE_SHIP] · Sets ab [SET_MIN]"
       }
     },
     "nw_sets": {
@@ -378,13 +331,70 @@
         "padding-block-start": 64,
         "padding-block-end": 24
       }
+    },
+    "nw_crit": {
+      "type": "nw-criteria",
+      "blocks": {
+        "c1": {
+          "type": "criterion",
+          "settings": {
+            "icon": "moon",
+            "title": "Ein klarer Zweck",
+            "text": "Jeder Schlafhelfer gehört zu genau einer Störquelle – Licht, Geräusche, Liegen oder Aufwachen.",
+            "product": "lichtwecker-sonnenaufgang",
+            "example": "Wird vor der Weckzeit langsam heller."
+          }
+        },
+        "c2": {
+          "type": "criterion",
+          "settings": {
+            "icon": "neck",
+            "title": "Anpassbar statt Einheitsgröße",
+            "text": "Wo es auf Form und Höhe ankommt, lässt sich der Artikel auf dich einstellen.",
+            "product": "schlafmaske-3d",
+            "example": "Polster verschiebbar – passt sich dem Augenabstand an."
+          }
+        },
+        "c3": {
+          "type": "criterion",
+          "settings": {
+            "icon": "layers",
+            "title": "Pflege, die in den Alltag passt",
+            "text": "Bei jedem Artikel steht, wie du ihn reinigst – Textilien sind waschbar.",
+            "product": "sommerdecke-leicht",
+            "example": "Waschbar bei 30 °C im Schonwaschgang."
+          }
+        },
+        "c4": {
+          "type": "criterion",
+          "settings": {
+            "icon": "check",
+            "title": "Grenzen ausgesprochen",
+            "text": "Bei jedem Artikel steht auch, wofür er nicht gedacht ist.",
+            "product": "ohrstoepsel-schlaf",
+            "example": "Nicht geeignet, wenn du nachts einen Wecker, Rauchmelder oder dein Kind hören musst."
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "heading": "Woran du unsere Auswahl erkennst",
+        "text": "Wir führen bewusst wenige Schlafhelfer. Diese Punkte kannst du bei jedem Artikel nachprüfen.",
+        "padding-block-start": 64,
+        "padding-block-end": 40
+      }
     }
   },
   "order": [
     "nw_hero",
     "nw_sets",
+    "nw_crit",
     "product_list_fa6P9H",
-    "hh_spot",
     "hh_ruheplatz",
     "hh_faq"
   ]

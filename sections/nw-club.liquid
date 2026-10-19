@@ -71,12 +71,13 @@
       {%- endif -%}
     </div>
     <div class="nw-club__panel">
-      <div class="nw-club__card" aria-hidden="true">
-        <span class="nw-club__card-glow"></span>
-        <span class="nw-club__card-top">{% render 'hh-wordmark' %}<span class="nw-club__card-name">Club</span></span>
-        {%- if s.offer_active -%}<span class="nw-club__card-offer"><span class="nw-club__card-num">5&nbsp;€</span><span>auf deine erste Bestellung ab 60&nbsp;€</span></span>{%- endif -%}
-        <span class="nw-club__card-line">Mitgliedschaft kostenlos, jederzeit kündbar</span>
-      </div>
+      {%- comment -%} v3: statt großer Mitgliedskarte ein kleiner Gutschein – die Inszenierung bleibt so groß wie das Angebot. {%- endcomment -%}
+      {%- if s.offer_active -%}
+        <div class="nw-club__ticket" aria-hidden="true">
+          <span class="nw-club__ticket-num">5&nbsp;€</span>
+          <span class="nw-club__ticket-text">Willkommensvorteil für deine erste Bestellung ab 60&nbsp;€ – direkt nach der Anmeldung</span>
+        </div>
+      {%- endif -%}
       {%- form 'customer', id: 'nw-club-form', class: 'nw-club__form' -%}
         {%- if form.posted_successfully? -%}
           {{ welcome }}

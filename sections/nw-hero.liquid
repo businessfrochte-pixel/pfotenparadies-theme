@@ -1,108 +1,100 @@
 {%- comment -%}
-  Nachtwerk – Einstieg (JARVIS, 18.10.2026). Kuratierter Fachshop nach Störquelle.
-  Links: für wen, welcher Nutzen, nächster Schritt. Rechts: Hauptprodukt im Lampenlicht.
-  Unten: vier Einstiege nach Störquelle (Licht, Geräusche, Nacken, Aufwachen) – jeweils eigene Auswahl.
-  Motiv kommt aus dem gewählten Produkt (geprüfte Produktbilder), kein Deko-Bild.
+  Nachtwerk – Einstieg v3 (JARVIS, 19.10.2026, nach Designkritik).
+  Erster Bildschirm mit höchstens fünf Elementen: Aussage, Motiv, führender Button, untergeordneter Weg, eine ruhige Faktenzeile.
+  Motiv: nur ein eigens gewähltes Szenenbild (Schlafzimmer, warmes Licht, Produkt in Verwendung) über 'scene'.
+  Ohne geeignetes Szenenbild KEIN Produkt- oder Maßbild als Ersatz (Fehler 19.10.: Maßzeichnung als erstes Markenbild),
+  sondern die Marken-Komposition „Mond im Lampenlicht“ aus Code – ruhig, ohne Bildrechte-Fragen.
+  Die Einstiege nach Störquelle folgen als eigener Bereich darunter, mit Symbolen statt uneinheitlicher Produktfotos.
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
   assign heading_id = 'nw-hero-' | append: section.id
-  assign p = s.product
-  assign media = blank
-  if p != blank
-    assign idx = s.media_index | minus: 1
-    assign media = p.media[idx] | default: p.featured_media
+  assign facts = ''
+  if s.facts != blank
+    assign set_min = 0
+    for sp in collections['schlaf-sets'].products
+      if set_min == 0 or sp.price < set_min
+        assign set_min = sp.price
+      endif
+    endfor
+    assign set_min_text = set_min | money
+    capture free_ship
+      render 'hh-config', key: 'free_shipping'
+    endcapture
+    assign free_ship = free_ship | strip
+    assign facts = s.facts | replace: '[SET_MIN]', set_min_text | replace: '[FREE_SHIP]', free_ship
   endif
 -%}
 <div class="section-background"></div>
 <div class="nw-hero-wrap spacing-style" style="{% render 'spacing-padding', settings: s %}">
-  <section class="hh nw-hero" aria-labelledby="{{ heading_id }}">
+  <section class="hh nw-hero{% if s.scene != blank %} nw-hero--scene{% endif %}" aria-labelledby="{{ heading_id }}">
     <div class="nw-hero__inner">
       <div class="nw-hero__copy">
-        {%- if s.kicker != blank -%}<p class="nw-hero__kicker">{{ s.kicker | escape }}</p>{%- endif -%}
         <h1 id="{{ heading_id }}" class="nw-hero__title">{{ s.heading | escape }}</h1>
         {%- if s.text != blank -%}<div class="nw-hero__lead">{{ s.text }}</div>{%- endif -%}
         <div class="nw-hero__actions">
           {%- if s.button_label != blank -%}
-            <a class="hh-btn nw-btn--lamp" href="{{ s.button_link | default: '/collections/schlafhelfer' }}">{{ s.button_label | escape }}{% render 'hh-icon', name: 'arrow' %}</a>
+            <a class="hh-btn nw-btn--lamp" href="{{ s.button_link | default: '/collections/schlafhelfer' }}">{{ s.button_label | escape }}</a>
           {%- endif -%}
           {%- if s.link_label != blank -%}
             <a class="nw-hero__link" href="{{ s.link_url | default: '#nw-stoerer' }}">{{ s.link_label | escape }}</a>
           {%- endif -%}
         </div>
-        {%- if s.proof != blank -%}
-          <ul class="nw-hero__proof">
-            {%- liquid
-              assign set_min = 0
-              for sp in collections['schlaf-sets'].products
-                if set_min == 0 or sp.price < set_min
-                  assign set_min = sp.price
-                endif
-              endfor
-              assign set_min_text = set_min | money
-              capture free_ship
-                render 'hh-config', key: 'free_shipping'
-              endcapture
-              assign free_ship = free_ship | strip
-              assign proofs = s.proof | replace: '[SET_MIN]', set_min_text | replace: '[FREE_SHIP]', free_ship | split: '|'
-            -%}
-            {%- for pr in proofs -%}<li>{% render 'hh-icon', name: 'check' %}<span>{{ pr | strip | escape }}</span></li>{%- endfor -%}
-          </ul>
-        {%- endif -%}
+        {%- if facts != '' -%}<p class="nw-hero__facts">{{ facts | escape }}</p>{%- endif -%}
       </div>
-      {%- if media != blank -%}
-        <figure class="nw-hero__media">
-          <span class="nw-hero__glow" aria-hidden="true"></span>
-          <a class="nw-hero__frame" href="{{ p.url }}" aria-label="{{ p.title | escape }} ansehen">
-            {{ media.preview_image | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 40vw, 90vw', widths: '500, 800, 1000, 1200', alt: media.alt | default: p.title }}
-          </a>
-          <figcaption class="nw-hero__cap">
-            <a href="{{ p.url }}"><span>{{ p.title | escape }}</span><span class="hh-tnum">ab {{ p.price_min | money }}</span></a>
-          </figcaption>
+      {%- if s.scene != blank -%}
+        <figure class="nw-hero__scene">
+          {{ s.scene | image_url: width: 1600 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 50vw, 100vw', widths: '600, 900, 1200, 1600', alt: s.scene.alt, style: s.scene_focus }}
         </figure>
+      {%- else -%}
+        <div class="nw-hero__art" aria-hidden="true">
+          <span class="nw-hero__lamp"></span>
+          <span class="nw-hero__moon"></span>
+        </div>
       {%- endif -%}
     </div>
-
-    {%- if section.blocks.size > 0 -%}
-      <nav id="nw-stoerer" class="nw-stoerer" aria-labelledby="{{ heading_id }}-st">
-        <h2 id="{{ heading_id }}-st" class="nw-stoerer__title">{{ s.needs_title | escape }}</h2>
-        <ul class="nw-stoerer__list">
-          {%- for block in section.blocks -%}
-            {%- assign b = block.settings -%}
-            <li {{ block.shopify_attributes }}>
-              <a class="nw-st{% if b.product != blank %} nw-st--img{% endif %}" href="{{ b.link | default: '/collections/schlafhelfer' }}">
-                <span class="nw-st__icon">{% render 'hh-icon', name: b.icon %}</span>
-                {%- if b.product != blank and b.product.featured_image -%}<span class="nw-st__img">{{ b.product.featured_image | image_url: width: 320, height: 320, crop: 'center' | image_tag: loading: 'lazy', alt: '', width: 160, height: 160 }}</span>{%- endif -%}
-                <span class="nw-st__text">
-                  <span class="nw-st__title">{{ b.text | escape }}</span>
-                  {%- if b.sub != blank -%}<span class="nw-st__sub">{{ b.sub | escape }}</span>{%- endif -%}
-                </span>
-                <span class="nw-st__go">{% render 'hh-icon', name: 'arrow' %}</span>
-              </a>
-            </li>
-          {%- endfor -%}
-        </ul>
-      </nav>
-    {%- endif -%}
   </section>
 </div>
+
+{%- if section.blocks.size > 0 -%}
+<div class="nw-stoerer-wrap">
+  <nav id="nw-stoerer" class="hh nw-stoerer" aria-labelledby="{{ heading_id }}-st">
+    <h2 id="{{ heading_id }}-st" class="nw-stoerer__title">{{ s.needs_title | escape }}</h2>
+    <ul class="nw-stoerer__list">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        <li {{ block.shopify_attributes }}>
+          <a class="nw-st" href="{{ b.link | default: '/collections/schlafhelfer' }}">
+            <span class="nw-st__icon">{% render 'hh-icon', name: b.icon %}</span>
+            <span class="nw-st__text">
+              <span class="nw-st__title">{{ b.text | escape }}</span>
+              {%- if b.sub != blank -%}<span class="nw-st__sub">{{ b.sub | escape }}</span>{%- endif -%}
+            </span>
+            <span class="nw-st__go">{% render 'hh-icon', name: 'arrow' %}</span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+</div>
+{%- endif -%}
 
 {% schema %}
 {
   "name": "NW Einstieg (Nacht)",
   "class": "hh-section nw-section",
   "settings": [
-    { "type": "text", "id": "kicker", "label": "Kurzzeile über der Überschrift (optional)" },
-    { "type": "text", "id": "heading", "label": "Überschrift (Kundenwunsch)", "default": "Schlaf ohne Störung" },
-    { "type": "richtext", "id": "text", "label": "Unterzeile", "default": "<p>Hilfsmittel gegen Licht, Geräusche und unbequemes Liegen.</p>" },
-    { "type": "text", "id": "button_label", "label": "Button-Text", "default": "Alle Schlafhelfer ansehen" },
-    { "type": "url", "id": "button_link", "label": "Button-Link" },
-    { "type": "text", "id": "link_label", "label": "Zweiter Link", "default": "Nach Störquelle wählen" },
-    { "type": "url", "id": "link_url", "label": "Zweiter Link – Ziel" },
-    { "type": "text", "id": "proof", "label": "Kurze Fakten (mit | trennen)", "info": "[SET_MIN] = günstigstes Set aus der Sammlung schlaf-sets, [FREE_SHIP] = Gratisversand-Schwelle aus hh-config. Keine gesetzlichen Selbstverständlichkeiten (z. B. 14 Tage Widerruf) als Vorteil.", "default": "Sets ab [SET_MIN]|Kostenloser Versand ab [FREE_SHIP]|Bei jedem Produkt: wofür es nicht gedacht ist" },
-    { "type": "header", "content": "Motiv" },
-    { "type": "product", "id": "product", "label": "Produkt im Lampenlicht" },
-    { "type": "range", "id": "media_index", "label": "Welches Produktbild", "min": 1, "max": 10, "step": 1, "default": 1 },
+    { "type": "text", "id": "heading", "label": "Überschrift (Kundenwunsch)", "default": "Schlaf ohne Licht, Lärm und falsches Kissen." },
+    { "type": "richtext", "id": "text", "label": "Unterzeile (ein Satz)", "default": "<p>Schlafhelfer, sortiert nach dem, was dich nachts stört.</p>" },
+    { "type": "text", "id": "button_label", "label": "Haupt-Button", "default": "Alle Schlafhelfer ansehen" },
+    { "type": "url", "id": "button_link", "label": "Haupt-Button – Ziel" },
+    { "type": "text", "id": "link_label", "label": "Zweiter Weg (untergeordnet)", "default": "Was stört deinen Schlaf?" },
+    { "type": "url", "id": "link_url", "label": "Zweiter Weg – Ziel" },
+    { "type": "text", "id": "facts", "label": "Eine ruhige Faktenzeile", "info": "[SET_MIN] = günstigstes Set, [FREE_SHIP] = Gratisversand-Schwelle aus hh-config. Höchstens zwei Fakten.", "default": "Versand kostenlos ab [FREE_SHIP] · Sets ab [SET_MIN]" },
+    { "type": "header", "content": "Hauptmotiv" },
+    { "type": "paragraph", "content": "Nur ein eigens gewähltes Szenenbild: Schlafzimmer, warmes Licht, Produkt in Verwendung, freie Fläche für den Text, funktioniert auch schmal. Keine Maßzeichnung, kein Freisteller, keine fremdsprachige Grafik. Bildrechte klären. Ohne Bild erscheint die Marken-Komposition „Mond im Lampenlicht“." },
+    { "type": "image_picker", "id": "scene", "label": "Szenenbild" },
+    { "type": "text", "id": "scene_focus", "label": "Bildausschnitt (CSS, optional)", "info": "z. B. object-position: 30% 50%;" },
     { "type": "header", "content": "Einstiege nach Störquelle" },
     { "type": "text", "id": "needs_title", "label": "Überschrift", "default": "Was stört deinen Schlaf?" },
     { "type": "header", "content": "Abstände" },
@@ -117,7 +109,6 @@
         { "type": "text", "id": "text", "label": "Störquelle", "default": "Licht" },
         { "type": "text", "id": "sub", "label": "Situation aus Kundensicht" },
         { "type": "url", "id": "link", "label": "Ziel (passende Auswahl)" },
-        { "type": "product", "id": "product", "label": "Produktbild (optional)" },
         { "type": "select", "id": "icon", "label": "Symbol", "default": "light", "options": [
           { "value": "light", "label": "Licht" }, { "value": "sound", "label": "Geräusche" }, { "value": "neck", "label": "Nacken/Kissen" },
           { "value": "sunrise", "label": "Aufwachen" }, { "value": "ear", "label": "Ohr" }, { "value": "moon", "label": "Mond" }, { "value": "layers", "label": "Decke" } ] }

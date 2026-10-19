@@ -1,5 +1,7 @@
 {%- comment -%}
-  Nachtwerk – Sets im Bento-Raster (JARVIS, 19.10.2026; Stil „Bento Box Grid“ aus UI UX Pro Max).
+  Nachtwerk – Sets (JARVIS, 19.10.2026; v3 nach Designkritik: gleich aufgebaute, vergleichbare Karten statt Bento-Mischung).
+  Feste Reihenfolge je Karte: Bild der enthaltenen Produkte (einheitliche Kacheln, ganzes Produkt sichtbar) → Name → Situation → Inhalt → Preis mit zurückhaltender Einzelpreis-Angabe.
+  Keine Spar-Badges (wirkt wie Aktionsware).
   Zweck: Warenkorbwert erhöhen mit echtem Nutzen (mehrere Störquellen auf einmal) und ehrlicher Ersparnis
   („einzeln X · du sparst Y“ live aus den Einzelpreisen der Set-Varianten, nur wenn alle Teile lieferbar; kein Streichpreis/compare_at_price). Erstes Set groß, die übrigen kleiner.
 {%- endcomment -%}
@@ -27,23 +29,18 @@
         {%- endfor -%}
         {%- assign save = single | minus: set.price -%}
         {%- unless all_avail -%}{%- assign save = 0 -%}{%- endunless -%}
-        <li class="nw-set{% if forloop.first %} nw-set--lead{% endif %}">
+        <li class="nw-set">
           <a class="nw-set__link" href="{{ set.url }}">
-            <span class="nw-set__media nw-set__media--{{ items.size | at_most: 3 }}">
+            <span class="nw-set__media" style="--n: {{ items.size | at_most: 3 }}">
               {%- for it in items limit: 3 -%}
-                {%- if it.featured_image -%}<span class="nw-set__img">{{ it.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 450, 600', sizes: '(min-width: 990px) 20vw, 45vw', alt: '' }}</span>{%- endif -%}
+                {%- if it.featured_image -%}<span class="nw-set__img">{{ it.featured_image | image_url: width: 400, height: 400 | image_tag: loading: 'lazy', widths: '200, 300, 400', sizes: '(min-width: 1100px) 9vw, 30vw', alt: '' }}</span>{%- endif -%}
               {%- endfor -%}
             </span>
             <span class="nw-set__body">
-              {%- if save > 0 -%}<span class="nw-set__save">Du sparst {{ save | money }}</span>{%- endif -%}
               <span class="nw-set__name">{{ set.title | split: '„' | last | split: '“' | first | escape }}</span>
               {%- assign nutzen = set.metafields.custom.set_nutzen.value -%}
               {%- if nutzen != blank -%}<span class="nw-set__why">{{ nutzen | escape }}</span>{%- endif -%}
-              {%- if forloop.first -%}
-                {%- comment -%} Wozu jedes Teil: erster Vorteil des Einzelartikels (gleiche Quelle wie „Das ist im Set“ auf der Produktseite). {%- endcomment -%}
-                <span class="nw-set__hl">{%- for it in items limit: 3 -%}{%- assign ihl = it.metafields.custom.highlights.value | first -%}<span>{% render 'hh-icon', name: 'check' %}<span><strong>{{ it.title | split: ' mit ' | first | split: ',' | first | escape }}:</strong> {{ ihl | escape }}</span></span>{%- endfor -%}</span>
-              {%- endif -%}
-              {%- unless forloop.first -%}<span class="nw-set__what">{% for it in items %}{{ it.title | split: ' mit ' | first | split: ',' | first }}{% unless forloop.last %} + {% endunless %}{% endfor %}</span>{%- endunless -%}
+              <span class="nw-set__what">{% for it in items %}{{ it.title | split: ' mit ' | first | split: ',' | first }}{% unless forloop.last %} + {% endunless %}{% endfor %}</span>
               <span class="nw-set__price"><strong class="hh-tnum">{{ set.price | money }}</strong>{%- if save > 0 -%}<span class="hh-tnum">einzeln {{ single | money }}</span>{%- endif -%}</span>
             </span>
           </a>
@@ -55,7 +52,7 @@
 {%- endif -%}
 {% schema %}
 {
-  "name": "NW Sets (Bento)",
+  "name": "NW Sets",
   "class": "hh-section",
   "settings": [
     { "type": "text", "id": "heading", "label": "Überschrift", "default": "Zusammen schläft es sich besser" },
@@ -64,6 +61,6 @@
     { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 56 },
     { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 56 }
   ],
-  "presets": [{ "name": "NW Sets (Bento)" }]
+  "presets": [{ "name": "NW Sets" }]
 }
 {% endschema %}

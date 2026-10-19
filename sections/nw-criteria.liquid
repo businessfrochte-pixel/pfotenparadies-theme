@@ -1,0 +1,57 @@
+{%- comment -%}
+  Nachtwerk – „Woran du unsere Auswahl erkennst“ (JARVIS, 19.10.2026, nach Designkritik Punkt 5).
+  Beantwortet: Warum genau diese Auswahl – und warum kann ich ihr trauen? Statt Qualitätsbehauptung: Auswahlpunkte,
+  jeweils mit einem nachprüfbaren Beispiel aus den Produktdaten (Link zur Produktseite).
+  Regel: Nur Punkte, die die verlinkten Artikel tatsächlich erfüllen. Keine Tests, Prüfungen oder Erfahrungen behaupten, die nicht stattgefunden haben.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+<div class="section-background"></div>
+<div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: s %}">
+  <section class="hh nw-crit" aria-labelledby="nw-crit-{{ section.id }}">
+    <div class="nw-crit__head">
+      <h2 id="nw-crit-{{ section.id }}" class="nw-h2">{{ s.heading | escape }}</h2>
+      {%- if s.text != blank -%}<p class="nw-crit__lead">{{ s.text | escape }}</p>{%- endif -%}
+    </div>
+    <ul class="nw-crit__list">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        <li class="nw-crit__item" {{ block.shopify_attributes }}>
+          <span class="nw-crit__icon">{% render 'hh-icon', name: b.icon %}</span>
+          <h3 class="nw-crit__title">{{ b.title | escape }}</h3>
+          <p class="nw-crit__text">{{ b.text | escape }}</p>
+          {%- if b.example != blank -%}
+            <p class="nw-crit__ex">
+              {%- if b.product != blank -%}<a href="{{ b.product.url }}">{{ b.product.title | split: ' mit ' | first | split: ',' | first | escape }}</a>: {% endif -%}
+              {{ b.example | escape }}
+            </p>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </section>
+</div>
+{% schema %}
+{
+  "name": "NW Auswahlgründe",
+  "class": "hh-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Woran du unsere Auswahl erkennst" },
+    { "type": "text", "id": "text", "label": "Einleitung" },
+    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 56 },
+    { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 56 }
+  ],
+  "blocks": [
+    { "type": "criterion", "name": "Auswahlpunkt", "settings": [
+      { "type": "select", "id": "icon", "label": "Symbol", "default": "check", "options": [
+        { "value": "check", "label": "Haken" }, { "value": "moon", "label": "Mond" }, { "value": "sunrise", "label": "Aufwachen" }, { "value": "light", "label": "Licht" },
+        { "value": "sound", "label": "Geräusche" }, { "value": "neck", "label": "Nacken" }, { "value": "layers", "label": "Decke" }, { "value": "ear", "label": "Ohr" } ] },
+      { "type": "text", "id": "title", "label": "Auswahlpunkt" },
+      { "type": "text", "id": "text", "label": "Erklärung" },
+      { "type": "product", "id": "product", "label": "Beispiel-Artikel" },
+      { "type": "text", "id": "example", "label": "Beleg aus den Produktdaten", "info": "Wörtlich aus Vorteilen, Material/Pflege oder „Nicht geeignet für“ übernehmen." }
+    ] }
+  ],
+  "max_blocks": 4,
+  "presets": [{ "name": "NW Auswahlgründe" }]
+}
+{% endschema %}
