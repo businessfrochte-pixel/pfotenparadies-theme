@@ -1,0 +1,50 @@
+{%- comment -%}
+  Nachtwerk – „Das ist im Set“ (JARVIS, 19.10.2026, Fehler F9).
+  Beantwortet auf Set-Seiten direkt vor der Auswahl: Welche Teile, wofür ist jedes gut, was kostet es einzeln, wie kommt es an?
+  Quelle: custom.set_variants (genaue Varianten). Nutzen = erster Eintrag aus custom.highlights des Einzelartikels (eine Datenquelle für alle Seiten).
+  Auf Nicht-Set-Produkten erscheint nichts.
+{%- endcomment -%}
+{%- assign p = closest.product -%}
+{%- assign parts = p.metafields.custom.set_variants.value -%}
+{%- if parts != blank and parts.size > 0 -%}
+  {%- assign single = 0 -%}
+  <div class="hh nw-setparts" {{ block.shopify_attributes }}>
+    <p class="nw-setparts__title">{{ block.settings.title | escape }}<span>Einzelpreis</span></p>
+    <ul class="nw-setparts__list">
+      {%- for v in parts -%}
+        {%- liquid
+          assign single = single | plus: v.price
+          assign item = v.product
+          assign role = ''
+          assign hl = item.metafields.custom.highlights.value
+          if hl != blank
+            assign role = hl | first
+          endif
+          assign img = v.featured_image | default: item.featured_image
+        -%}
+        <li class="nw-setparts__item">
+          <span class="nw-setparts__img">{%- if img -%}{{ img | image_url: width: 160, height: 160, crop: 'center' | image_tag: loading: 'lazy', alt: '', width: 64, height: 64 }}{%- endif -%}</span>
+          <span class="nw-setparts__body">
+            {%- assign short = item.title | split: ' mit ' | first | split: ',' | first -%}
+            <a class="nw-setparts__name" href="{{ item.url }}">{{ short | escape }}{%- unless v.title == 'Default Title' -%}<span class="nw-setparts__var">, {{ v.title | escape }}</span>{%- endunless -%}</a>
+            {%- if role != '' -%}<span class="nw-setparts__role">{{ role | escape }}</span>{%- endif -%}
+          </span>
+          <span class="nw-setparts__price hh-tnum">{{ v.price | money }}</span>
+        </li>
+      {%- endfor -%}
+    </ul>
+    {%- assign save = single | minus: p.price -%}
+    <p class="nw-setparts__sum">Einzeln zusammen <span class="hh-tnum">{{ single | money }}</span>{% if save > 0 %}, im Set <strong class="hh-tnum">{{ p.price | money }}</strong> ({{ save | money }} weniger){% endif %}</p>
+    {%- if block.settings.parcel_note != blank -%}<p class="nw-setparts__note">{% render 'hh-icon', name: 'truck' %}<span>{{ block.settings.parcel_note | escape }}</span></p>{%- endif -%}
+  </div>
+{%- endif -%}
+{% schema %}
+{
+  "name": "NW Inhalt des Sets",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Überschrift", "default": "Das ist im Set" },
+    { "type": "text", "id": "parcel_note", "label": "Hinweis zur Lieferung", "default": "Die Teile werden einzeln verschickt und kommen meist in getrennten Paketen – Versandkosten zahlst du nur einmal." }
+  ]
+}
+{% endschema %}

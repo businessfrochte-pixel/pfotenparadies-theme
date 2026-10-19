@@ -4,6 +4,7 @@
       "type": "hh-contact",
       "settings": {
         "eyebrow": "",
+        "intro": "<p>Du hast eine Frage vor dem Kauf oder zu deiner Bestellung? Schreib uns – am besten mit dem, was dich nachts stört, oder mit deiner Bestellnummer.</p>",
         "padding-block-start": 40,
         "padding-block-end": 64
       }

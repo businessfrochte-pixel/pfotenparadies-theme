@@ -20,7 +20,8 @@
     endif
   endif
 
-  assign alt_text_fallback = 'accessibility.home_logo_alt' | t: store_name: shop.name
+  assign brand_name = settings.brand_name | default: shop.name
+  assign alt_text_fallback = 'accessibility.home_logo_alt' | t: store_name: brand_name
 %}
 
 {% comment %}
@@ -65,7 +66,7 @@
       class: 'header-logo__image',
       height: settings.logo_height,
       alt_text_fallback: alt_text_fallback,
-      text_fallback: shop.name,
+      text_fallback: brand_name,
       style: logo_style
     %}
     {%- endif -%}
@@ -81,7 +82,7 @@
         class: 'header-logo__image',
         height: settings.logo_height,
         alt_text_fallback: alt_text_fallback,
-        text_fallback: shop.name,
+        text_fallback: brand_name,
         style: inverse_logo_style
       %}
     </span>

@@ -276,6 +276,13 @@
               "type": "hh-product-intro",
               "settings": {}
             },
+            "nw_setparts": {
+              "type": "nw-set-contents",
+              "settings": {
+                "title": "Das ist im Set",
+                "parcel_note": "Die Teile werden einzeln verschickt und kommen meist in getrennten Paketen – Versandkosten zahlst du nur einmal."
+              }
+            },
             "nw_sets": {
               "type": "nw-set-offer",
               "settings": {
@@ -289,6 +296,7 @@
             "group_icgrde",
             "hh_price_note",
             "hh_highlights",
+            "nw_setparts",
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "hh_size_help",

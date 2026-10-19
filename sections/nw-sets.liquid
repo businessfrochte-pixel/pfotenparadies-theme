@@ -40,10 +40,10 @@
               {%- assign nutzen = set.metafields.custom.set_nutzen.value -%}
               {%- if nutzen != blank -%}<span class="nw-set__why">{{ nutzen | escape }}</span>{%- endif -%}
               {%- if forloop.first -%}
-                {%- assign hl = set.metafields.custom.highlights.value -%}
-                {%- if hl != blank -%}<span class="nw-set__hl">{%- for h in hl limit: 3 -%}<span>{% render 'hh-icon', name: 'check' %}{{ h | escape }}</span>{%- endfor -%}</span>{%- endif -%}
+                {%- comment -%} Wozu jedes Teil: erster Vorteil des Einzelartikels (gleiche Quelle wie „Das ist im Set“ auf der Produktseite). {%- endcomment -%}
+                <span class="nw-set__hl">{%- for it in items limit: 3 -%}{%- assign ihl = it.metafields.custom.highlights.value | first -%}<span>{% render 'hh-icon', name: 'check' %}<span><strong>{{ it.title | split: ' mit ' | first | split: ',' | first | escape }}:</strong> {{ ihl | escape }}</span></span>{%- endfor -%}</span>
               {%- endif -%}
-              <span class="nw-set__what">{% for it in items %}{{ it.title | split: ' mit ' | first | split: ',' | first }}{% unless forloop.last %} + {% endunless %}{% endfor %}</span>
+              {%- unless forloop.first -%}<span class="nw-set__what">{% for it in items %}{{ it.title | split: ' mit ' | first | split: ',' | first }}{% unless forloop.last %} + {% endunless %}{% endfor %}</span>{%- endunless -%}
               <span class="nw-set__price"><strong class="hh-tnum">{{ set.price | money }}</strong>{%- if save > 0 -%}<span class="hh-tnum">einzeln {{ single | money }}</span>{%- endif -%}</span>
             </span>
           </a>

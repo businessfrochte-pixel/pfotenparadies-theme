@@ -2123,5 +2123,32 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "Marke (eigener Name)",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Nachtwerk teilt sich den Shopify-Store mit einer anderen Marke. Diese Angaben ersetzen den Shopnamen in Browser-Titel, Vorschau, Logo-Text und Fußzeile. Kasse, Bestellmails und Rechtstexte nutzen weiter den Shopnamen (Plattformgrenze)."
+      },
+      {
+        "type": "text",
+        "id": "brand_name",
+        "label": "Markenname",
+        "default": "Nachtwerk"
+      },
+      {
+        "type": "text",
+        "id": "brand_home_title",
+        "label": "Titel der Startseite (Suchmaschinen)",
+        "default": "Nachtwerk – Schlafhelfer gegen Licht, Lärm und unbequemes Liegen"
+      },
+      {
+        "type": "textarea",
+        "id": "brand_home_description",
+        "label": "Beschreibung der Startseite (Suchmaschinen)",
+        "default": "Schlafmasken, Ohrstöpsel, Rauschgerät, Kissen und Lichtwecker – sortiert nach dem, was dich nachts stört. Bei jedem Produkt steht, wofür es nicht gedacht ist."
+      }
+    ]
   }
 ]

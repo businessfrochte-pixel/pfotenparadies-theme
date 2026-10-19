@@ -67,7 +67,7 @@
             "text_f9CFLH": {
               "type": "text",
               "settings": {
-                "text": "<p>Hilfsmittel gegen Licht, Geräusche und unbequemes Liegen – mit ehrlichen Angaben, was sie können und was nicht.</p><p>Fragen? <a href=\"/pages/contact\">Schreib uns</a> – wir antworten in der Regel innerhalb von zwei Werktagen.</p>",
+                "text": "<p>Hilfsmittel gegen Licht, Geräusche und unbequemes Liegen. Bei jedem Artikel steht, wofür er nicht gedacht ist.</p><p>Fragen? <a href=\"/pages/contact\">Schreib uns</a> – wir antworten in der Regel innerhalb von zwei Werktagen.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -204,6 +204,7 @@
           "type": "perk",
           "settings": {
             "icon": "gift",
+            "live": false,
             "title": "5 € Willkommensvorteil",
             "text": "Per E-Mail, für deine erste Bestellung ab 59 €."
           }
@@ -212,6 +213,7 @@
           "type": "perk",
           "settings": {
             "icon": "clock",
+            "live": false,
             "title": "48 Stunden früher",
             "text": "Neue Schlafhelfer und Sets bekommst du zuerst – bevor sie im Shop stehen."
           }
@@ -220,6 +222,7 @@
           "type": "perk",
           "settings": {
             "icon": "mail",
+            "live": false,
             "title": "Ein Schlafbrief im Monat",
             "text": "Eine konkrete Idee für ruhigere Nächte. Kein Werbe-Dauerfeuer."
           }
@@ -235,11 +238,13 @@
         "heading": "Für Menschen, die ihre Nächte ernst nehmen.",
         "text": "<p>Mitglieder bekommen, was nicht im Shop steht. Kostenlos und jederzeit kündbar.</p>",
         "button_label": "Mitglied werden",
+        "text_basic": "<p>Trag dich ein, und wir schreiben dir, wenn es neue Schlafhelfer oder Sets gibt.</p>",
+        "offer_active": false,
         "flyout": true,
         "flyout_delay": 45,
         "flyout_pause_days": 14,
         "flyout_heading": "5 € für deine erste Nacht mit uns",
-        "flyout_text": "Tritt dem Club bei: 5 € Willkommensvorteil ab 59 €, neue Schlafhelfer 48 Stunden früher und ein Schlafbrief im Monat.",
+        "flyout_text": "Tritt dem kostenlosen Club bei: 5 € Willkommensvorteil für deine erste Bestellung ab 59 €.",
         "conditions": "Willkommensvorteil: 5 € Rabatt ab 59 € Bestellwert, einmal pro Person, nicht mit anderen Codes kombinierbar."
       }
     }

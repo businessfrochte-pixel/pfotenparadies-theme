@@ -19,10 +19,21 @@
 >
 
 {%- liquid
-  assign og_title = page_title | default: shop.name
+  assign brand = settings.brand_name | default: shop.name
+  capture nw_desc
+    render 'nw-seo', key: 'description'
+  endcapture
+  assign nw_desc = nw_desc | strip
+  if request.page_type == 'index' and settings.brand_home_title != blank
+    assign page_title = settings.brand_home_title
+  endif
+  if nw_desc != blank
+    assign page_description = nw_desc
+  endif
+  assign og_title = page_title | default: brand
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
-  assign og_description = page_description | default: shop.description | default: shop.name
+  assign og_description = page_description | default: shop.description | default: brand
 
   if request.page_type == 'product'
     assign og_type = 'product'
@@ -35,7 +46,7 @@
 
 <meta
   property="og:site_name"
-  content="{{ shop.name }}"
+  content="{{ brand | escape }}"
 >
 <meta
   property="og:url"
@@ -107,7 +118,7 @@
   {{ page_title }}
   {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
   {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-  {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  {%- unless page_title contains brand %} &ndash; {{ brand }}{% endunless -%}
 </title>
 
 <link

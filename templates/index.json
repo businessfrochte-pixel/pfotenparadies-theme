@@ -356,17 +356,17 @@
       "settings": {
         "kicker": "",
         "heading": "Schlaf ohne Licht, Lärm und falsches Kissen.",
-        "text": "<p>Nachtwerk sortiert Schlafhelfer nach dem, was dich nachts stört – mit ehrlichen Angaben, was sie können und was nicht.</p>",
+        "text": "<p>Nachtwerk sortiert Schlafhelfer nach dem, was dich nachts stört. Bei jedem Artikel siehst du das voraussichtliche Lieferdatum und wofür er nicht gedacht ist.</p>",
         "button_label": "Alle Schlafhelfer ansehen",
         "button_link": "shopify://collections/schlafhelfer",
         "link_label": "Zum Schlafratgeber",
         "link_url": "shopify://pages/schlafratgeber",
         "product": "schlafmaske-3d",
-        "media_index": 4,
+        "media_index": 1,
         "needs_title": "Was stört deinen Schlaf?",
         "padding-block-start": 0,
         "padding-block-end": 0,
-        "proof": "Sets ab [SET_MIN]|Lieferdatum vor dem Kauf|Ehrlich: wofür es nicht gedacht ist"
+        "proof": "Sets ab [SET_MIN]|Lieferdatum vor dem Kauf|Bei jedem Produkt: wofür es nicht gedacht ist"
       }
     },
     "nw_sets": {

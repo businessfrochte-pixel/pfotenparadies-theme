@@ -1,0 +1,38 @@
+{%- doc -%}
+  Nachtwerk – Beschreibungen für Suchmaschinen und Link-Vorschau (JARVIS, 19.10.2026).
+  Grund: Seiten (FAQ, Versand, Kontakt …) teilen sich Shopify-weit mit PfotenParadies; ohne eigene SEO-Beschreibung
+  würde Shopify den Hunde-Text der Seite als Vorschau zeigen. Werte für Lieferzeit und Versand kommen aus hh-config.
+  Leer = Shopify-Standard bleibt.
+
+  @param {string} key - 'description'
+  @example
+  {% render 'nw-seo', key: 'description' %}
+{%- enddoc -%}
+{%- liquid
+  capture delivery
+    render 'hh-config', key: 'delivery'
+  endcapture
+  capture fee
+    render 'hh-config', key: 'shipping_fee'
+  endcapture
+  capture free
+    render 'hh-config', key: 'free_shipping'
+  endcapture
+  assign delivery = delivery | strip
+  assign brand = settings.brand_name | default: shop.name
+  assign suffix = template.suffix
+-%}
+{%- if key == 'description' -%}
+  {%- if request.page_type == 'index' -%}
+    {{- settings.brand_home_description -}}
+  {%- elsif template.name == 'page' -%}
+    {%- case suffix -%}
+      {%- when 'faq' -%}Antworten zu Lieferzeit (nach Deutschland in {{ delivery }}), Versandkosten, Rückgabe und Auswahl der Schlafhelfer bei {{ brand }}.
+      {%- when 'versand' -%}Lieferung nach Deutschland in {{ delivery }}, Versand {{ fee | strip }}, ab {{ free | strip }} kostenlos. Lieferzeiten und Kosten für andere Länder bei {{ brand }}.
+      {%- when 'widerruf' -%}Widerruf und Rückgabe bei {{ brand }}: Frist, Ablauf, Kosten und Erstattung.
+      {%- when 'contact' -%}Fragen zu Schlafhelfern oder zu deiner Bestellung? Schreib {{ brand }} – wir antworten {% render 'hh-config', key: 'reply_time' %}.
+      {%- when 'ueber-uns' -%}{{ brand }} sortiert Schlafhelfer nach Störquelle – Licht, Geräusche, Liegen, Aufwachen. Bei jedem Produkt steht, wofür es nicht gedacht ist.
+      {%- when 'ratgeber' -%}Was hilft gegen Licht, Lärm, unbequemes Liegen oder schroffes Aufwachen – und wann ärztlicher Rat sinnvoll ist.
+    {%- endcase -%}
+  {%- endif -%}
+{%- endif -%}
