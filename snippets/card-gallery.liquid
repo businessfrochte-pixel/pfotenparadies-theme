@@ -114,7 +114,9 @@
 
         assign featured_media_class = media_class | replace: '[media_type]', featured_media.media_type | append: media_class_suffix
       %}
-      {%- if product.media.size == 1 -%}
+      {%- if product.metafields.custom.set_variants != blank -%}
+        {% render 'nw-set-stage', product: product, size: 'card', loading: featured_media_loading %}
+      {%- elsif product.media.size == 1 -%}
         <div
           class="{{ featured_media_class }}"
           style="--product-media-fit: {{ media_fit | default: 'cover' }};"

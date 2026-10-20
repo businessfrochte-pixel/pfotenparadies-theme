@@ -23,7 +23,7 @@
           assign img = v.featured_image | default: item.featured_image
         -%}
         <li class="nw-setparts__item">
-          <span class="nw-setparts__img">{%- if img -%}{{ img | image_url: width: 160, height: 160, crop: 'center' | image_tag: loading: 'lazy', alt: '', width: 64, height: 64 }}{%- endif -%}</span>
+          <span class="nw-setparts__img">{%- if img -%}{{ img | image_url: width: 160 | image_tag: loading: 'lazy', alt: '', width: 64, height: 64 }}{%- endif -%}</span>
           <span class="nw-setparts__body">
             {%- assign short = item.title | split: ' mit ' | first | split: ',' | first -%}
             <a class="nw-setparts__name" href="{{ item.url }}">{{ short | escape }}{%- unless v.title == 'Default Title' -%}<span class="nw-setparts__var">, {{ v.title | escape }}</span>{%- endunless -%}</a>

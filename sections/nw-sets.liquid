@@ -31,11 +31,7 @@
         {%- unless all_avail -%}{%- assign save = 0 -%}{%- endunless -%}
         <li class="nw-set">
           <a class="nw-set__link" href="{{ set.url }}">
-            <span class="nw-set__media" style="--n: {{ items.size | at_most: 3 }}">
-              {%- for it in items limit: 3 -%}
-                {%- if it.featured_image -%}<span class="nw-set__img">{{ it.featured_image | image_url: width: 400, height: 400 | image_tag: loading: 'lazy', widths: '200, 300, 400', sizes: '(min-width: 1100px) 9vw, 30vw', alt: '' }}</span>{%- endif -%}
-              {%- endfor -%}
-            </span>
+            <span class="nw-set__media">{% render 'nw-set-stage', product: set, size: 'card' %}</span>
             <span class="nw-set__body">
               <span class="nw-set__name">{{ set.title | split: '„' | last | split: '“' | first | escape }}</span>
               {%- assign nutzen = set.metafields.custom.set_nutzen.value -%}

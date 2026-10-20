@@ -1,0 +1,52 @@
+{%- doc -%}
+  Nachtwerk – Set-Startbild aus den echten Produktfotos aller Set-Teile (JARVIS, 20.10.2026).
+  Zeigt auf einen Blick, was im Set steckt: alle Teile nebeneinander auf der Markenfläche, mit Namen.
+  Quelle: custom.set_variants (Variantenbild, sonst Hauptbild des Einzelartikels). Keine erfundenen Bilder.
+
+  @param {object} product - Das Set-Produkt
+  @param {string} [size] - 'hero' (Produktseite, mit Titel und Namen) oder 'card' (Karten, nur Bilder)
+  @param {string} [loading] - 'eager' oder 'lazy'
+
+  @example
+  {% render 'nw-set-stage', product: product, size: 'hero' %}
+{%- enddoc -%}
+{%- liquid
+  assign parts = product.metafields.custom.set_variants.value
+  assign size = size | default: 'hero'
+  assign loading = loading | default: 'lazy'
+  assign set_name = product.title | split: '„' | last | split: '“' | first
+  if size == 'hero'
+    assign w = 900
+    assign sizes = '(min-width: 990px) 22vw, 45vw'
+  else
+    assign w = 500
+    assign sizes = '(min-width: 1100px) 10vw, 30vw'
+  endif
+-%}
+{%- if parts != blank and parts.size > 0 -%}
+  <div class="nw-stage nw-stage--{{ size }}" style="--n: {{ parts.size | at_most: 4 }};"{% if size == 'card' %} aria-hidden="true"{% endif %}>
+    {%- if size == 'hero' -%}
+      <div class="nw-stage__head">
+        <p class="nw-stage__title">{{ set_name | escape }}</p>
+        <p class="nw-stage__sub">Set aus {{ parts.size }} Teilen</p>
+      </div>
+    {%- endif -%}
+    <ul class="nw-stage__row" role="list">
+      {%- for v in parts limit: 4 -%}
+        {%- liquid
+          assign item = v.product
+          assign img = v.featured_image | default: item.featured_image
+          assign short = item.title | split: ' mit ' | first | split: ',' | first | split: ' für ' | first
+        -%}
+        <li class="nw-stage__item">
+          <span class="nw-stage__pic">
+            {%- if img -%}
+              {{ img | image_url: width: w | image_tag: loading: loading, widths: '300, 500, 700, 900', sizes: sizes, alt: '' }}
+            {%- endif -%}
+          </span>
+          {%- if size == 'hero' -%}<span class="nw-stage__name">{{ short | escape }}</span>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}

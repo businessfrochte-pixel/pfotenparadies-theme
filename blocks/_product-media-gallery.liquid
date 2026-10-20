@@ -1,4 +1,7 @@
 
+{%- if closest.product.metafields.custom.set_variants != blank -%}
+  {% render 'nw-set-stage', product: closest.product, size: 'hero', loading: 'eager' %}
+{%- endif -%}
 {% render 'product-media-gallery-content',
   media_presentation: block.settings.media_presentation,
   block_settings: block.settings,
