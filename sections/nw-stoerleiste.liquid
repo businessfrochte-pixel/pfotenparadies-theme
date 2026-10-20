@@ -1,0 +1,50 @@
+{%- comment -%}
+  Nachtwerk 2050 – Störquellen-Leiste für Kategorieseiten (JARVIS, 20.10.2026).
+  Beantwortet: „Was hilft gegen mein Problem?“ – ohne Umweg über die Startseite (Besucher aus Anzeigen).
+  Gleiche Uhrzeiten wie die Nachtachse im Einstieg; die aktuelle Auswahl ist markiert (aria-current).
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+<div class="section-background"></div>
+<div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: s %}">
+  <nav class="hh nw-sl" aria-label="{{ s.label | escape }}">
+    <ul class="nw-sl__list" role="list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign b = block.settings
+          assign current = false
+          if b.collection != blank and collection.handle == b.collection.handle
+            assign current = true
+          endif
+        -%}
+        {%- if b.collection != blank -%}
+          <li {{ block.shopify_attributes }}>
+            <a class="nw-sl__chip" href="{{ b.collection.url }}"{% if current %} aria-current="page"{% endif %}>
+              {%- if b.time != blank -%}<span class="nw-sl__time">{{ b.time | escape }}</span>{%- endif -%}
+              <span>{{ b.label | default: b.collection.title | escape }}</span>
+            </a>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </nav>
+</div>
+{% schema %}
+{
+  "name": "NW Störquellen-Leiste",
+  "class": "hh-section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Name für Screenreader", "default": "Schlafhelfer nach Störquelle" },
+    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 16 }
+  ],
+  "blocks": [
+    { "type": "chip", "name": "Auswahl", "settings": [
+      { "type": "collection", "id": "collection", "label": "Sammlung" },
+      { "type": "text", "id": "label", "label": "Bezeichnung (optional)" },
+      { "type": "text", "id": "time", "label": "Uhrzeit (wie Nachtachse, optional)" }
+    ] }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "NW Störquellen-Leiste" }]
+}
+{% endschema %}

@@ -38,7 +38,7 @@
           "static": true,
           "settings": {
             "extend_summary": true,
-            "background_color": "#ECEAE4",
+            "background_color": "#0E1221",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,

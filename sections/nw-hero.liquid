@@ -1,14 +1,13 @@
 {%- comment -%}
-  Nachtwerk – Einstieg v3 (JARVIS, 19.10.2026, nach Designkritik).
-  Erster Bildschirm mit höchstens fünf Elementen: Aussage, Motiv, führender Button, untergeordneter Weg, eine ruhige Faktenzeile.
-  Motiv: nur ein eigens gewähltes Szenenbild (Schlafzimmer, warmes Licht, Produkt in Verwendung) über 'scene'.
-  Ohne geeignetes Szenenbild KEIN Produkt- oder Maßbild als Ersatz (Fehler 19.10.: Maßzeichnung als erstes Markenbild),
-  sondern die Marken-Komposition „Mond im Lampenlicht“ aus Code – ruhig, ohne Bildrechte-Fragen.
-  Die Einstiege nach Störquelle folgen als eigener Bereich darunter, mit Symbolen statt uneinheitlicher Produktfotos.
+  Nachtwerk 2050 – Einstieg „Nachtvitrine“ (JARVIS, 20.10.2026, Premium E-Commerce Architect).
+  Links: Kundenwunsch in drei Wörtern, ein Satz Angebot, eine Hauptaktion, ein zweiter Weg, eine Faktenzeile.
+  Rechts: die „Nachtachse“ – Störquellen als Momente einer Nacht (Uhrzeit = Reihenfolge, deshalb geordnete Liste),
+  jede mit einem echten Produktfoto im Lichtkasten und Link zur passenden Auswahl. Das Motiv sind die Produkte selbst – kein Ersatzbild.
+  Unten: Horizontlinie (reines CSS).
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
-  assign heading_id = 'nw-hero-' | append: section.id
+  assign heading_id = 'nw-vh-' | append: section.id
   assign facts = ''
   if s.facts != blank
     assign set_min = 0
@@ -24,98 +23,93 @@
     assign free_ship = free_ship | strip
     assign facts = s.facts | replace: '[SET_MIN]', set_min_text | replace: '[FREE_SHIP]', free_ship
   endif
+  assign lines = s.heading | split: '. '
 -%}
 <div class="section-background"></div>
-<div class="nw-hero-wrap spacing-style" style="{% render 'spacing-padding', settings: s %}">
-  <section class="hh nw-hero{% if s.scene != blank %} nw-hero--scene{% endif %}" aria-labelledby="{{ heading_id }}">
-    <div class="nw-hero__inner">
-      <div class="nw-hero__copy">
-        <h1 id="{{ heading_id }}" class="nw-hero__title">{{ s.heading | escape }}</h1>
-        {%- if s.text != blank -%}<div class="nw-hero__lead">{{ s.text }}</div>{%- endif -%}
-        <div class="nw-hero__actions">
+<div class="nw-vh-wrap">
+  <section class="hh nw-vh" aria-labelledby="{{ heading_id }}">
+    <div class="nw-vh__inner">
+      <div class="nw-vh__copy">
+        <h1 id="{{ heading_id }}" class="nw-vh__title">
+          {%- for line in lines -%}
+            <span class="nw-vh__line" style="--i: {{ forloop.index0 }}">{{ line | escape }}{% unless forloop.last %}.{% endunless %}</span>
+          {%- endfor -%}
+        </h1>
+        {%- if s.text != blank -%}<div class="nw-vh__lead">{{ s.text }}</div>{%- endif -%}
+        <div class="nw-vh__actions">
           {%- if s.button_label != blank -%}
-            <a class="hh-btn nw-btn--lamp" href="{{ s.button_link | default: '/collections/schlafhelfer' }}">{{ s.button_label | escape }}</a>
+            <a class="nw-cta" href="{{ s.button_link | default: '/collections/schlafhelfer' }}">{{ s.button_label | escape }}</a>
           {%- endif -%}
           {%- if s.link_label != blank -%}
-            <a class="nw-hero__link" href="{{ s.link_url | default: '#nw-stoerer' }}">{{ s.link_label | escape }}</a>
+            <a class="nw-vh__link" href="{{ s.link_url | default: '/collections/schlaf-sets' }}">{{ s.link_label | escape }}</a>
           {%- endif -%}
         </div>
-        {%- if facts != '' -%}<p class="nw-hero__facts">{{ facts | escape }}</p>{%- endif -%}
+        {%- if facts != '' -%}<p class="nw-vh__facts">{{ facts | escape }}</p>{%- endif -%}
       </div>
-      {%- if s.scene != blank -%}
-        <figure class="nw-hero__scene">
-          {{ s.scene | image_url: width: 1600 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 50vw, 100vw', widths: '600, 900, 1200, 1600', alt: s.scene.alt, style: s.scene_focus }}
-        </figure>
-      {%- else -%}
-        <div class="nw-hero__art" aria-hidden="true">
-          <span class="nw-hero__lamp"></span>
-          <span class="nw-hero__moon"></span>
-        </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <nav class="nw-axis" aria-labelledby="{{ heading_id }}-ax">
+          <p id="{{ heading_id }}-ax" class="nw-axis__head">{{ s.needs_title | escape }}</p>
+          <ol class="nw-axis__list" role="list">
+            {%- for block in section.blocks -%}
+              {%- assign b = block.settings -%}
+              <li class="nw-axis__stop" style="--i: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                <a class="nw-axis__link" href="{{ b.link | default: '/collections/schlafhelfer' }}">
+                  {%- if b.time != blank -%}<span class="nw-axis__time">{{ b.time | escape }}</span>{%- endif -%}
+                  <span class="nw-axis__text">
+                    <span class="nw-axis__title">{{ b.text | escape }}</span>
+                    {%- if b.sub != blank -%}<span class="nw-axis__sub">{{ b.sub | escape }}</span>{%- endif -%}
+                  </span>
+                  <span class="nw-axis__box nw-lb" aria-hidden="true">
+                    {%- if b.product != blank and b.product.featured_image -%}
+                      {{ b.product.featured_image | image_url: width: 300 | image_tag: loading: 'eager', widths: '160, 240, 300', sizes: '(min-width: 990px) 96px, 72px', alt: '' }}
+                    {%- else -%}
+                      {% render 'hh-icon', name: b.icon %}
+                    {%- endif -%}
+                  </span>
+                </a>
+              </li>
+            {%- endfor -%}
+          </ol>
+        </nav>
       {%- endif -%}
     </div>
+    <div class="nw-vh__horizon" aria-hidden="true"></div>
   </section>
 </div>
 
-{%- if section.blocks.size > 0 -%}
-<div class="nw-stoerer-wrap">
-  <nav id="nw-stoerer" class="hh nw-stoerer" aria-labelledby="{{ heading_id }}-st">
-    <h2 id="{{ heading_id }}-st" class="nw-stoerer__title">{{ s.needs_title | escape }}</h2>
-    <ul class="nw-stoerer__list">
-      {%- for block in section.blocks -%}
-        {%- assign b = block.settings -%}
-        <li {{ block.shopify_attributes }}>
-          <a class="nw-st" href="{{ b.link | default: '/collections/schlafhelfer' }}">
-            <span class="nw-st__icon">{% render 'hh-icon', name: b.icon %}</span>
-            <span class="nw-st__text">
-              <span class="nw-st__title">{{ b.text | escape }}</span>
-              {%- if b.sub != blank -%}<span class="nw-st__sub">{{ b.sub | escape }}</span>{%- endif -%}
-            </span>
-            <span class="nw-st__go">{% render 'hh-icon', name: 'arrow' %}</span>
-          </a>
-        </li>
-      {%- endfor -%}
-    </ul>
-  </nav>
-</div>
-{%- endif -%}
-
 {% schema %}
 {
-  "name": "NW Einstieg (Nacht)",
-  "class": "hh-section nw-section",
+  "name": "NW Einstieg Nachtvitrine",
+  "class": "hh-section nw-section nw-section--hero",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Überschrift (Kundenwunsch)", "default": "Schlaf ohne Licht, Lärm und falsches Kissen." },
-    { "type": "richtext", "id": "text", "label": "Unterzeile (ein Satz)", "default": "<p>Schlafhelfer, sortiert nach dem, was dich nachts stört.</p>" },
-    { "type": "text", "id": "button_label", "label": "Haupt-Button", "default": "Alle Schlafhelfer ansehen" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "info": "Sätze mit Punkt werden je in eine eigene Zeile gesetzt.", "default": "Dunkel. Still. Bequem." },
+    { "type": "richtext", "id": "text", "label": "Unterzeile (ein Satz)", "default": "<p>Schlafhelfer gegen Licht, Lärm und unbequemes Liegen – ausgewählt nach dem, was dich nachts weckt.</p>" },
+    { "type": "text", "id": "button_label", "label": "Haupt-Button", "default": "Schlafhelfer ansehen" },
     { "type": "url", "id": "button_link", "label": "Haupt-Button – Ziel" },
-    { "type": "text", "id": "link_label", "label": "Zweiter Weg (untergeordnet)", "default": "Was stört deinen Schlaf?" },
+    { "type": "text", "id": "link_label", "label": "Zweiter Weg (untergeordnet)", "default": "Sets ansehen" },
     { "type": "url", "id": "link_url", "label": "Zweiter Weg – Ziel" },
-    { "type": "text", "id": "facts", "label": "Eine ruhige Faktenzeile", "info": "[SET_MIN] = günstigstes Set, [FREE_SHIP] = Gratisversand-Schwelle aus hh-config. Höchstens zwei Fakten.", "default": "Versand kostenlos ab [FREE_SHIP] · Sets ab [SET_MIN]" },
-    { "type": "header", "content": "Hauptmotiv" },
-    { "type": "paragraph", "content": "Nur ein eigens gewähltes Szenenbild: Schlafzimmer, warmes Licht, Produkt in Verwendung, freie Fläche für den Text, funktioniert auch schmal. Keine Maßzeichnung, kein Freisteller, keine fremdsprachige Grafik. Bildrechte klären. Ohne Bild erscheint die Marken-Komposition „Mond im Lampenlicht“." },
-    { "type": "image_picker", "id": "scene", "label": "Szenenbild" },
-    { "type": "text", "id": "scene_focus", "label": "Bildausschnitt (CSS, optional)", "info": "z. B. object-position: 30% 50%;" },
-    { "type": "header", "content": "Einstiege nach Störquelle" },
-    { "type": "text", "id": "needs_title", "label": "Überschrift", "default": "Was stört deinen Schlaf?" },
-    { "type": "header", "content": "Abstände" },
-    { "type": "range", "id": "padding-block-start", "label": "Abstand oben", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0 },
-    { "type": "range", "id": "padding-block-end", "label": "Abstand unten", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0 }
+    { "type": "text", "id": "facts", "label": "Faktenzeile", "info": "[SET_MIN] = günstigstes Set, [FREE_SHIP] = Gratisversand-Schwelle. Höchstens zwei Fakten.", "default": "Versand kostenlos ab [FREE_SHIP] · Sets ab [SET_MIN]" },
+    { "type": "header", "content": "Nachtachse" },
+    { "type": "text", "id": "needs_title", "label": "Überschrift der Nachtachse", "default": "Was stört deine Nacht?" }
   ],
   "blocks": [
     {
       "type": "stoerer",
-      "name": "Störquelle",
+      "name": "Moment der Nacht",
       "settings": [
+        { "type": "text", "id": "time", "label": "Uhrzeit (Beispiel)", "default": "22:40" },
         { "type": "text", "id": "text", "label": "Störquelle", "default": "Licht" },
         { "type": "text", "id": "sub", "label": "Situation aus Kundensicht" },
         { "type": "url", "id": "link", "label": "Ziel (passende Auswahl)" },
-        { "type": "select", "id": "icon", "label": "Symbol", "default": "light", "options": [
+        { "type": "product", "id": "product", "label": "Produkt im Lichtkasten", "info": "Echtes Produktfoto. Ohne Produkt erscheint das Symbol." },
+        { "type": "select", "id": "icon", "label": "Symbol (Ersatz)", "default": "light", "options": [
           { "value": "light", "label": "Licht" }, { "value": "sound", "label": "Geräusche" }, { "value": "neck", "label": "Nacken/Kissen" },
           { "value": "sunrise", "label": "Aufwachen" }, { "value": "ear", "label": "Ohr" }, { "value": "moon", "label": "Mond" }, { "value": "layers", "label": "Decke" } ] }
       ]
     }
   ],
-  "max_blocks": 6,
-  "presets": [{ "name": "NW Einstieg (Nacht)" }]
+  "max_blocks": 5,
+  "presets": [{ "name": "NW Einstieg Nachtvitrine" }]
 }
 {% endschema %}

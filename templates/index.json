@@ -39,11 +39,11 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Einzeln entdecken</h2>",
+                "text": "<h2>Die Schlafhelfer</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h3",
+                "type_preset": "h2",
                 "font": "var(--font-heading--family)",
                 "line_height": "normal",
                 "letter_spacing": "normal",
@@ -272,7 +272,9 @@
             "text": "Licht",
             "sub": "Straßenlaterne, Standby-Licht, früher Sonnenaufgang",
             "link": "shopify://collections/schlaf-licht",
-            "icon": "light"
+            "icon": "light",
+            "time": "22:40",
+            "product": "schlafmaske-3d"
           }
         },
         "st2": {
@@ -281,7 +283,9 @@
             "text": "Geräusche",
             "sub": "Verkehr, Nachbarn, Schnarchen",
             "link": "shopify://collections/schlaf-geraeusche",
-            "icon": "sound"
+            "icon": "sound",
+            "time": "01:50",
+            "product": "ohrstoepsel-schlaf"
           }
         },
         "st3": {
@@ -290,7 +294,9 @@
             "text": "Liegen & Kissen",
             "sub": "Kissen zu hoch, zu flach oder zu warm",
             "link": "shopify://collections/schlaf-liegen",
-            "icon": "neck"
+            "icon": "neck",
+            "time": "03:30",
+            "product": "nackenkissen-memory-foam"
           }
         },
         "st4": {
@@ -299,7 +305,9 @@
             "text": "Aufwachen",
             "sub": "Schriller Wecker, dunkle Wintermorgen",
             "link": "shopify://collections/schlaf-aufwachen",
-            "icon": "sunrise"
+            "icon": "sunrise",
+            "time": "06:30",
+            "product": "lichtwecker-sonnenaufgang"
           }
         }
       },
@@ -310,13 +318,13 @@
         "st4"
       ],
       "settings": {
-        "heading": "Schlaf ohne Licht, Lärm und falsches Kissen.",
-        "text": "<p>Schlafhelfer, sortiert nach dem, was dich nachts stört – mit klaren Angaben, wofür sie gedacht sind und wofür nicht.</p>",
-        "button_label": "Alle Schlafhelfer ansehen",
+        "heading": "Dunkel. Still. Bequem.",
+        "text": "<p>Schlafhelfer gegen Licht, Lärm und unbequemes Liegen – ausgewählt nach dem, was dich nachts weckt.</p>",
+        "button_label": "Schlafhelfer ansehen",
         "button_link": "shopify://collections/schlafhelfer",
-        "link_label": "Was stört deinen Schlaf?",
-        "link_url": "#nw-stoerer",
-        "needs_title": "Was stört deinen Schlaf?",
+        "link_label": "Sets ansehen",
+        "link_url": "shopify://collections/schlaf-sets",
+        "needs_title": "Was stört deine Nacht?",
         "padding-block-start": 0,
         "padding-block-end": 0,
         "facts": "Versand kostenlos ab [FREE_SHIP] · Sets ab [SET_MIN]"
@@ -392,9 +400,9 @@
   },
   "order": [
     "nw_hero",
+    "product_list_fa6P9H",
     "nw_sets",
     "nw_crit",
-    "product_list_fa6P9H",
     "hh_ruheplatz",
     "hh_faq"
   ]

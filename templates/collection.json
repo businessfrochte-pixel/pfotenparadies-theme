@@ -210,7 +210,7 @@
         "product_card_size": "medium",
         "mobile_product_card_size": "small",
         "product_grid_width": "centered",
-        "full_width_on_mobile": true,
+        "full_width_on_mobile": false,
         "columns_gap_horizontal": 16,
         "columns_gap_vertical": 24,
         "padding-inline-start": 0,
@@ -220,23 +220,76 @@
         "padding-block-end": 32
       }
     },
-    "hh_help": {
-      "type": "hh-helpbar",
+    "nw_sl": {
+      "type": "nw-stoerleiste",
+      "blocks": {
+        "c0": {
+          "type": "chip",
+          "settings": {
+            "collection": "schlafhelfer",
+            "label": "Alle",
+            "time": ""
+          }
+        },
+        "c1": {
+          "type": "chip",
+          "settings": {
+            "collection": "schlaf-licht",
+            "label": "Licht",
+            "time": "22:40"
+          }
+        },
+        "c2": {
+          "type": "chip",
+          "settings": {
+            "collection": "schlaf-geraeusche",
+            "label": "Geräusche",
+            "time": "01:50"
+          }
+        },
+        "c3": {
+          "type": "chip",
+          "settings": {
+            "collection": "schlaf-liegen",
+            "label": "Liegen & Kissen",
+            "time": "03:30"
+          }
+        },
+        "c4": {
+          "type": "chip",
+          "settings": {
+            "collection": "schlaf-aufwachen",
+            "label": "Aufwachen",
+            "time": "06:30"
+          }
+        },
+        "c5": {
+          "type": "chip",
+          "settings": {
+            "collection": "schlaf-sets",
+            "label": "Sets",
+            "time": ""
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ],
       "settings": {
+        "label": "Schlafhelfer nach Störquelle",
         "padding-block-start": 0,
-        "padding-block-end": 8,
-        "icon": "moon",
-        "text": "<strong>Unsicher, was zu dir passt?</strong> Bei jedem Artikel steht, wofür er gedacht ist – und wofür nicht.",
-        "label_1": "Zum Schlafratgeber",
-        "link_1": "shopify://pages/schlafratgeber",
-        "label_2": "Frage stellen",
-        "link_2": "shopify://pages/contact"
+        "padding-block-end": 16
       }
     }
   },
   "order": [
     "section",
-    "hh_help",
+    "nw_sl",
     "main"
   ]
 }

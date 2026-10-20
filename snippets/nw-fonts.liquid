@@ -1,0 +1,23 @@
+{%- doc -%}
+  Nachtwerk 2050 – Hausschrift Archivo (variabel: Stärke 100–900, Breite 62–125 %), selbst gehostet als Theme-Datei (keine Verbindung zu Google, DSGVO).
+  Lizenz: SIL Open Font License 1.1 (Archivo Project Authors), Teilmenge Latein + Deutsch + €.
+  @example
+  {% render 'nw-fonts' %}
+{%- enddoc -%}
+<link rel="preload" href="{{ 'nw-archivo.woff' | asset_url }}" as="font" type="font/woff" crossorigin>
+<style>
+  @font-face {
+    font-family: 'NW Archivo';
+    src: url('{{ 'nw-archivo.woff' | asset_url }}') format('woff');
+    font-weight: 100 900;
+    font-stretch: 62% 125%;
+    font-style: normal;
+    font-display: swap;
+  }
+  :root:root {
+    --font-body--family: 'NW Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --font-subheading--family: 'NW Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --font-heading--family: 'NW Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --font-accent--family: 'NW Archivo', 'Helvetica Neue', Arial, sans-serif;
+  }
+</style>
