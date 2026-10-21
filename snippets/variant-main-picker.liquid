@@ -66,6 +66,37 @@
             endif
           endif
 
+          # Nachtwerk 2050 (JARVIS 21.10.2026): Farbfelder aus echten Variantenbildern,
+          # nur wenn jede Farbe ein eigenes, unterschiedliches Bild hat – sonst bleiben Text-Buttons.
+          assign nw_img_swatch = false
+          if swatch_count == 0 and block_settings.show_swatches and settings.show_variant_image and block_settings.variant_style == 'buttons' and product_option.values.size > 1
+            assign nw_oname = product_option.name | downcase
+            if nw_oname == 'farbe' or nw_oname == 'color' or nw_oname == 'colour' or nw_oname == 'farbton'
+              assign nw_key = 'option' | append: product_option.position
+              assign nw_ids = ''
+              assign nw_ok = true
+              for nw_val in product_option.values
+                assign nw_v = product_resource.variants | where: nw_key, nw_val.name | first
+                if nw_v.featured_media == blank
+                  assign nw_ok = false
+                  break
+                endif
+                if nw_ids != ''
+                  assign nw_ids = nw_ids | append: ','
+                endif
+                assign nw_ids = nw_ids | append: nw_v.featured_media.id
+              endfor
+              if nw_ok
+                assign nw_unique = nw_ids | split: ',' | uniq | size
+                if nw_unique == product_option.values.size
+                  assign nw_img_swatch = true
+                  assign variant_style = 'swatch'
+                  assign option_id_attribute = nil
+                endif
+              endif
+            endif
+          endif
+
           if variant_style == 'buttons' and settings.variant_button_width == 'equal-width-buttons'
             assign fieldset_id = section.id | append: '-' | append: product_resource.id | append: '-' | append: product_option.name | handleize
             assign option_id_attribute = 'data-option-id="' | append: fieldset_id | append: '"'
@@ -135,6 +166,11 @@
                 {% if variant_style == 'swatch' %}
                   {% liquid
                     assign featured_media = product_option_value.variant.featured_media
+
+                    if featured_media == blank and nw_img_swatch
+                      assign nw_v = product_resource.variants | where: nw_key, product_option_value.name | first
+                      assign featured_media = nw_v.featured_media
+                    endif
 
                     # If the variant has no featured media, and we have a combined listing product, then fall back to
                     # using the featured media of the child product that is linked to this option value.

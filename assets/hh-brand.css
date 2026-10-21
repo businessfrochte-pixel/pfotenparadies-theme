@@ -1179,3 +1179,8 @@ header-menu .menu-list__link, .header__menu-item { font-stretch: var(--nw-semi);
 /* Menü auf dem Handy: gleiche breite Typo wie die Überschriften */
 .menu-drawer__menu-item--mainlist, .menu-drawer .menu-drawer__menu-item--parent { font-stretch: var(--nw-wide); font-weight: 350; letter-spacing: -.02em; }
 .menu-drawer .menu-drawer__menu-item--child { font-stretch: var(--nw-semi); }
+
+/* Farbfelder aus echten Variantenbildern = kleine Lichtkästen (JARVIS 21.10.2026).
+   Erscheinen nur, wenn jede Farbe ein eigenes Bild hat (snippets/variant-main-picker.liquid). */
+.variant-option--swatches .swatch--variant-image { background-color: var(--nw-moon); }
+.variant-option--swatches .variant-option__swatch-value { margin-inline-start: .5em; color: var(--nw-moon-2); }

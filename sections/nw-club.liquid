@@ -156,6 +156,13 @@
         if ((el.scrollTop + el.clientHeight) / el.scrollHeight > .55) { document.removeEventListener('scroll', onS, true); show(); }
       }
       document.addEventListener('scroll', onS, { capture: true, passive: true });
+      if (window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        var t0 = Date.now();
+        document.addEventListener('mouseout', function onX(e) {
+          if (e.relatedTarget || e.clientY > 0 || Date.now() - t0 < 8000) return;
+          document.removeEventListener('mouseout', onX); show();
+        });
+      }
     })();
   </script>
 {%- endif -%}
