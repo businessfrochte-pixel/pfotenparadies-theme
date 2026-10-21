@@ -12,7 +12,7 @@
       {%- if section.settings.intro != blank -%}<div class="hh-lead">{{ section.settings.intro }}</div>{%- endif -%}
     </header>
     {%- case section.settings.body -%}
-      {%- when 'faq' -%}{% render 'hh-faq-list', page_mode: true %}
+      {%- when 'faq' -%}{%- capture nw_faq -%}{% render 'hh-faq-list', page_mode: true %}{%- endcapture -%}{{ nw_faq | replace_first: '<details>', '<details open>' }}
       {%- when 'versand' -%}{% render 'hh-shipping-info' %}
       {%- when 'widerruf' -%}{% render 'hh-returns-info' %}
       {%- when 'ratgeber' -%}{% render 'nw-ratgeber' %}

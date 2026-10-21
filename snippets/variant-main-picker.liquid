@@ -53,8 +53,21 @@
     {% endif %}
   >
     <form class="variant-picker__form">
+      {%- liquid
+        # Nachtwerk 2050 [T4] (JARVIS 21.10.2026): bei zwei oder mehr echten Auswahlen nummerierte Schritte („1 Größe wählen“).
+        assign nw_choices = 0
+        for nw_o in product_resource.options_with_values
+          if nw_o.values.size > 1
+            assign nw_choices = nw_choices | plus: 1
+          endif
+        endfor
+        assign nw_step = 0
+      -%}
       {%- for product_option in product_resource.options_with_values -%}
         {%- liquid
+          if product_option.values.size > 1
+            assign nw_step = nw_step | plus: 1
+          endif
           assign swatch_count = product_option.values | map: 'swatch' | compact | size
           assign variant_style = block_settings.variant_style
 
@@ -125,7 +138,11 @@
             {{ option_id_attribute }}
           >
             <legend>
-              {{ product_option.name | escape -}}
+              {%- if nw_choices > 1 -%}
+                <span class="nw-step" aria-hidden="true">{{ nw_step }}</span>{{ product_option.name | escape }} wählen
+              {%- else -%}
+                {{ product_option.name | escape -}}
+              {%- endif -%}
               {%- if variant_style == 'swatch' -%}
                 <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
               {%- endif %}

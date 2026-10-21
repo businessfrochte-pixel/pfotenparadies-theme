@@ -39,7 +39,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Die Schlafhelfer</h2>",
+                "text": "<h2>Schlafhelfer für jede Störquelle</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -174,7 +174,7 @@
       "settings": {
         "collection": "schlafhelfer",
         "layout_type": "grid",
-        "carousel_on_mobile": true,
+        "carousel_on_mobile": false,
         "max_products": 8,
         "columns": 4,
         "mobile_columns": "2",
@@ -333,8 +333,8 @@
     "nw_sets": {
       "type": "nw-sets",
       "settings": {
-        "heading": "Zusammen schläft es sich besser",
-        "text": "Sets gegen mehrere Störquellen – günstiger als einzeln gekauft.",
+        "heading": "Mehrere Störquellen, ein Set – günstiger als einzeln",
+        "text": "Die Teile ergänzen sich. Wie viel du gegenüber den Einzelpreisen sparst, steht bei jedem Set.",
         "collection": "schlaf-sets",
         "padding-block-start": 64,
         "padding-block-end": 24
@@ -347,8 +347,8 @@
           "type": "criterion",
           "settings": {
             "icon": "moon",
-            "title": "Ein klarer Zweck",
-            "text": "Jeder Schlafhelfer gehört zu genau einer Störquelle – Licht, Geräusche, Liegen oder Aufwachen.",
+            "title": "Für genau eine Störquelle gemacht",
+            "text": "Licht, Geräusche, Liegen oder Aufwachen – so findest du schneller, was zu deiner Nacht passt.",
             "product": "lichtwecker-sonnenaufgang",
             "example": "Wird vor der Weckzeit langsam heller."
           }
@@ -357,8 +357,8 @@
           "type": "criterion",
           "settings": {
             "icon": "neck",
-            "title": "Anpassbar statt Einheitsgröße",
-            "text": "Wo es auf Form und Höhe ankommt, lässt sich der Artikel auf dich einstellen.",
+            "title": "Einstellbar, wo Form und Höhe zählen",
+            "text": "Du stellst den Artikel auf dich ein, statt dich an ihn zu gewöhnen.",
             "product": "schlafmaske-3d",
             "example": "Polster verschiebbar – passt sich dem Augenabstand an."
           }
@@ -367,8 +367,8 @@
           "type": "criterion",
           "settings": {
             "icon": "layers",
-            "title": "Pflege, die in den Alltag passt",
-            "text": "Bei jedem Artikel steht, wie du ihn reinigst – Textilien sind waschbar.",
+            "title": "Du weißt vorher, wie du ihn reinigst",
+            "text": "Die Pflege steht bei jedem Artikel – Textilien sind waschbar.",
             "product": "sommerdecke-leicht",
             "example": "Waschbar bei 30 °C im Schonwaschgang."
           }
@@ -377,8 +377,8 @@
           "type": "criterion",
           "settings": {
             "icon": "check",
-            "title": "Grenzen ausgesprochen",
-            "text": "Bei jedem Artikel steht auch, wofür er nicht gedacht ist.",
+            "title": "Du weißt vorher, wofür er nicht gedacht ist",
+            "text": "Bei jedem Artikel steht, für wen er nicht passt. Das erspart dir Fehlkäufe.",
             "product": "ohrstoepsel-schlaf",
             "example": "Nicht geeignet, wenn du nachts einen Wecker, Rauchmelder oder dein Kind hören musst."
           }
@@ -391,8 +391,8 @@
         "c4"
       ],
       "settings": {
-        "heading": "Woran du unsere Auswahl erkennst",
-        "text": "Wir führen bewusst wenige Schlafhelfer. Diese Punkte kannst du bei jedem Artikel nachprüfen.",
+        "heading": "Vier Dinge, die du bei jedem Artikel nachprüfen kannst",
+        "text": "Wir führen bewusst wenige Schlafhelfer. So erkennst du schon vor dem Kauf, ob einer zu dir passt.",
         "padding-block-start": 64,
         "padding-block-end": 40
       }

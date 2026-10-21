@@ -3,7 +3,7 @@
 {%- endcomment -%}
 <div class="section-background"></div>
 <div class="section section--page-width spacing-style" style="{% render 'spacing-padding', settings: section.settings %}">
-  <div class="hh-reveal">{% render 'hh-faq-list', short: section.settings.short %}</div>
+  <div class="hh-reveal">{%- capture nw_faq -%}{% render 'hh-faq-list', short: section.settings.short %}{%- endcapture -%}{{ nw_faq | replace_first: '<details>', '<details open>' }}</div>
 </div>
 
 {% schema %}

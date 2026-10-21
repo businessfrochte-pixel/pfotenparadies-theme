@@ -1184,3 +1184,19 @@ header-menu .menu-list__link, .header__menu-item { font-stretch: var(--nw-semi);
    Erscheinen nur, wenn jede Farbe ein eigenes Bild hat (snippets/variant-main-picker.liquid). */
 .variant-option--swatches .swatch--variant-image { background-color: var(--nw-moon); }
 .variant-option--swatches .variant-option__swatch-value { margin-inline-start: .5em; color: var(--nw-moon-2); }
+
+/* [T4] Nummerierte Auswahlschritte (JARVIS 21.10.2026) */
+.variant-option legend .nw-step { display: inline-grid; place-items: center; inline-size: 1.6em; block-size: 1.6em; margin-inline-end: .55em; border: 1px solid var(--nw-line-2); border-radius: 50%; font-size: .8em; font-variant-numeric: tabular-nums; color: var(--nw-moon); vertical-align: .08em; }
+
+/* [T6] Startseite: Schlafhelfer-Raster auf dem Handy 2 × 2 statt Wischreihe; „Alle ansehen“ führt zum Rest (Desktop 2 × 4). */
+@media screen and (max-width: 749px) {
+  .shopify-section[id$="__product_list_fa6P9H"] .resource-list--grid > .resource-list__item:nth-child(n+5) { display: none; }
+}
+
+/* [T4] Set-Karten: Preis oben, Ersparnis in Euro darunter – gleich hoch in allen Karten */
+.nw-set__price { flex-direction: column; align-items: flex-start; gap: 2px; }
+
+/* [T7] Bewegungs-Rhythmus Nachtwerk: Nur der Einstieg bewegt sich (Nachtachse schaltet sich ein).
+   Die übrigen Abschnitte ruhen – kein Einblenden beim Scrollen (geerbte hh-reveal-Animation aus).
+   Rückmeldungen auf Klick, Hover und Fokus bleiben (150–250 ms). */
+.hh-js .hh-reveal, .hh-js .hh-reveal.is-in { opacity: 1; transform: none; transition: none; }
